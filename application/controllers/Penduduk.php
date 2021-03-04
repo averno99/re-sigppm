@@ -1,0 +1,120 @@
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+
+class Penduduk extends CI_Controller
+{
+    public function __construct()
+    {
+        parent::__construct();
+        if (!$this->session->userdata('username')) {
+            redirect('auth');
+        }
+        $this->load->model('M_penduduk');
+        $this->load->library('form_validation');
+    }
+
+    public function index()
+    {
+        $this->load->model('M_kecamatan');
+
+        $data['judul'] = 'Kelola Jumlah Penduduk';
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['penduduk'] = $this->M_penduduk->ambilSemuaPenduduk();
+        $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
+
+        $this->load->view('backend/template/head', $data);
+        $this->load->view('backend/template/sidebar');
+        $this->load->view('backend/template/topbar', $data);
+        $this->load->view('backend/pegawai/penduduk/v_penduduk', $data);
+        $this->load->view('backend/template/footer');
+    }
+
+    public function cari()
+    {
+        $this->load->model('M_kecamatan');
+
+        $keyword = $this->input->post('cari');
+        $keyword2 = $this->input->post('kecamatan');
+
+        $data['judul'] = 'Kelola Jumlah Penduduk';
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
+        $data['penduduk'] = $this->M_penduduk->cariData($keyword);
+
+        $this->load->view('backend/template/head', $data);
+        $this->load->view('backend/template/sidebar');
+        $this->load->view('backend/template/topbar', $data);
+        $this->load->view('backend/pegawai/penduduk/v_penduduk', $data);
+        $this->load->view('backend/template/footer');
+    }
+
+    public function cariKecamatan()
+    {
+        $this->load->model('M_kecamatan');
+
+        $keyword = $this->input->post('cari');
+        $keyword2 = $this->input->post('kecamatan');
+
+        $data['judul'] = 'Kelola Jumlah Penduduk';
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
+        $data['penduduk'] = $this->M_penduduk->cariKecamatan($keyword2);
+
+        $this->load->view('backend/template/head', $data);
+        $this->load->view('backend/template/sidebar');
+        $this->load->view('backend/template/topbar', $data);
+        $this->load->view('backend/pegawai/penduduk/v_penduduk', $data);
+        $this->load->view('backend/template/footer');
+    }
+
+    public function tambah()
+    {
+
+        $data['judul'] = 'Tambah Data Penduduk';
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['kecamatan'] = $this->db->get('kecamatan')->result_array();
+
+        $this->form_validation->set_rules('jumlah', 'Jumlah Penduduk', 'required|trim');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('backend/template/head', $data);
+            $this->load->view('backend/template/sidebar');
+            $this->load->view('backend/template/topbar', $data);
+            $this->load->view('backend/pegawai/penduduk/v_tambahpenduduk', $data);
+            $this->load->view('backend/template/footer');
+        } else {
+            $this->M_penduduk->tambahPenduduk();
+            $this->session->set_flashdata('flash', 'Ditambahkan');
+            redirect('penduduk');
+        }
+    }
+
+    public function ubah($idPenduduk)
+    {
+        $data['judul'] = 'Ubah Data Penduduk';
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['penduduk'] = $this->M_penduduk->ambilIdPenduduk($idPenduduk);
+        $data['kecamatan'] = $this->db->get('kecamatan')->result_array();
+
+        $this->form_validation->set_rules('jumlah', 'Jumlah Penduduk', 'required|trim');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('backend/template/head', $data);
+            $this->load->view('backend/template/sidebar');
+            $this->load->view('backend/template/topbar', $data);
+            $this->load->view('backend/pegawai/penduduk/v_ubahpenduduk', $data);
+            $this->load->view('backend/template/footer');
+        } else {
+            $this->M_penduduk->ubahPenduduk();
+            $this->session->set_flashdata('flash', 'Diubah');
+            redirect('penduduk');
+        }
+    }
+
+    public function hapus($idPenduduk)
+    {
+        $this->M_penduduk->hapusPenduduk($idPenduduk);
+        $this->session->set_flashdata('flash', 'Dihapus');
+        redirect('penduduk');
+    }
+}
