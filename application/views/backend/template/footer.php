@@ -53,6 +53,8 @@
 <!-- Grafik -->
 <?php if ($this->uri->segment(2) == 'dash_malaria') : ?>
     <?php include 'grafikMalaria.php'; ?>
+<?php elseif ($this->uri->segment(2) == 'dash_kusta') : ?>
+    <?php include 'grafikKusta.php'; ?>
 <?php else : ?>
     <?php include 'grafik.php'; ?>
 <?php endif; ?>

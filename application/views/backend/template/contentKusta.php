@@ -31,7 +31,7 @@
 
                         <div class="row">
                             <div class="col-sm-12 mx-auto mb-3">
-                                <form action="<?= base_url('dashboard') ?>" method="GET">
+                                <form action="<?= base_url('dashboard/dash_kusta') ?>" method="GET">
                                     <div class="col-md-4 ml-auto">
                                         <div class="input-group mt-2">
                                             <select class="custom-select" name="cari" id="cari">
@@ -60,49 +60,6 @@
                                     <div class="card-body">
                                         <div class="d-flex flex-row">
                                             <div class="col-3 align-self-center">
-                                                <div class="round">
-                                                    <a href="<?= site_url('dashboard/dash_malaria'); ?>"><i class="mdi mdi-hospital"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="col-9 align-self-center text-center">
-                                                <div class="m-l-10">
-                                                    <h5 class="mt-0 round-inner text-danger"><?= $rasioM['mal_positif'] ?></h5>
-                                                    <p class="mb-0 text-muted">Kasus Malaria di Tahun <?= $this->input->get('cari') ?></p>
-                                                    <a href="<?= site_url('dashboard/dash_malaria'); ?>" type="button" class="btn btn-primary">Info..</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Column -->
-                            <!-- Column -->
-                            <div class="col-md-6 col-lg-4 col-xl-4">
-                                <div class="card m-b-30">
-                                    <div class="card-body">
-                                        <div class="d-flex flex-row">
-                                            <div class="col-3 align-self-center">
-                                                <div class="round">
-                                                    <i class="mdi mdi-hospital"></i>
-                                                </div>
-                                            </div>
-                                            <div class="col-9 text-center align-self-center">
-                                                <div class="m-l-10 ">
-                                                    <h5 class="mt-0 round-inner text-danger"><?= $rasioD['total'] ?></h5>
-                                                    <p class="mb-0 text-muted">Kasus DBD di Tahun <?= $this->input->get('cari') ?></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Column -->
-                            <!-- Column -->
-                            <div class="col-md-6 col-lg-4 col-xl-4">
-                                <div class="card m-b-30">
-                                    <div class="card-body">
-                                        <div class="d-flex flex-row">
-                                            <div class="col-3 align-self-center">
                                                 <div class="round ">
                                                     <i class="mdi mdi-hospital"></i>
                                                 </div>
@@ -114,7 +71,6 @@
                                                     ?>
                                                     <h5 class="mt-0 round-inner text-danger"><?= $total ?></h5>
                                                     <p class="mb-0 text-muted">Kasus Kusta di Tahun <?= $this->input->get('cari') ?></p>
-                                                    <a href="<?= site_url('dashboard/dash_kusta'); ?>" type="button" class="btn btn-primary">Info..</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -125,47 +81,73 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-lg-12 col-sm-12">
-                                <div class="card m-b-30">
-                                    <div class="card-body">
-                                        <h4 class="mt-0 header-title">Grafik Jumlah Penduduk</h4>
-                                        <div class="dropdown-divider mb-3"></div>
-
-                                        <canvas id="myChart" width="200" height="70"></canvas>
-
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
                                 <div class="card m-b-30">
                                     <div class="card-body">
 
-                                        <h4 class="mt-0 header-title">Grafik API Kasus Malaria</h4>
+                                        <h4 class="mt-0 header-title">Grafik PR Kasus Kusta</h4>
                                         <div class="dropdown-divider mb-3"></div>
-                                        <canvas id="ir" height="215"></canvas>
-
-                                    </div>
-                                </div>
-                            </div> <!-- end col -->
-
-                            <div class="col-lg-6">
-                                <div class="card m-b-30">
-                                    <div class="card-body">
-
-                                        <h4 class="mt-0 header-title">Grafik Perbandingan Kasus DBD Berdasarkan Jenis Kelamin</h4>
-                                        <div class="dropdown-divider mb-3"></div>
-                                        <canvas id="rasioDbd" height="200"></canvas>
+                                        <canvas id="pr" height="100"></canvas>
 
                                     </div>
                                 </div>
                             </div> <!-- end col -->
                         </div> <!-- end row -->
 
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card m-b-30">
+                                    <div class="card-body">
 
+                                        <h4 class="mt-0 header-title">Grafik CDR Kasus Kusta</h4>
+                                        <div class="dropdown-divider mb-3"></div>
+                                        <canvas id="cdr" height="100"></canvas>
+
+                                    </div>
+                                </div>
+                            </div> <!-- end col -->
+                        </div> <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card m-b-30">
+                                    <div class="card-body">
+
+                                        <h4 class="mt-0 header-title">Grafik Kasus Kusta Berdasarkan Tipe Kusta</h4>
+                                        <div class="dropdown-divider mb-3"></div>
+                                        <canvas id="tipeKusta" height="100"></canvas>
+
+                                    </div>
+                                </div>
+                            </div> <!-- end col -->
+                        </div> <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card m-b-30">
+                                    <div class="card-body">
+                                        <h4 class="mt-0 header-title">Grafik Kasus Malaria Positif Berdasarkan Umur</h4>
+                                        <div class="dropdown-divider mb-3"></div>
+                                        <canvas id="usiaK" height="100"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end col -->
+                        </div> <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card m-b-30">
+                                    <div class="card-body">
+
+                                        <h4 class="mt-0 header-title">Grafik Perbandingan Kasus Kusta Berdasarkan Jenis Kelamin</h4>
+                                        <div class="dropdown-divider mb-3"></div>
+                                        <canvas id="rasioKusta" height="200"></canvas>
+
+                                    </div>
+                                </div>
+                            </div> <!-- end col -->
+                        </div> <!-- end row -->
 
                     </div><!-- container -->
 

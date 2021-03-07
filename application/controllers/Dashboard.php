@@ -25,12 +25,7 @@ class Dashboard extends CI_Controller
         $data['dash'] = $this->DashModel->dash($keyword);
 
         $data['rasioM'] = $this->DashModel->rasioMalaria($keyword);
-        $data['apiM'] = $this->DashModel->apiMalaria($keyword);
-        $data['usiaM'] = $this->DashModel->usiaMalaria($keyword);
-
         $data['rasioK'] = $this->DashModel->rasioKusta($keyword);
-        $data['tipeK'] = $this->DashModel->tipeKusta($keyword);
-        $data['kusta'] = $this->DashModel->kusta($keyword);
 
         $data['irDbd'] = $this->DashModel->irDbd($keyword);
         $data['rasioD'] = $this->DashModel->rasioDbd($keyword);
@@ -56,6 +51,23 @@ class Dashboard extends CI_Controller
         $this->load->view('backend/template/sidebar');
         $this->load->view('backend/template/topbar', $data);
         $this->load->view('backend/template/contentMalaria', $data);
+        $this->load->view('backend/template/footer');
+    }
+
+    public function dash_kusta()
+    {
+        $keyword = $this->input->get('cari');
+
+        $data['judul'] = 'Dashboard Kusta';
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['rasioK'] = $this->DashModel->rasioKusta($keyword);
+        $data['usiaK'] = $this->DashModel->usiaKusta($keyword);
+        $data['kusta'] = $this->DashModel->kusta($keyword);
+
+        $this->load->view('backend/template/head', $data);
+        $this->load->view('backend/template/sidebar');
+        $this->load->view('backend/template/topbar', $data);
+        $this->load->view('backend/template/contentKusta', $data);
         $this->load->view('backend/template/footer');
     }
 
