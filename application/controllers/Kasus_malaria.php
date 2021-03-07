@@ -66,22 +66,10 @@ class Kasus_malaria extends CI_Controller
             $this->load->view('backend/pegawai/kasus/malaria/v_tambahkasus', $data);
             $this->load->view('backend/template/footer');
         } else {
-            $inputPenduduk = $this->db->get_where('jumlah_penduduk', ['id' => $this->input->post('penduduk', true)])->row_array();
-            $inputKasus = $this->input->post('jumlah', true);
-
-            $api = $this->_api($inputPenduduk, $inputKasus);
-
-            $this->M_kasusmalaria->tambahKasus($api);
+            $this->M_kasusmalaria->tambahKasus();
             $this->session->set_flashdata('flash', 'Ditambahkan');
             redirect('kasus_malaria');
         }
-    }
-
-    private function _api($inputPenduduk, $inputKasus)
-    {
-        $jumlahPenduduk = $inputPenduduk['jumlah'];
-        $jumlahKasus = $inputKasus;
-        return ($jumlahKasus / $jumlahPenduduk) * 1000;
     }
 
     public function ubah($idKasus)
@@ -92,7 +80,7 @@ class Kasus_malaria extends CI_Controller
         $data['kecamatan'] = $this->db->get('kecamatan')->result_array();
         $data['penyakit'] = $this->db->get('penyakit')->result_array();
 
-        $this->form_validation->set_rules('jumlah', 'Jumlah Kasus Positif Malaria', 'required|trim');
+        $this->form_validation->set_rules('malaria_positif', 'Jumlah Kasus Positif Malaria', 'required|trim');
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('backend/template/head', $data);

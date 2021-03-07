@@ -66,33 +66,10 @@ class Kasus_kusta extends CI_Controller
             $this->load->view('backend/pegawai/kasus/kusta/v_tambahkasus', $data);
             $this->load->view('backend/template/footer');
         } else {
-            $inputPenduduk = $this->db->get_where('jumlah_penduduk', ['id' => $this->input->post('penduduk', true)])->row_array();
-            $inputPB = $this->input->post('pb', true);
-            $inputMB = $this->input->post('mb', true);
-            $inputKB = $this->input->post('kasus_baru', true);
-
-            $pr = $this->_pr($inputPenduduk, $inputPB, $inputMB);
-            $cdr = $this->_cdr($inputPenduduk, $inputKB);
-
             $this->M_kasuskusta->tambahKasus($pr, $cdr);
             $this->session->set_flashdata('flash', 'Ditambahkan');
             redirect('kasus_kusta');
         }
-    }
-
-    private function _pr($inputPenduduk, $inputPB, $inputMB)
-    {
-        $jumlahPenduduk = $inputPenduduk['jumlah'];
-        $hasil = $inputPB + $inputMB;
-
-        return ($hasil / $jumlahPenduduk) * 10000;
-    }
-
-    private function _cdr($inputPenduduk, $inputKB)
-    {
-        $jumlahPenduduk = $inputPenduduk['jumlah'];
-
-        return ($inputKB / $jumlahPenduduk) * 100000;
     }
 
     public function ubah($idKasus)

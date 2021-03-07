@@ -1,7 +1,11 @@
 <script>
     <?php
     foreach ($pemetaan as $pmt) {
-        $data[$pmt['nama']] = $pmt['pr'];
+        $jumlahPenduduk = $pmt['jumlahPenduduk'];
+        $total = $pmt['pb'] + $pmt['mb'];
+        $pr = ($total / $jumlahPenduduk) * 10000;
+
+        $data[$pmt['nama']] = number_format($pr, 2);
     }
     ?>
     var PERHITUNGAN = <?= json_encode($data) ?>;

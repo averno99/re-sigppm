@@ -4,7 +4,10 @@ class M_kasusmalaria extends CI_model
 {
     public function ambilKasusMalaria()
     {
-        $query = $this->db->select('kasus_malaria.jumlah_kasus, laki_laki, perempuan, penyakit, tahun, nama, kasus_malaria.id, jumlah_penduduk.jumlah as jumlahPenduduk')
+        $query = $this->db->select('kasus_malaria.id, idPenduduk, idPenyakit, penyakit, tahun, nama, jumlah_penduduk.jumlah as jumlahPenduduk,
+        malaria_klinis, malaria_positif, mik, rdt, pf, pv, pm, po, pk, mix,
+        mal011L, mal14L, mal59L, mal1014L, mal1564L, mal65L, 
+        mal011P, mal14P, mal59P, mal1014P, mal1564P, mal65P')
             ->from('kasus_malaria')
             ->join('jumlah_penduduk', 'kasus_malaria.idPenduduk = jumlah_penduduk.id')
             ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')
@@ -16,7 +19,10 @@ class M_kasusmalaria extends CI_model
 
     public function cariDataMalaria($keyword)
     {
-        $query = $this->db->select('kasus_malaria.jumlah_kasus, laki_laki, perempuan, penyakit, tahun, nama, kasus_malaria.id, jumlah_penduduk.jumlah as jumlahPenduduk')
+        $query = $this->db->select('kasus_malaria.id, idPenduduk, idPenyakit, penyakit, tahun, nama, jumlah_penduduk.jumlah as jumlahPenduduk,
+        malaria_klinis, malaria_positif, mik, rdt, pf, pv, pm, po, pk, mix,
+        mal011L, mal14L, mal59L, mal1014L, mal1564L, mal65L, 
+        mal011P, mal14P, mal59P, mal1014P, mal1564P, mal65P')
             ->from('kasus_malaria')
             ->join('jumlah_penduduk', 'kasus_malaria.idPenduduk = jumlah_penduduk.id')
             ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')
@@ -27,15 +33,33 @@ class M_kasusmalaria extends CI_model
         return $query;
     }
 
-    public function tambahKasus($api)
+    public function tambahKasus()
     {
         $data = [
             "idPenduduk" => $this->input->post('penduduk', true),
             "idPenyakit" => 2,
-            "laki_laki" => $this->input->post('laki_laki', true),
-            "perempuan" => $this->input->post('perempuan', true),
-            "jumlah_kasus" => $this->input->post('jumlah', true),
-            "api" => $api
+            "malaria_klinis" => $this->input->post('malaria_klinis', true),
+            "mal011L" => $this->input->post('mal011L', true),
+            "mal011P" => $this->input->post('mal011P', true),
+            "mal14L" => $this->input->post('mal14L', true),
+            "mal14P" => $this->input->post('mal14P', true),
+            "mal59L" => $this->input->post('mal59L', true),
+            "mal59P" => $this->input->post('mal59P', true),
+            "mal1014L" => $this->input->post('mal1014L', true),
+            "mal1014P" => $this->input->post('mal1014P', true),
+            "mal1564L" => $this->input->post('mal1564L', true),
+            "mal1564P" => $this->input->post('mal1564P', true),
+            "mal65L" => $this->input->post('mal65L', true),
+            "mal65P" => $this->input->post('mal65P', true),
+            "mik" => $this->input->post('mik', true),
+            "rdt" => $this->input->post('rdt', true),
+            "pf" => $this->input->post('pf', true),
+            "pv" => $this->input->post('pv', true),
+            "pm" => $this->input->post('pm', true),
+            "po" => $this->input->post('po', true),
+            "pk" => $this->input->post('pk', true),
+            "mix" => $this->input->post('mix', true),
+            "malaria_positif" => $this->input->post('malaria_positif', true)
         ];
 
         $this->db->insert('kasus_malaria', $data);
@@ -55,7 +79,10 @@ class M_kasusmalaria extends CI_model
     public function ambilIdKasus($idKasus)
     {
         // return $this->db->get_where('kasus_malaria', ['id' => $idKasus])->row_array();
-        $query = $this->db->select('kasus_malaria.jumlah_kasus, penyakit, idPenyakit, tahun, nama, kasus_malaria.id as idMalaria, jumlah_penduduk.jumlah as jumlahPenduduk')
+        $query = $this->db->select('kasus_malaria.id as idMalaria, idPenduduk, idPenyakit, penyakit, tahun, nama, jumlah_penduduk.jumlah as jumlahPenduduk,
+        malaria_klinis, malaria_positif, mik, rdt, pf, pv, pm, po, pk, mix,
+        mal011L, mal14L, mal59L, mal1014L, mal1564L, mal65L, 
+        mal011P, mal14P, mal59P, mal1014P, mal1564P, mal65P')
             ->from('kasus_malaria')
             ->join('jumlah_penduduk', 'kasus_malaria.idPenduduk = jumlah_penduduk.id')
             ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')
@@ -69,7 +96,28 @@ class M_kasusmalaria extends CI_model
     public function ubahKasus()
     {
         $data = [
-            "jumlah_kasus" => $this->input->post('jumlah', true)
+            "malaria_klinis" => $this->input->post('malaria_klinis', true),
+            "mal011L" => $this->input->post('mal011L', true),
+            "mal011P" => $this->input->post('mal011P', true),
+            "mal14L" => $this->input->post('mal14L', true),
+            "mal14P" => $this->input->post('mal14P', true),
+            "mal59L" => $this->input->post('mal59L', true),
+            "mal59P" => $this->input->post('mal59P', true),
+            "mal1014L" => $this->input->post('mal1014L', true),
+            "mal1014P" => $this->input->post('mal1014P', true),
+            "mal1564L" => $this->input->post('mal1564L', true),
+            "mal1564P" => $this->input->post('mal1564P', true),
+            "mal65L" => $this->input->post('mal65L', true),
+            "mal65P" => $this->input->post('mal65P', true),
+            "mik" => $this->input->post('mik', true),
+            "rdt" => $this->input->post('rdt', true),
+            "pf" => $this->input->post('pf', true),
+            "pv" => $this->input->post('pv', true),
+            "pm" => $this->input->post('pm', true),
+            "po" => $this->input->post('po', true),
+            "pk" => $this->input->post('pk', true),
+            "mix" => $this->input->post('mix', true),
+            "malaria_positif" => $this->input->post('malaria_positif', true)
         ];
 
         $this->db->where('id', $this->input->post('id'));

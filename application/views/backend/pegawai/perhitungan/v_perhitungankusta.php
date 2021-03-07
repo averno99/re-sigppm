@@ -59,8 +59,6 @@
                                                     <th>Tahun</th>
                                                     <th>Penyakit</th>
                                                     <th>Kecamatan</th>
-                                                    <th>Laku Laki</th>
-                                                    <th>Perempuan</th>
                                                     <th>PB</th>
                                                     <th>MB</th>
                                                     <th>Kasus Baru</th>
@@ -73,19 +71,25 @@
                                                 <?php
                                                 $no = 1;
                                                 foreach ($kasus as $kps) : ?>
+                                                    <?php
+                                                    $jumlahPenduduk = $kps['jumlahPenduduk'];
+                                                    $total = $kps['pb'] + $kps['mb'];
+                                                    $kasus_baru = $kps['kasus_baru'];
+
+                                                    $pr = ($total / $jumlahPenduduk) * 10000;
+                                                    $cdr = ($kasus_baru / $jumlahPenduduk) * 100000;
+                                                    ?>
                                                     <tr>
                                                         <td><?= $no++; ?></td>
                                                         <td><?= $kps['tahun']; ?></td>
                                                         <td><?= $kps['penyakit']; ?></td>
                                                         <td><?= $kps['nama']; ?></td>
-                                                        <td><?= $kps['laki_laki']; ?></td>
-                                                        <td><?= $kps['perempuan']; ?></td>
                                                         <td><?= $kps['pb']; ?></td>
                                                         <td><?= $kps['mb']; ?></td>
                                                         <td><?= $kps['kasus_baru']; ?></td>
                                                         <td><?= number_format($kps['jumlahPenduduk'], 0, '', ','); ?></td>
-                                                        <td><?= $kps['cdr']; ?></td>
-                                                        <td><?= $kps['pr']; ?></td>
+                                                        <td><?= number_format($cdr, 2); ?></td>
+                                                        <td><?= number_format($pr, 2); ?></td>
                                                     </tr>
                                                 <?php endforeach; ?>
                                             </tbody>

@@ -56,17 +56,48 @@
                                             </div>
                                         </div>
 
-                                        <table id="example1" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                        <table id="example1" class="table table-striped table-bordered table-responsive" cellspacing="0" width="100%">
                                             <thead>
                                                 <tr>
-                                                    <th>No</th>
-                                                    <th>Tahun</th>
-                                                    <th>Penyakit</th>
-                                                    <th>Kecamatan</th>
-                                                    <th>Laki Laki</th>
-                                                    <th>Perempuan</th>
-                                                    <th>Jumlah Kasus</th>
-                                                    <th>Aksi</th>
+                                                    <th rowspan="3">No</th>
+                                                    <th rowspan="3">Tahun</th>
+                                                    <th rowspan="3">Kecamatan</th>
+                                                    <th rowspan="3">Suspek</th>
+                                                    <th colspan="12">Umur</th>
+                                                    <th colspan="2">Konfirmasi Lab</th>
+                                                    <th colspan="6">Jenis Parasit</th>
+                                                    <th rowspan="3">Positif</th>
+                                                    <th rowspan="3">Aksi</th>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="2">0-11 bln</th>
+                                                    <th colspan="2">1-4 thn</th>
+                                                    <th colspan="2">5-9 thn</th>
+                                                    <th colspan="2">10-14 thn</th>
+                                                    <th colspan="2">15-64 thn</th>
+                                                    <th colspan="2">&gt;64 thn</th>
+                                                    <th rowspan="2">RDT</th>
+                                                    <th rowspan="2">Mikroskop</th>
+                                                    <th rowspan="2">Pf</th>
+                                                    <th rowspan="2">Pv</th>
+                                                    <th rowspan="2">Pm</th>
+                                                    <th rowspan="2">Po</th>
+                                                    <th rowspan="2">Pk</th>
+                                                    <th rowspan="2">Mix</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>L</th>
+                                                    <th>P</th>
+                                                    <th>L</th>
+                                                    <th>P</th>
+                                                    <th>L</th>
+                                                    <th>P</th>
+                                                    <th>L</th>
+                                                    <th>P</th>
+                                                    <th>L</th>
+                                                    <th>P</th>
+                                                    <th>L</th>
+                                                    <th>P</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -76,11 +107,29 @@
                                                     <tr>
                                                         <td><?= $no++; ?></td>
                                                         <td><?= $kps['tahun']; ?></td>
-                                                        <td><?= $kps['penyakit']; ?></td>
                                                         <td><?= $kps['nama']; ?></td>
-                                                        <td><?= $kps['laki_laki']; ?></td>
-                                                        <td><?= $kps['perempuan']; ?></td>
-                                                        <td><?= $kps['jumlah_kasus']; ?></td>
+                                                        <td><?= $kps['malaria_klinis']; ?></td>
+                                                        <td><?= $kps['mal011L']; ?></td>
+                                                        <td><?= $kps['mal011P']; ?></td>
+                                                        <td><?= $kps['mal14L']; ?></td>
+                                                        <td><?= $kps['mal14P']; ?></td>
+                                                        <td><?= $kps['mal59L']; ?></td>
+                                                        <td><?= $kps['mal59P']; ?></td>
+                                                        <td><?= $kps['mal1014L']; ?></td>
+                                                        <td><?= $kps['mal1014P']; ?></td>
+                                                        <td><?= $kps['mal1564L']; ?></td>
+                                                        <td><?= $kps['mal1564P']; ?></td>
+                                                        <td><?= $kps['mal65L']; ?></td>
+                                                        <td><?= $kps['mal65P']; ?></td>
+                                                        <td><?= $kps['rdt']; ?></td>
+                                                        <td><?= $kps['mik']; ?></td>
+                                                        <td><?= $kps['pf']; ?></td>
+                                                        <td><?= $kps['pv']; ?></td>
+                                                        <td><?= $kps['pm']; ?></td>
+                                                        <td><?= $kps['po']; ?></td>
+                                                        <td><?= $kps['pk']; ?></td>
+                                                        <td><?= $kps['mix']; ?></td>
+                                                        <td><?= $kps['malaria_positif']; ?></td>
                                                         <td>
                                                             <div class="btn-group">
                                                                 <a href="<?= site_url(); ?>kasus_malaria/ubah/<?= $kps['id'] ?>" class="btn btn-warning btn-sm mr-1" data-toggle="tooltip" data-placement="top" title="Ubah Data">

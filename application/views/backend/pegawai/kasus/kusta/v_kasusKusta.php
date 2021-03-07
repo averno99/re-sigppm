@@ -56,19 +56,66 @@
                                             </div>
                                         </div>
 
-                                        <table id="example1" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                        <table id="example1" class="table table-striped table-bordered table-responsive" cellspacing="0" width="100%">
                                             <thead>
                                                 <tr>
-                                                    <th>No</th>
-                                                    <th>Tahun</th>
-                                                    <th>Penyakit</th>
-                                                    <th>Kecamatan</th>
-                                                    <th>Laki Laki</th>
-                                                    <th>Perempuan</th>
-                                                    <th>PB</th>
-                                                    <th>MB</th>
-                                                    <th>Kasus Baru</th>
-                                                    <th>Aksi</th>
+                                                    <th rowspan="4">No</th>
+                                                    <th rowspan="4">Tahun</th>
+                                                    <th rowspan="4">Kecamatan</th>
+                                                    <th colspan="25">Penderita Terdaftar</th>
+                                                    <th colspan="2">Kasus Baru</th>
+                                                    <th rowspan="4">Aksi</th>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="4">&lt;15 thn</th>
+                                                    <th colspan="4">16-25 thn</th>
+                                                    <th colspan="4">26-35 thn</th>
+                                                    <th colspan="4">36-45 thn</th>
+                                                    <th colspan="4">46-55 thn</th>
+                                                    <th colspan="4">&gt;56 thn</th>
+                                                    <th rowspan="3">Total</th>
+                                                    <th rowspan="3">PB</th>
+                                                    <th rowspan="3">MB</th>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="2">PB</th>
+                                                    <th colspan="2">MB</th>
+                                                    <th colspan="2">PB</th>
+                                                    <th colspan="2">MB</th>
+                                                    <th colspan="2">PB</th>
+                                                    <th colspan="2">MB</th>
+                                                    <th colspan="2">PB</th>
+                                                    <th colspan="2">MB</th>
+                                                    <th colspan="2">PB</th>
+                                                    <th colspan="2">MB</th>
+                                                    <th colspan="2">PB</th>
+                                                    <th colspan="2">MB</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>L</th>
+                                                    <th>P</th>
+                                                    <th>L</th>
+                                                    <th>P</th>
+                                                    <th>L</th>
+                                                    <th>P</th>
+                                                    <th>L</th>
+                                                    <th>P</th>
+                                                    <th>L</th>
+                                                    <th>P</th>
+                                                    <th>L</th>
+                                                    <th>P</th>
+                                                    <th>L</th>
+                                                    <th>P</th>
+                                                    <th>L</th>
+                                                    <th>P</th>
+                                                    <th>L</th>
+                                                    <th>P</th>
+                                                    <th>L</th>
+                                                    <th>P</th>
+                                                    <th>L</th>
+                                                    <th>P</th>
+                                                    <th>L</th>
+                                                    <th>P</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -78,13 +125,34 @@
                                                     <tr>
                                                         <td><?= $no++; ?></td>
                                                         <td><?= $kps['tahun']; ?></td>
-                                                        <td><?= $kps['penyakit']; ?></td>
                                                         <td><?= $kps['nama']; ?></td>
-                                                        <td><?= $kps['laki_laki']; ?></td>
-                                                        <td><?= $kps['perempuan']; ?></td>
-                                                        <td><?= $kps['pb']; ?></td>
-                                                        <td><?= $kps['mb']; ?></td>
-                                                        <td><?= $kps['kasus_baru']; ?></td>
+                                                        <td><?= $kps['kus15LPB']; ?></td>
+                                                        <td><?= $kps['kus15PPB']; ?></td>
+                                                        <td><?= $kps['kus15LMB']; ?></td>
+                                                        <td><?= $kps['kus15PMB']; ?></td>
+                                                        <td><?= $kps['kus1625LPB']; ?></td>
+                                                        <td><?= $kps['kus1625PPB']; ?></td>
+                                                        <td><?= $kps['kus1625LMB']; ?></td>
+                                                        <td><?= $kps['kus1625PMB']; ?></td>
+                                                        <td><?= $kps['kus2635LPB']; ?></td>
+                                                        <td><?= $kps['kus2635PPB']; ?></td>
+                                                        <td><?= $kps['kus2635LMB']; ?></td>
+                                                        <td><?= $kps['kus2635PMB']; ?></td>
+                                                        <td><?= $kps['kus3645LPB']; ?></td>
+                                                        <td><?= $kps['kus3645PPB']; ?></td>
+                                                        <td><?= $kps['kus3645LMB']; ?></td>
+                                                        <td><?= $kps['kus3645PMB']; ?></td>
+                                                        <td><?= $kps['kus4655LPB']; ?></td>
+                                                        <td><?= $kps['kus4655PPB']; ?></td>
+                                                        <td><?= $kps['kus4655LMB']; ?></td>
+                                                        <td><?= $kps['kus4655PMB']; ?></td>
+                                                        <td><?= $kps['kus56LPB']; ?></td>
+                                                        <td><?= $kps['kus56PPB']; ?></td>
+                                                        <td><?= $kps['kus56LMB']; ?></td>
+                                                        <td><?= $kps['kus56PMB']; ?></td>
+                                                        <td><?= $kps['kus_total']; ?></td>
+                                                        <td><?= $kps['kusta_baruPB']; ?></td>
+                                                        <td><?= $kps['kusta_baruMB']; ?></td>
                                                         <td>
                                                             <div class="btn-group">
                                                                 <a href="<?= site_url(); ?>kasus_kusta/ubah/<?= $kps['id'] ?>" class="btn btn-warning btn-sm mr-1" data-toggle="tooltip" data-placement="top" title="Ubah Data">

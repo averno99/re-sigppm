@@ -4,7 +4,8 @@ class M_perhitungan extends CI_model
 {
     public function ambilKasusMalaria()
     {
-        $query = $this->db->select('kasus_malaria.jumlah_kasus, laki_laki, perempuan, api, penyakit, tahun, nama, kasus_malaria.id, jumlah_penduduk.jumlah as jumlahPenduduk')
+        $query = $this->db->select('malaria_positif, malaria_klinis, penyakit, 
+        tahun, nama, jumlah_penduduk.jumlah as jumlahPenduduk')
             ->from('kasus_malaria')
             ->join('jumlah_penduduk', 'kasus_malaria.idPenduduk = jumlah_penduduk.id')
             ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')
@@ -16,7 +17,8 @@ class M_perhitungan extends CI_model
 
     public function cariDataMalaria($keyword)
     {
-        $query = $this->db->select('kasus_malaria.jumlah_kasus, laki_laki, perempuan, api, penyakit, tahun, nama, kasus_malaria.id, jumlah_penduduk.jumlah as jumlahPenduduk')
+        $query = $this->db->select('malaria_positif, malaria_klinis, penyakit, 
+        tahun, nama, jumlah_penduduk.jumlah as jumlahPenduduk')
             ->from('kasus_malaria')
             ->join('jumlah_penduduk', 'kasus_malaria.idPenduduk = jumlah_penduduk.id')
             ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')
@@ -29,7 +31,14 @@ class M_perhitungan extends CI_model
 
     public function ambilKasusKusta()
     {
-        $query = $this->db->select('pb, mb, pr, laki_laki, perempuan, cdr, kasus_baru, penyakit, tahun, nama, kasus_kusta.id, jumlah_penduduk.jumlah as jumlahPenduduk')
+        $query = $this->db->select('penyakit, tahun, nama, jumlah_penduduk.jumlah as jumlahPenduduk,
+        (kus15LMB + kus15PMB + kus1625LMB + kus1625PMB + kus2635LMB + kus2635PMB + 
+        kus3645LMB + kus3645PMB + kus4655LMB + kus4655PMB + kus56LMB + kus56PMB) as mb,
+
+        (kus15LPB + kus15PPB + kus1625LPB + kus1625PPB + kus2635LPB + kus2635PPB +
+        kus3645LPB + kus3645PPB + kus4655LPB + kus4655PPB + kus56LPB + kus56PPB) as pb,
+        
+        (kusta_baruPB + kusta_baruMB) as kasus_baru')
             ->from('kasus_kusta')
             ->join('jumlah_penduduk', 'kasus_kusta.idPenduduk = jumlah_penduduk.id')
             ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')
@@ -41,7 +50,14 @@ class M_perhitungan extends CI_model
 
     public function cariDataKusta($keyword)
     {
-        $query = $this->db->select('pb, mb, pr, laki_laki, perempuan, cdr, kasus_baru, penyakit, tahun, nama, kasus_kusta.id, jumlah_penduduk.jumlah as jumlahPenduduk')
+        $query = $this->db->select('penyakit, tahun, nama, jumlah_penduduk.jumlah as jumlahPenduduk,
+        (kus15LMB + kus15PMB + kus1625LMB + kus1625PMB + kus2635LMB + kus2635PMB + 
+        kus3645LMB + kus3645PMB + kus4655LMB + kus4655PMB + kus56LMB + kus56PMB) as mb,
+
+        (kus15LPB + kus15PPB + kus1625LPB + kus1625PPB + kus2635LPB + kus2635PPB +
+        kus3645LPB + kus3645PPB + kus4655LPB + kus4655PPB + kus56LPB + kus56PPB) as pb,
+        
+        (kusta_baruPB + kusta_baruMB) as kasus_baru')
             ->from('kasus_kusta')
             ->join('jumlah_penduduk', 'kasus_kusta.idPenduduk = jumlah_penduduk.id')
             ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')
@@ -54,7 +70,7 @@ class M_perhitungan extends CI_model
 
     public function ambilKasusDBD()
     {
-        $query = $this->db->select('ir, SUM(laki_laki) as totalL, SUM(perempuan) as totalP, bulan, SUM(jumlah_kasus) as total, penyakit, tahun, nama, kasus_dbd.id, jumlah_penduduk.jumlah as jumlahPenduduk')
+        $query = $this->db->select('ir, SUM(meninggal) as totalM, SUM(laki_laki) as totalL, SUM(perempuan) as totalP, bulan, SUM(jumlah_kasus) as total, penyakit, tahun, nama, kasus_dbd.id, jumlah_penduduk.jumlah as jumlahPenduduk')
             ->from('kasus_dbd')
             ->group_by('tahun, nama')
             ->join('jumlah_penduduk', 'kasus_dbd.idPenduduk = jumlah_penduduk.id')
@@ -77,94 +93,5 @@ class M_perhitungan extends CI_model
             ->order_by('jumlah_penduduk.tahun, penyakit.penyakit, kecamatan.nama')
             ->get()->result_array();
         return $query;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public function ambilSemuaPerhitungan()
-    {
-        $query = $this->db->select('perhitungan.id as idPerhitungan, perhitungan.*, jumlah_penduduk.jumlah as jumlahPenduduk, tahun.tahun, nama, penyakit, kasus_positif.jumlah as jumlahKasus')
-            ->from('perhitungan')
-            ->join('kasus_positif', 'perhitungan.idKasusPositif = kasus_positif.id')
-            ->join('jumlah_penduduk', 'perhitungan.idJumlahPenduduk = jumlah_penduduk.id')
-            ->join('tahun', 'jumlah_penduduk.idTahun = tahun.id')
-            ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')
-            ->join('penyakit', 'kasus_positif.idPenyakit = penyakit.id')
-            ->order_by('tahun.tahun, penyakit.penyakit, kecamatan.nama')
-            ->get()->result_array();
-        return $query;
-    }
-
-    public function cariData($keyword)
-    {
-        $query = $this->db->select('perhitungan.id as idPerhitungan, perhitungan.*, jumlah_penduduk.jumlah as jumlahPenduduk, tahun.tahun, nama, penyakit, kasus_positif.jumlah as jumlahKasus')
-            ->from('perhitungan')
-            ->join('kasus_positif', 'perhitungan.idKasusPositif = kasus_positif.id')
-            ->join('jumlah_penduduk', 'perhitungan.idJumlahPenduduk = jumlah_penduduk.id')
-            ->join('tahun', 'jumlah_penduduk.idTahun = tahun.id')
-            ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')
-            ->join('penyakit', 'kasus_positif.idPenyakit = penyakit.id')
-            ->where('tahun.tahun', $keyword)
-            ->order_by('tahun.tahun, penyakit.penyakit, kecamatan.nama')
-            ->get()->result_array();
-        return $query;
-    }
-
-    public function tambahPerhitungan($hitung)
-    {
-        $data = [
-            "idJumlahPenduduk" => $this->input->post('penduduk', true),
-            "idKasusPositif" => $this->input->post('kasus', true),
-            "hasil" => $hitung
-        ];
-
-        $this->db->insert('perhitungan', $data);
-    }
-
-    public function ambilFilterKasus($filterPenyakit, $filterTahun)
-    {
-        $query = $this->db->select('jumlah, tahun.tahun, nama, penyakit, kasus_positif.id')
-            ->from('kasus_positif')
-            ->join('tahun', 'kasus_positif.idTahun = tahun.id')
-            ->join('kecamatan', 'kasus_positif.idKecamatan = kecamatan.id')
-            ->join('penyakit', 'kasus_positif.idPenyakit = penyakit.id')
-            ->where('penyakit', $filterPenyakit)
-            ->where('tahun.tahun', $filterTahun)
-            ->order_by('tahun.tahun, penyakit.penyakit, kecamatan.nama')
-            ->get()->result_array();
-        return $query;
-    }
-
-    public function ambilFilterPenduduk($filterTahun)
-    {
-        $query = $this->db->select('jumlah, tahun, nama, jumlah_penduduk.id')
-            ->from('jumlah_penduduk')
-
-            ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')
-            ->where('tahun', $filterTahun)
-            ->order_by('tahun, kecamatan.nama')
-            ->get()->result_array();
-        return $query;
-    }
-
-    public function ambilIdPerhitungan($idPerhitungan)
-    {
-        return $this->db->get_where('perhitungan', ['id' => $idPerhitungan])->row_array();
-    }
-
-    public function hapusPerhitungan($idPerhitungan)
-    {
-        $this->db->where('id', $idPerhitungan);
-        $this->db->delete('perhitungan');
     }
 }

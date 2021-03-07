@@ -15,7 +15,11 @@ class DashModel extends CI_model
 
     public function rasioMalaria($keyword)
     {
-        $query = $this->db->select('SUM(laki_laki) as totalL, SUM(perempuan) as totalP, kasus_malaria.idPenduduk, SUM(jumlah_kasus) as total, tahun')
+        $query = $this->db->select('tahun, nama,
+        malaria_klinis, mik, rdt, pf, pv, pm, po, pk, mix,
+        SUM(malaria_positif) as mal_positif,
+        SUM(mal011L + mal14L + mal59L + mal1014L + mal1564L + mal65L) as laki_laki, 
+        SUM(mal011P + mal14P + mal59P + mal1014P + mal1564P + mal65P) as perempuan')
             ->from('kasus_malaria')
             ->join('jumlah_penduduk', 'kasus_malaria.idPenduduk = jumlah_penduduk.id')
             ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')
@@ -28,7 +32,9 @@ class DashModel extends CI_model
 
     public function apiMalaria($keyword)
     {
-        $query = $this->db->select('laki_laki, perempuan, kasus_malaria.idPenduduk, jumlah_kasus, tahun, nama, api')
+        $query = $this->db->select('kasus_malaria.idPenduduk, tahun, nama, 
+        jumlah_penduduk.jumlah as jumlahPenduduk, malaria_positif, malaria_klinis,
+        pf, pv, pm, po, pk, mix, rdt, mik')
             ->from('kasus_malaria')
             ->join('jumlah_penduduk', 'kasus_malaria.idPenduduk = jumlah_penduduk.id')
             ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')
@@ -39,9 +45,36 @@ class DashModel extends CI_model
         return $query;
     }
 
+    public function usiaMalaria($keyword)
+    {
+        $query = $this->db->select('kasus_malaria.idPenduduk, tahun, nama, 
+        SUM(mal011L + mal011P) as mal011, SUM(mal14L + mal14P) as mal14, SUM(mal59L + mal59P) as mal59, 
+        SUM(mal1014L + mal1014P) as mal1014, SUM(mal1564L + mal1564P) as mal1564, SUM(mal65L + mal65P) as mal65')
+            ->from('kasus_malaria')
+            ->join('jumlah_penduduk', 'kasus_malaria.idPenduduk = jumlah_penduduk.id')
+            ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')
+            ->join('penyakit', 'kasus_malaria.idPenyakit = penyakit.id')
+            ->where('tahun', $keyword)
+            ->order_by('jumlah_penduduk.tahun, penyakit.penyakit, kecamatan.nama')
+            ->get()->row_array();
+        return $query;
+    }
+
     public function rasioKusta($keyword)
     {
-        $query = $this->db->select('SUM(laki_laki) as totalL, SUM(perempuan) as totalP, kasus_kusta.idPenduduk, SUM(pb) as totalPB, SUM(MB) as totalMB, tahun')
+        $query = $this->db->select('kasus_kusta.idPenduduk, tahun,
+
+        SUM(kus15LMB + kus15LPB + kus1625LMB + kus1625LPB + kus2635LPB + kus2635LMB + 
+        kus3645LMB + kus4655LMB + kus56LMB + kus56LPB + kus4655LPB + kus3645LPB) as totalL,
+
+        SUM(kus15PMB + kus15PPB + kus1625PMB + kus1625PPB + kus2635PMB + kus2635PPB +
+        kus3645PMB + kus3645PPB + kus4655PMB + kus4655PPB + kus56PMB + kus56PPB) as totalP,
+
+        SUM(kus15LPB + kus15PPB + kus1625LPB + kus1625PPB + kus2635LPB + kus2635PPB +
+        kus3645LPB + kus3645PPB + kus4655LPB + kus4655PPB + kus56LPB + kus56PPB) as totalPB,
+
+        SUM(kus15LMB + kus15PMB + kus1625LMB + kus1625PMB + kus2635LMB + kus2635PMB + 
+        kus3645LMB + kus3645PMB + kus4655LMB + kus4655PMB + kus56LMB + kus56PMB) as totalMB')
             ->from('kasus_kusta')
             ->join('jumlah_penduduk', 'kasus_kusta.idPenduduk = jumlah_penduduk.id')
             ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')
@@ -54,7 +87,19 @@ class DashModel extends CI_model
 
     public function tipeKusta($keyword)
     {
-        $query = $this->db->select('SUM(laki_laki) as totalL, SUM(perempuan) as totalP, kasus_kusta.idPenduduk, SUM(pb) as totalPB, SUM(MB) as totalMB, tahun')
+        $query = $this->db->select('kasus_kusta.idPenduduk, tahun,
+
+        SUM(kus15LMB + kus15LPB + kus1625LMB + kus1625LPB + kus2635LPB + kus2635LMB + 
+        kus3645LMB + kus4655LMB + kus56LMB + kus56LPB + kus4655LPB + kus3645LPB) as totalL,
+
+        SUM(kus15PMB + kus15PPB + kus1625PMB + kus1625PPB + kus2635PMB + kus2635PPB +
+        kus3645PMB + kus3645PPB + kus4655PMB + kus4655PPB + kus56PMB + kus56PPB) as totalP,
+
+        SUM(kus15LPB + kus15PPB + kus1625LPB + kus1625PPB + kus2635LPB + kus2635PPB +
+        kus3645LPB + kus3645PPB + kus4655LPB + kus4655PPB + kus56LPB + kus56PPB) as totalPB,
+
+        SUM(kus15LMB + kus15PMB + kus1625LMB + kus1625PMB + kus2635LMB + kus2635PMB + 
+        kus3645LMB + kus3645PMB + kus4655LMB + kus4655PMB + kus56LMB + kus56PMB) as totalMB')
             ->from('kasus_kusta')
             ->join('jumlah_penduduk', 'kasus_kusta.idPenduduk = jumlah_penduduk.id')
             ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')
@@ -67,7 +112,14 @@ class DashModel extends CI_model
 
     public function kusta($keyword)
     {
-        $query = $this->db->select('kasus_kusta.idPenduduk, nama, tahun, pr, cdr')
+        $query = $this->db->select('kasus_kusta.idPenduduk, nama, tahun, jumlah_penduduk.jumlah as jumlahPenduduk,
+        (kus15LMB + kus15PMB + kus1625LMB + kus1625PMB + kus2635LMB + kus2635PMB + 
+        kus3645LMB + kus3645PMB + kus4655LMB + kus4655PMB + kus56LMB + kus56PMB) as mb,
+
+        (kus15LPB + kus15PPB + kus1625LPB + kus1625PPB + kus2635LPB + kus2635PPB +
+        kus3645LPB + kus3645PPB + kus4655LPB + kus4655PPB + kus56LPB + kus56PPB) as pb,
+        
+        (kusta_baruPB + kusta_baruMB) as kasus_baru')
             ->from('kasus_kusta')
             ->join('jumlah_penduduk', 'kasus_kusta.idPenduduk = jumlah_penduduk.id')
             ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')

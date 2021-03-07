@@ -62,8 +62,10 @@
                                                     <th>Laki Laki</th>
                                                     <th>Perempuan</th>
                                                     <th>Jumlah Kasus</th>
+                                                    <th>Meninggal</th>
                                                     <th>Jumlah Penduduk</th>
                                                     <th>IR</th>
+                                                    <th>CFR</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -73,7 +75,15 @@
                                                     <?php
                                                     $jumlahPenduduk = $kps['jumlahPenduduk'];
                                                     $kasusTotal = $kps['total'];
+                                                    $meninggal = $kps['totalM'];
+
                                                     $hasil = $kasusTotal / $jumlahPenduduk * 100000;
+
+                                                    if ($meninggal != 0) {
+                                                        $cfr = round($meninggal / $kasusTotal * 100, 2);
+                                                    } else {
+                                                        $cfr = $meninggal;
+                                                    }
                                                     ?>
                                                     <tr>
                                                         <td><?= $no++; ?></td>
@@ -83,8 +93,10 @@
                                                         <td><?= $kps['totalL']; ?></td>
                                                         <td><?= $kps['totalP']; ?></td>
                                                         <td><?= $kps['total']; ?></td>
+                                                        <td><?= $kps['totalM']; ?></td>
                                                         <td><?= number_format($kps['jumlahPenduduk'], 0, '', ','); ?></td>
                                                         <td><?= number_format($hasil, 2); ?></td>
+                                                        <td><?= number_format($cfr, 2) . '%'; ?></td>
                                                     </tr>
                                                 <?php endforeach; ?>
                                             </tbody>

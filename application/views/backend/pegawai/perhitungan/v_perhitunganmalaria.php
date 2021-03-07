@@ -59,10 +59,10 @@
                                                     <th>Tahun</th>
                                                     <th>Penyakit</th>
                                                     <th>Kecamatan</th>
-                                                    <th>Laki Laki</th>
-                                                    <th>Perempuan</th>
-                                                    <th>Jumlah Kasus</th>
+                                                    <th>Suspek</th>
+                                                    <th>Positif</th>
                                                     <th>Jumlah Penduduk</th>
+                                                    <th>AMI</th>
                                                     <th>API</th>
                                                 </tr>
                                             </thead>
@@ -70,16 +70,24 @@
                                                 <?php
                                                 $no = 1;
                                                 foreach ($kasus as $kps) : ?>
+                                                    <?php
+                                                    $jumlahPenduduk = $kps['jumlahPenduduk'];
+                                                    $positif = $kps['malaria_positif'];
+                                                    $klinis = $kps['malaria_klinis'];
+
+                                                    $api = ($positif / $jumlahPenduduk) * 1000;
+                                                    $ami = ($klinis / $jumlahPenduduk) * 1000;
+                                                    ?>
                                                     <tr>
                                                         <td><?= $no++; ?></td>
                                                         <td><?= $kps['tahun']; ?></td>
                                                         <td><?= $kps['penyakit']; ?></td>
                                                         <td><?= $kps['nama']; ?></td>
-                                                        <td><?= $kps['laki_laki']; ?></td>
-                                                        <td><?= $kps['perempuan']; ?></td>
-                                                        <td><?= $kps['jumlah_kasus']; ?></td>
+                                                        <td><?= $kps['malaria_klinis']; ?></td>
+                                                        <td><?= $kps['malaria_positif']; ?></td>
                                                         <td><?= number_format($kps['jumlahPenduduk'], 0, '', ','); ?></td>
-                                                        <td><?= $kps['api']; ?></td>
+                                                        <td><?= number_format($ami, 2); ?></td>
+                                                        <td><?= number_format($api, 2); ?></td>
                                                     </tr>
                                                 <?php endforeach; ?>
                                             </tbody>

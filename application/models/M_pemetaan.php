@@ -4,9 +4,9 @@ class M_pemetaan extends CI_model
 {
     public function ambilPetaMalaria($keyword)
     {
-        $query = $this->db->select('kasus_malaria.id, api, tahun, nama, penyakit, singkatanEpi, jumlah_penduduk.jumlah')
+        $query = $this->db->select('kasus_malaria.id, tahun, nama, penyakit, 
+        jumlah_penduduk.jumlah as jumlahPenduduk, malaria_positif')
             ->from('kasus_malaria')
-
             ->join('jumlah_penduduk', 'kasus_malaria.idPenduduk = jumlah_penduduk.id')
             ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')
             ->join('penyakit', 'kasus_malaria.idPenyakit = penyakit.id')
@@ -48,11 +48,15 @@ class M_pemetaan extends CI_model
 
     public function ambilPetaKusta($keyword)
     {
-        $query = $this->db->select('kasus_kusta.id, pr, tahun, nama, penyakit, singkatanEpi, jumlah_penduduk.jumlah')
+        $query = $this->db->select('kasus_kusta.id, tahun, nama, penyakit, jumlah_penduduk.jumlah as jumlahPenduduk,
+        
+        (kus15LMB + kus15PMB + kus1625LMB + kus1625PMB + kus2635LMB + kus2635PMB + 
+        kus3645LMB + kus3645PMB + kus4655LMB + kus4655PMB + kus56LMB + kus56PMB) as mb,
+
+        (kus15LPB + kus15PPB + kus1625LPB + kus1625PPB + kus2635LPB + kus2635PPB +
+        kus3645LPB + kus3645PPB + kus4655LPB + kus4655PPB + kus56LPB + kus56PPB) as pb')
             ->from('kasus_kusta')
-
             ->join('jumlah_penduduk', 'kasus_kusta.idPenduduk = jumlah_penduduk.id')
-
             ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')
             ->join('penyakit', 'kasus_kusta.idPenyakit = penyakit.id')
             ->where('penyakit.id = 3')

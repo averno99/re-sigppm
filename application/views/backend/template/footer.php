@@ -51,7 +51,11 @@
 <!-- End Leaflet -->
 
 <!-- Grafik -->
-<?php include 'grafik.php'; ?>
+<?php if ($this->uri->segment(2) == 'dash_malaria') : ?>
+    <?php include 'grafikMalaria.php'; ?>
+<?php else : ?>
+    <?php include 'grafik.php'; ?>
+<?php endif; ?>
 <!-- End Grafik -->
 
 <!-- File Input -->
