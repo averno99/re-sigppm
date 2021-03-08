@@ -42,23 +42,23 @@
 
 <!-- Leaflet -->
 <?php if ($this->uri->segment(2) == 'malaria') : ?>
-    <?php include 'mapMalaria.php'; ?>
+    <?php include 'map/mapMalaria.php'; ?>
 <?php elseif ($this->uri->segment(2) == 'dbd') : ?>
-    <?php include 'mapDBD.php'; ?>
+    <?php include 'map/mapDBD.php'; ?>
 <?php elseif ($this->uri->segment(2) == 'kusta') : ?>
-    <?php include 'mapKusta.php'; ?>
+    <?php include 'map/mapKusta.php'; ?>
 <?php endif; ?>
 <!-- End Leaflet -->
 
 <!-- Grafik -->
 <?php if ($this->uri->segment(2) == 'dash_malaria') : ?>
-    <?php include 'grafikMalaria.php'; ?>
+    <?php include 'grafik/grafikMalaria.php'; ?>
 <?php elseif ($this->uri->segment(2) == 'dash_kusta') : ?>
-    <?php include 'grafikKusta.php'; ?>
+    <?php include 'grafik/grafikKusta.php'; ?>
 <?php elseif ($this->uri->segment(2) == 'dash_dbd') : ?>
-    <?php include 'grafikDbd.php'; ?>
-<?php else : ?>
-    <?php include 'grafik.php'; ?>
+    <?php include 'grafik/grafikDbd.php'; ?>
+<?php elseif ($this->uri->segment(1) == 'dashboard') : ?>
+    <?php include 'grafik/grafik.php'; ?>
 <?php endif; ?>
 <!-- End Grafik -->
 

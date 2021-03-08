@@ -45,11 +45,11 @@ class Kasus_kusta extends CI_Controller
     public function tambah()
     {
         $this->load->model('M_penduduk');
-        $filterTahun = $this->input->post('filterTahun');
+        $keyword = $this->input->post('filterTahun');
 
         $data['judul'] = 'Tambah Data Kasus Kusta';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['penduduk'] = $this->M_kasuskusta->ambilFilterPenduduk($filterTahun);
+        $data['penduduk'] = $this->M_penduduk->cariData($keyword);
 
 
         $this->form_validation->set_rules(
@@ -66,7 +66,7 @@ class Kasus_kusta extends CI_Controller
             $this->load->view('backend/pegawai/kasus/kusta/v_tambahkasus', $data);
             $this->load->view('backend/template/footer');
         } else {
-            $this->M_kasuskusta->tambahKasus($pr, $cdr);
+            $this->M_kasuskusta->tambahKasus();
             $this->session->set_flashdata('flash', 'Ditambahkan');
             redirect('kasus_kusta');
         }
@@ -77,8 +77,6 @@ class Kasus_kusta extends CI_Controller
         $data['judul'] = 'Ubah Data Kasus Kusta';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['kasus'] = $this->M_kasuskusta->ambilIdKasus($idKasus);
-        $data['kecamatan'] = $this->db->get('kecamatan')->result_array();
-        $data['penyakit'] = $this->db->get('penyakit')->result_array();
 
         $this->form_validation->set_rules('pb', 'PB Kusta', 'required|trim');
         $this->form_validation->set_rules('mb', 'MB Kusta', 'required|trim');

@@ -45,12 +45,12 @@ class Kasus_malaria extends CI_Controller
     public function tambah()
     {
         $this->load->model('M_penduduk');
-        $filterTahun = $this->input->post('filterTahun');
+        $keyword = $this->input->post('filterTahun');
 
         $data['judul'] = 'Tambah Data Kasus Malaria';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['penyakit'] = $this->db->get('penyakit')->result_array();
-        $data['penduduk'] = $this->M_kasusmalaria->ambilFilterPenduduk($filterTahun);
+        $data['penduduk'] = $this->M_penduduk->cariData($keyword);
 
         $this->form_validation->set_rules(
             'penduduk',
@@ -77,8 +77,6 @@ class Kasus_malaria extends CI_Controller
         $data['judul'] = 'Ubah Data Kasus Malaria';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['kasus'] = $this->M_kasusmalaria->ambilIdKasus($idKasus);
-        $data['kecamatan'] = $this->db->get('kecamatan')->result_array();
-        $data['penyakit'] = $this->db->get('penyakit')->result_array();
 
         $this->form_validation->set_rules('malaria_positif', 'Jumlah Kasus Positif Malaria', 'required|trim');
 

@@ -10,7 +10,7 @@ class Profil extends CI_Controller
         if (!$this->session->userdata('username')) {
             redirect('auth');
         }
-        $this->load->model('M_profil');
+        $this->load->model('M_user');
         $this->load->library('form_validation');
     }
 
@@ -74,7 +74,7 @@ class Profil extends CI_Controller
                 "alamat" => $alamat
             ];
 
-            $this->M_profil->ubahProfil($data);
+            $this->M_user->ubahProfil($data);
             $this->session->set_flashdata('flash', 'Diubah');
             redirect('profil');
         }
@@ -123,7 +123,7 @@ class Profil extends CI_Controller
                     // password sudah ok
                     $password_hash = password_hash($password_baru, PASSWORD_DEFAULT);
 
-                    $this->M_profil->ubahPassword($password_hash);
+                    $this->M_user->ubahPassword($password_hash);
                     $this->session->set_flashdata('pesan', "Password berhasil diubah");
                     redirect('profil');
                 }

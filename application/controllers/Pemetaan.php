@@ -9,31 +9,18 @@ class Pemetaan extends CI_Controller
         if (!$this->session->userdata('username')) {
             redirect('auth');
         }
-        $this->load->model('M_pemetaan');
-        $this->load->library('form_validation');
-    }
-
-    public function index()
-    {
-        $data['judul'] = 'Pemetaan';
-        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['kecamatan'] = $this->db->get('kecamatan')->result_array();
-
-        $this->load->view('backend/template/head', $data);
-        $this->load->view('backend/template/sidebar');
-        $this->load->view('backend/template/topbar', $data);
-        $this->load->view('backend/pegawai/pemetaan/v_pemetaan', $data);
-        $this->load->view('backend/template/footer', $data);
     }
 
     public function malaria()
     {
+        $this->load->model('M_kasusmalaria');
+        $this->load->model('M_kecamatan');
         $keyword = $this->input->post('cari');
 
         $data['judul'] = 'Pemetaan Malaria';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['pemetaan'] = $this->M_pemetaan->ambilPetaMalaria($keyword);
-        $data['kecamatan'] = $this->db->get('kecamatan')->result_array();
+        $data['pemetaan'] = $this->M_kasusmalaria->cariPerhitunganMalaria($keyword);
+        $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
 
         $this->load->view('backend/template/head', $data);
         $this->load->view('backend/template/sidebar');
@@ -44,12 +31,14 @@ class Pemetaan extends CI_Controller
 
     public function dbd()
     {
+        $this->load->model('M_kasusdbd');
+        $this->load->model('M_kecamatan');
         $keyword = $this->input->post('cari');
 
         $data['judul'] = 'Pemetaan DBD';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['pemetaan'] = $this->M_pemetaan->ambilPetaDBD($keyword);
-        $data['kecamatan'] = $this->db->get('kecamatan')->result_array();
+        $data['pemetaan'] = $this->M_kasusdbd->cariPerhitunganDBD($keyword);
+        $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
 
         $this->load->view('backend/template/head', $data);
         $this->load->view('backend/template/sidebar');
@@ -60,12 +49,14 @@ class Pemetaan extends CI_Controller
 
     public function kusta()
     {
+        $this->load->model('M_kasuskusta');
+        $this->load->model('M_kecamatan');
         $keyword = $this->input->post('cari');
 
         $data['judul'] = 'Pemetaan Kusta';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['pemetaan'] = $this->M_pemetaan->ambilPetaKusta($keyword);
-        $data['kecamatan'] = $this->db->get('kecamatan')->result_array();
+        $data['pemetaan'] = $this->M_kasuskusta->cariPerhitunganKusta($keyword);
+        $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
 
         $this->load->view('backend/template/head', $data);
         $this->load->view('backend/template/sidebar');
