@@ -55,6 +55,8 @@
     <?php include 'grafikMalaria.php'; ?>
 <?php elseif ($this->uri->segment(2) == 'dash_kusta') : ?>
     <?php include 'grafikKusta.php'; ?>
+<?php elseif ($this->uri->segment(2) == 'dash_dbd') : ?>
+    <?php include 'grafikDbd.php'; ?>
 <?php else : ?>
     <?php include 'grafik.php'; ?>
 <?php endif; ?>

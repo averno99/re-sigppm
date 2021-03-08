@@ -52,19 +52,21 @@
                                             </div>
                                         </div>
 
-                                        <table id="example1" class="table table-striped table-bordered table-responsive" cellspacing="0" width="100%">
+                                        <table id="example1" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                             <thead>
                                                 <tr>
-                                                    <th>No</th>
-                                                    <th>Tahun</th>
-                                                    <th>Penyakit</th>
-                                                    <th>Kecamatan</th>
+                                                    <th rowspan="2">No</th>
+                                                    <th rowspan="2">Tahun</th>
+                                                    <th rowspan="2">Kecamatan</th>
+                                                    <th rowspan="2">Jumlah Penduduk</th>
+                                                    <th rowspan="2">Kasus Baru</th>
+                                                    <th rowspan="2">CDR</th>
+                                                    <th colspan="2">Kasus Terdaftar</th>
+                                                    <th rowspan="2">PR</th>
+                                                </tr>
+                                                <tr>
                                                     <th>PB</th>
                                                     <th>MB</th>
-                                                    <th>Kasus Baru</th>
-                                                    <th>Jumlah Penduduk</th>
-                                                    <th>CDR</th>
-                                                    <th>PR</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -82,13 +84,12 @@
                                                     <tr>
                                                         <td><?= $no++; ?></td>
                                                         <td><?= $kps['tahun']; ?></td>
-                                                        <td><?= $kps['penyakit']; ?></td>
                                                         <td><?= $kps['nama']; ?></td>
+                                                        <td><?= number_format($kps['jumlahPenduduk'], 0, '', ','); ?></td>
+                                                        <td><?= $kps['kasus_baru']; ?></td>
+                                                        <td><?= number_format($cdr, 2); ?></td>
                                                         <td><?= $kps['pb']; ?></td>
                                                         <td><?= $kps['mb']; ?></td>
-                                                        <td><?= $kps['kasus_baru']; ?></td>
-                                                        <td><?= number_format($kps['jumlahPenduduk'], 0, '', ','); ?></td>
-                                                        <td><?= number_format($cdr, 2); ?></td>
                                                         <td><?= number_format($pr, 2); ?></td>
                                                     </tr>
                                                 <?php endforeach; ?>

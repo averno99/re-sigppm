@@ -4,7 +4,15 @@ class M_kasusdbd extends CI_model
 {
     public function ambilKasusDBD()
     {
-        $query = $this->db->select('bulan, jumlah_kasus, penyakit, tahun, nama, kasus_dbd.id, jumlah_penduduk.jumlah as jumlahPenduduk')
+        $query = $this->db->select('bulan, penyakit, tahun, nama, kasus_dbd.id, jumlah_penduduk.jumlah as jumlahPenduduk,
+        dbd1L, dbd1P, dbd14L, dbd14P, dbd59L, dbd59P, dbd1014L, dbd1014P, 
+        dbd1519L, dbd1519P, dbd2044L, dbd2044P, dbd45L, dbd45P,
+
+        (dbd1L + dbd1P + dbd14L + dbd14P + 
+        dbd59L + dbd59P + dbd1014L + dbd1014P + 
+        dbd1519L + dbd1519P + dbd2044L + dbd2044P + dbd45L + dbd45P) as jumlah_kasus,
+
+        dbd_meninggal')
             ->from('kasus_dbd')
             ->join('jumlah_penduduk', 'kasus_dbd.idPenduduk = jumlah_penduduk.id')
             ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')
@@ -16,7 +24,15 @@ class M_kasusdbd extends CI_model
 
     public function cariDataDBD($keyword)
     {
-        $query = $this->db->select('bulan, jumlah_kasus, penyakit, tahun, nama, kasus_dbd.id, jumlah_penduduk.jumlah as jumlahPenduduk')
+        $query = $this->db->select('bulan, penyakit, tahun, nama, kasus_dbd.id, jumlah_penduduk.jumlah as jumlahPenduduk,
+        dbd1L, dbd1P, dbd14L, dbd14P, dbd59L, dbd59P, dbd1014L, dbd1014P, 
+        dbd1519L, dbd1519P, dbd2044L, dbd2044P, dbd45L, dbd45P,
+
+        (dbd1L + dbd1P + dbd14L + dbd14P + 
+        dbd59L + dbd59P + dbd1014L + dbd1014P + 
+        dbd1519L + dbd1519P + dbd2044L + dbd2044P + dbd45L + dbd45P) as jumlah_kasus,
+
+        dbd_meninggal')
             ->from('kasus_dbd')
             ->join('jumlah_penduduk', 'kasus_dbd.idPenduduk = jumlah_penduduk.id')
             ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')

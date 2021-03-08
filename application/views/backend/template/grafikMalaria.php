@@ -65,11 +65,7 @@
                 ?>
             ],
             datasets: [{
-                    label: <?php
-                            if ($this->input->get('cari'))
-                                echo "' API " . "'";
-                            ?>,
-
+                    label: 'API',
                     data: [
                         <?php foreach ($apiM as $d) {
                             $jumlahPenduduk = $d['jumlahPenduduk'];
@@ -85,11 +81,7 @@
                     borderWidth: 1
                 },
                 {
-                    label: <?php
-                            if ($this->input->get('cari'))
-                                echo "' AMI " . "'";
-                            ?>,
-
+                    label: 'AMI',
                     data: [
                         <?php foreach ($apiM as $d) {
                             $jumlahPenduduk = $d['jumlahPenduduk'];
@@ -140,11 +132,7 @@
                 ?>
             ],
             datasets: [{
-                    label: <?php
-                            if ($this->input->get('cari'))
-                                echo "' Mikroskop " . "'";
-                            ?>,
-
+                    label: 'Mikroskop',
                     data: [
                         <?php foreach ($apiM as $d) {
                             echo "'" . $d['mik'] . "',";
@@ -156,11 +144,7 @@
                     borderWidth: 1
                 },
                 {
-                    label: <?php
-                            if ($this->input->get('cari'))
-                                echo "' RDT " . "'";
-                            ?>,
-
+                    label: 'RDT',
                     data: [
                         <?php foreach ($apiM as $d) {
                             echo "'" . $d['rdt'] . "',";
@@ -205,7 +189,7 @@
                         }
                         ?>],
             datasets: [{
-                    label: ['Pf'],
+                    label: 'Pf',
                     data: [
                         <?php foreach ($apiM as $d) {
                             echo "'" . $d['pf'] . "',";
@@ -217,7 +201,7 @@
                     borderWidth: 1
                 },
                 {
-                    label: ['Pv'],
+                    label: 'Pv',
                     data: [
                         <?php foreach ($apiM as $d) {
                             echo "'" . $d['pv'] . "',";
@@ -229,7 +213,7 @@
                     borderWidth: 1
                 },
                 {
-                    label: ['Pm'],
+                    label: 'Pm',
                     data: [
                         <?php foreach ($apiM as $d) {
                             echo "'" . $d['pm'] . "',";
@@ -241,7 +225,7 @@
                     borderWidth: 1
                 },
                 {
-                    label: ['Po'],
+                    label: 'Po',
                     data: [
                         <?php foreach ($apiM as $d) {
                             echo "'" . $d['po'] . "',";
@@ -253,7 +237,7 @@
                     borderWidth: 1
                 },
                 {
-                    label: ['Pk'],
+                    label: 'Pk',
                     data: [
                         <?php foreach ($apiM as $d) {
                             echo "'" . $d['pk'] . "',";
@@ -265,7 +249,7 @@
                     borderWidth: 1
                 },
                 {
-                    label: ['Mix'],
+                    label: 'Mix',
                     data: [
                         <?php foreach ($apiM as $d) {
                             echo "'" . $d['mix'] . "',";
@@ -303,7 +287,7 @@
 </script>
 
 <script>
-    var ctx = document.getElementById('usia').getContext('2d');
+    var ctx = document.getElementById('usiaM').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {

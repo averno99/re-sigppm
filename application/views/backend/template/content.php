@@ -88,8 +88,9 @@
                                             </div>
                                             <div class="col-9 text-center align-self-center">
                                                 <div class="m-l-10 ">
-                                                    <h5 class="mt-0 round-inner text-danger"><?= $rasioD['total'] ?></h5>
+                                                    <h5 class="mt-0 round-inner text-danger"><?= $rasioD['jumlah_kasus'] ?></h5>
                                                     <p class="mb-0 text-muted">Kasus DBD di Tahun <?= $this->input->get('cari') ?></p>
+                                                    <a href="<?= site_url('dashboard/dash_dbd'); ?>" type="button" class="btn btn-primary">Info..</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -138,34 +139,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="card m-b-30">
-                                    <div class="card-body">
-
-                                        <h4 class="mt-0 header-title">Grafik API Kasus Malaria</h4>
-                                        <div class="dropdown-divider mb-3"></div>
-                                        <canvas id="ir" height="215"></canvas>
-
-                                    </div>
-                                </div>
-                            </div> <!-- end col -->
-
-                            <div class="col-lg-6">
-                                <div class="card m-b-30">
-                                    <div class="card-body">
-
-                                        <h4 class="mt-0 header-title">Grafik Perbandingan Kasus DBD Berdasarkan Jenis Kelamin</h4>
-                                        <div class="dropdown-divider mb-3"></div>
-                                        <canvas id="rasioDbd" height="200"></canvas>
-
-                                    </div>
-                                </div>
-                            </div> <!-- end col -->
-                        </div> <!-- end row -->
-
-
 
                     </div><!-- container -->
 

@@ -70,7 +70,11 @@ class M_perhitungan extends CI_model
 
     public function ambilKasusDBD()
     {
-        $query = $this->db->select('ir, SUM(meninggal) as totalM, SUM(laki_laki) as totalL, SUM(perempuan) as totalP, bulan, SUM(jumlah_kasus) as total, penyakit, tahun, nama, kasus_dbd.id, jumlah_penduduk.jumlah as jumlahPenduduk')
+        $query = $this->db->select('bulan, penyakit, tahun, nama, kasus_dbd.id, jumlah_penduduk.jumlah as jumlahPenduduk,
+        SUM(dbd1L + dbd1P + dbd14L + dbd14P + dbd59L + dbd59P + dbd1014L + dbd1014P + 
+        dbd1519L + dbd1519P + dbd2044L + dbd2044P + dbd45L + dbd45P) as jumlah_kasus,
+
+        SUM(dbd_meninggal) as dbd_meninggal')
             ->from('kasus_dbd')
             ->group_by('tahun, nama')
             ->join('jumlah_penduduk', 'kasus_dbd.idPenduduk = jumlah_penduduk.id')

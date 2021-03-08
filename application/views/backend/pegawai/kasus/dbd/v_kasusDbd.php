@@ -56,16 +56,42 @@
                                             </div>
                                         </div>
 
-                                        <table id="example1" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                        <table id="example1" class="table table-striped table-bordered table-responsive" cellspacing="0" width="100%">
                                             <thead>
                                                 <tr>
-                                                    <th>No</th>
-                                                    <th>Tahun</th>
-                                                    <th>Bulan</th>
-                                                    <th>Penyakit</th>
-                                                    <th>Kecamatan</th>
-                                                    <th>Jumlah Kasus</th>
-                                                    <th>Aksi</th>
+                                                    <th rowspan="3">No</th>
+                                                    <th rowspan="3">Tahun</th>
+                                                    <th rowspan="3">Bulan</th>
+                                                    <th rowspan="3">Kecamatan</th>
+                                                    <th colspan="14">Penderita Terdaftar</th>
+                                                    <th rowspan="3">Meninggal</th>
+                                                    <th rowspan="3">Jumlah Kasus</th>
+                                                    <th rowspan="3">Aksi</th>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="2">&lt;1 thn</th>
+                                                    <th colspan="2">1-4 thn</th>
+                                                    <th colspan="2">5-9 thn</th>
+                                                    <th colspan="2">10-14 thn</th>
+                                                    <th colspan="2">15-19 thn</th>
+                                                    <th colspan="2">20-44 thn</th>
+                                                    <th colspan="2">&gt;45 thn</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>L</th>
+                                                    <th>P</th>
+                                                    <th>L</th>
+                                                    <th>P</th>
+                                                    <th>L</th>
+                                                    <th>P</th>
+                                                    <th>L</th>
+                                                    <th>P</th>
+                                                    <th>L</th>
+                                                    <th>P</th>
+                                                    <th>L</th>
+                                                    <th>P</th>
+                                                    <th>L</th>
+                                                    <th>P</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -76,9 +102,23 @@
                                                         <td><?= $no++; ?></td>
                                                         <td><?= $kps['tahun']; ?></td>
                                                         <td><?= $kps['bulan']; ?></td>
-                                                        <td><?= $kps['penyakit']; ?></td>
                                                         <td><?= $kps['nama']; ?></td>
-                                                        <td><?= number_format($kps['jumlah_kasus'], 0, '', ','); ?></td>
+                                                        <td><?= $kps['dbd1L']; ?></td>
+                                                        <td><?= $kps['dbd1P']; ?></td>
+                                                        <td><?= $kps['dbd14L']; ?></td>
+                                                        <td><?= $kps['dbd14P']; ?></td>
+                                                        <td><?= $kps['dbd59L']; ?></td>
+                                                        <td><?= $kps['dbd59P']; ?></td>
+                                                        <td><?= $kps['dbd1014L']; ?></td>
+                                                        <td><?= $kps['dbd1014P']; ?></td>
+                                                        <td><?= $kps['dbd1519L']; ?></td>
+                                                        <td><?= $kps['dbd1519P']; ?></td>
+                                                        <td><?= $kps['dbd2044L']; ?></td>
+                                                        <td><?= $kps['dbd2044P']; ?></td>
+                                                        <td><?= $kps['dbd45L']; ?></td>
+                                                        <td><?= $kps['dbd45P']; ?></td>
+                                                        <td><?= $kps['dbd_meninggal']; ?></td>
+                                                        <td><?= $kps['jumlah_kasus']; ?></td>
                                                         <td>
                                                             <div class="btn-group">
                                                                 <a href="<?= site_url(); ?>kasus_dbd/ubah/<?= $kps['id'] ?>" class="btn btn-warning btn-sm mr-1" data-toggle="tooltip" data-placement="top" title="Ubah Data">

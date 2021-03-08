@@ -57,14 +57,11 @@
                                                 <tr>
                                                     <th>No</th>
                                                     <th>Tahun</th>
-                                                    <th>Penyakit</th>
                                                     <th>Kecamatan</th>
-                                                    <th>Laki Laki</th>
-                                                    <th>Perempuan</th>
-                                                    <th>Jumlah Kasus</th>
-                                                    <th>Meninggal</th>
                                                     <th>Jumlah Penduduk</th>
+                                                    <th>Jumlah Kasus</th>
                                                     <th>IR</th>
+                                                    <th>Meninggal</th>
                                                     <th>CFR</th>
                                                 </tr>
                                             </thead>
@@ -74,13 +71,13 @@
                                                 foreach ($kasus as $kps) : ?>
                                                     <?php
                                                     $jumlahPenduduk = $kps['jumlahPenduduk'];
-                                                    $kasusTotal = $kps['total'];
-                                                    $meninggal = $kps['totalM'];
+                                                    $total_kasus = $kps['jumlah_kasus'];
+                                                    $meninggal = $kps['dbd_meninggal'];
 
-                                                    $hasil = $kasusTotal / $jumlahPenduduk * 100000;
+                                                    $ir = $total_kasus / $jumlahPenduduk * 100000;
 
                                                     if ($meninggal != 0) {
-                                                        $cfr = round($meninggal / $kasusTotal * 100, 2);
+                                                        $cfr = round($meninggal / $total_kasus * 100, 2);
                                                     } else {
                                                         $cfr = $meninggal;
                                                     }
@@ -88,14 +85,11 @@
                                                     <tr>
                                                         <td><?= $no++; ?></td>
                                                         <td><?= $kps['tahun']; ?></td>
-                                                        <td><?= $kps['penyakit']; ?></td>
                                                         <td><?= $kps['nama']; ?></td>
-                                                        <td><?= $kps['totalL']; ?></td>
-                                                        <td><?= $kps['totalP']; ?></td>
-                                                        <td><?= $kps['total']; ?></td>
-                                                        <td><?= $kps['totalM']; ?></td>
                                                         <td><?= number_format($kps['jumlahPenduduk'], 0, '', ','); ?></td>
-                                                        <td><?= number_format($hasil, 2); ?></td>
+                                                        <td><?= $kps['jumlah_kasus']; ?></td>
+                                                        <td><?= number_format($ir, 2); ?></td>
+                                                        <td><?= $kps['dbd_meninggal']; ?></td>
                                                         <td><?= number_format($cfr, 2) . '%'; ?></td>
                                                     </tr>
                                                 <?php endforeach; ?>

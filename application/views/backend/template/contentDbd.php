@@ -31,7 +31,7 @@
 
                         <div class="row">
                             <div class="col-sm-12 mx-auto mb-3">
-                                <form action="<?= base_url('dashboard/dash_malaria') ?>" method="GET">
+                                <form action="<?= base_url('dashboard/dash_dbd') ?>" method="GET">
                                     <div class="col-md-4 ml-auto">
                                         <div class="input-group mt-2">
                                             <select class="custom-select" name="cari" id="cari">
@@ -64,10 +64,10 @@
                                                     <i class="mdi mdi-hospital"></i>
                                                 </div>
                                             </div>
-                                            <div class="col-9 align-self-center text-center">
-                                                <div class="m-l-10">
-                                                    <h5 class="mt-0 round-inner text-danger"><?= $rasioM['mal_positif'] ?></h5>
-                                                    <p class="mb-0 text-muted">Kasus Malaria di Tahun <?= $this->input->get('cari') ?></p>
+                                            <div class="col-9 text-center align-self-center">
+                                                <div class="m-l-10 ">
+                                                    <h5 class="mt-0 round-inner text-danger"><?= $rasioD['jumlah_kasus'] ?></h5>
+                                                    <p class="mb-0 text-muted">Kasus DBD di Tahun <?= $this->input->get('cari') ?></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -81,85 +81,66 @@
                             <div class="col-lg-12">
                                 <div class="card m-b-30">
                                     <div class="card-body">
-                                        <h4 class="mt-0 header-title">Grafik Annual Malaria Incidence (AMI) & Annual Paracite Incidence (API)</h4>
+                                        <h4 class="mt-0 header-title">Grafik IR Kasus DBD</h4>
                                         <div class="dropdown-divider mb-3"></div>
-                                        <canvas id="api" height="100"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end col -->
-                        </div> <!-- end row -->
-
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="card m-b-30">
-                                    <div class="card-body">
-                                        <h4 class="mt-0 header-title">Grafik Pemeriksaan Lab</h4>
-                                        <div class="dropdown-divider mb-3"></div>
-                                        <canvas id="sd" height="100"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end col -->
-                        </div> <!-- end row -->
-
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="card m-b-30">
-                                    <div class="card-body">
-                                        <h4 class="mt-0 header-title">Grafik Parasit Kasus Malaria</h4>
-                                        <div class="dropdown-divider mb-3"></div>
-                                        <canvas id="parasit" height="100"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end col -->
-                        </div> <!-- end row -->
-
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="card m-b-30">
-                                    <div class="card-body">
-                                        <h4 class="mt-0 header-title">Grafik Kasus Malaria Positif Berdasarkan Umur</h4>
-                                        <div class="dropdown-divider mb-3"></div>
-                                        <canvas id="usiaM" height="100"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end col -->
-                        </div> <!-- end row -->
-
-                        <div class="row">
-                            <!-- <div class="col-lg-6">
-                                <div class="card m-b-30">
-                                    <div class="card-body">
-
-                                        <h4 class="mt-0 header-title">Grafik Parasit Kasus Malaria</h4>
-                                        <div class="dropdown-divider mb-3"></div>
-                                        <canvas id="parasit" height="215"></canvas>
-
-                                    </div>
-                                </div>
-                            </div> -->
-
-                            <div class="col-lg-6">
-                                <div class="card m-b-30">
-                                    <div class="card-body">
-
-                                        <h4 class="mt-0 header-title">Grafik Perbandingan Kasus Malaria Berdasarkan Jenis Kelamin</h4>
-                                        <div class="dropdown-divider mb-3"></div>
-                                        <canvas id="rasioMalaria" height="200"></canvas>
+                                        <canvas id="ir" height="100"></canvas>
 
                                     </div>
                                 </div>
                             </div> <!-- end col -->
                         </div> <!-- end row -->
 
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card m-b-30">
+                                    <div class="card-body">
+                                        <h4 class="mt-0 header-title">Grafik Jumlah Kasus DBD Berdasarkan Bulan</h4>
+                                        <div class="dropdown-divider mb-3"></div>
+                                        <canvas id="waktu" height="100"></canvas>
 
+                                    </div>
+                                </div>
+                            </div> <!-- end col -->
+                        </div> <!-- end row -->
 
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card m-b-30">
+                                    <div class="card-body">
+                                        <h4 class="mt-0 header-title">Grafik Jumlah Kasus DBD yang Hidup dan Meninggal</h4>
+                                        <div class="dropdown-divider mb-3"></div>
+                                        <canvas id="meninggal" height="100"></canvas>
 
+                                    </div>
+                                </div>
+                            </div> <!-- end col -->
+                        </div> <!-- end row -->
 
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card m-b-30">
+                                    <div class="card-body">
+                                        <h4 class="mt-0 header-title">Grafik Jumlah Kasus DBD Berdasarkan Umur</h4>
+                                        <div class="dropdown-divider mb-3"></div>
+                                        <canvas id="usiaD" height="100"></canvas>
 
+                                    </div>
+                                </div>
+                            </div> <!-- end col -->
+                        </div> <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card m-b-30">
+                                    <div class="card-body">
+                                        <h4 class="mt-0 header-title">Grafik Perbandingan Kasus DBD Berdasarkan Jenis Kelamin</h4>
+                                        <div class="dropdown-divider mb-3"></div>
+                                        <canvas id="rasioDbd" height="200"></canvas>
+
+                                    </div>
+                                </div>
+                            </div> <!-- end col -->
+                        </div> <!-- end row -->
 
 
 

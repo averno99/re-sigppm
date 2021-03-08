@@ -82,9 +82,6 @@
                     font: {
                         weight: 'bold',
                         size: '10'
-                    },
-                    formatter: (value) => {
-                        return value + ' Kasus';
                     }
                 }
             }
@@ -138,11 +135,7 @@
                     font: {
                         weight: 'bold',
                         size: '10'
-                    },
-                    formatter: (value) => {
-                        return 'PR ' + value;
                     }
-
                 }
             }
         }
@@ -195,11 +188,7 @@
                     font: {
                         weight: 'bold',
                         size: '10'
-                    },
-                    formatter: (value) => {
-                        return 'CDR ' + value;
                     }
-
                 }
             }
         }

@@ -2,10 +2,10 @@
     <?php
     foreach ($pemetaan as $pmt) {
         $jumlahPenduduk = $pmt['jumlahPenduduk'];
-        $kasusTotal = $pmt['total'];
-        $hasil = $kasusTotal / $jumlahPenduduk * 100000;
+        $total_kasus = $pmt['jumlah_kasus'];
+        $ir = $total_kasus / $jumlahPenduduk * 100000;
 
-        $data[$pmt['nama']] = number_format($hasil, 2);
+        $data[$pmt['nama']] = number_format($ir, 2);
     }
     ?>
     var PERHITUNGAN = <?= json_encode($data) ?>;

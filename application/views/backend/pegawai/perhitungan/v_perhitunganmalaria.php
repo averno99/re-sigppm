@@ -57,12 +57,11 @@
                                                 <tr>
                                                     <th>No</th>
                                                     <th>Tahun</th>
-                                                    <th>Penyakit</th>
                                                     <th>Kecamatan</th>
-                                                    <th>Suspek</th>
-                                                    <th>Positif</th>
                                                     <th>Jumlah Penduduk</th>
+                                                    <th>Suspek</th>
                                                     <th>AMI</th>
+                                                    <th>Positif</th>
                                                     <th>API</th>
                                                 </tr>
                                             </thead>
@@ -81,12 +80,11 @@
                                                     <tr>
                                                         <td><?= $no++; ?></td>
                                                         <td><?= $kps['tahun']; ?></td>
-                                                        <td><?= $kps['penyakit']; ?></td>
                                                         <td><?= $kps['nama']; ?></td>
-                                                        <td><?= $kps['malaria_klinis']; ?></td>
-                                                        <td><?= $kps['malaria_positif']; ?></td>
                                                         <td><?= number_format($kps['jumlahPenduduk'], 0, '', ','); ?></td>
+                                                        <td><?= $kps['malaria_klinis']; ?></td>
                                                         <td><?= number_format($ami, 2); ?></td>
+                                                        <td><?= $kps['malaria_positif']; ?></td>
                                                         <td><?= number_format($api, 2); ?></td>
                                                     </tr>
                                                 <?php endforeach; ?>

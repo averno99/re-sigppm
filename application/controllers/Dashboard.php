@@ -26,8 +26,6 @@ class Dashboard extends CI_Controller
 
         $data['rasioM'] = $this->DashModel->rasioMalaria($keyword);
         $data['rasioK'] = $this->DashModel->rasioKusta($keyword);
-
-        $data['irDbd'] = $this->DashModel->irDbd($keyword);
         $data['rasioD'] = $this->DashModel->rasioDbd($keyword);
 
         $this->load->view('backend/template/head', $data);
@@ -68,6 +66,24 @@ class Dashboard extends CI_Controller
         $this->load->view('backend/template/sidebar');
         $this->load->view('backend/template/topbar', $data);
         $this->load->view('backend/template/contentKusta', $data);
+        $this->load->view('backend/template/footer');
+    }
+
+    public function dash_dbd()
+    {
+        $keyword = $this->input->get('cari');
+
+        $data['judul'] = 'Dashboard';
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['irDbd'] = $this->DashModel->irDbd($keyword);
+        $data['rasioD'] = $this->DashModel->rasioDbd($keyword);
+        $data['usiaD'] = $this->DashModel->usiaDbd($keyword);
+        $data['waktuDbd'] = $this->DashModel->waktuDbd($keyword);
+
+        $this->load->view('backend/template/head', $data);
+        $this->load->view('backend/template/sidebar');
+        $this->load->view('backend/template/topbar', $data);
+        $this->load->view('backend/template/contentDbd', $data);
         $this->load->view('backend/template/footer');
     }
 
