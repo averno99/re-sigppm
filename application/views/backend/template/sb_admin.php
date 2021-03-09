@@ -20,6 +20,12 @@
     </a>
 </li>
 <li>
+    <a href="<?= site_url('penyakit') ?>" class="waves-effect">
+        <i class="mdi mdi-hospital"></i>
+        <span> Data Penyakit </span>
+    </a>
+</li>
+<li>
     <a href="<?= site_url('user') ?>" class="waves-effect">
         <i class="mdi mdi-account-multiple"></i>
         <span> Data User </span>
