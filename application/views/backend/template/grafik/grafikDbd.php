@@ -11,10 +11,7 @@
                 ?>
             ],
             datasets: [{
-                label: <?php
-                        if ($this->input->get('cari'))
-                            echo "' IR Tahun " . $this->input->get('cari') . "'";
-                        ?>,
+                label: 'IR',
 
                 data: [
                     <?php foreach ($irDbd as $d) {

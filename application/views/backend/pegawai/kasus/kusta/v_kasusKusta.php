@@ -34,13 +34,13 @@
                                                 </a>
                                             </div>
                                             <div class="col-sm-6 mx-auto">
-                                                <form action="<?= base_url('kasus_kusta/cari') ?>" method="POST">
+                                                <form action="" method="GET">
                                                     <div class="col-sm-6 ml-auto">
                                                         <div class="input-group mt-2">
                                                             <select class="custom-select" name="cari" id="cari">
                                                                 <option selected disabled>--Pilih Tahun--</option>
                                                                 <?php for ($y = date('Y'); $y >= 1990; $y--) : ?>
-                                                                    <?php if ($y == $this->input->post('cari')) : ?>
+                                                                    <?php if ($y == $this->input->get('cari')) : ?>
                                                                         <option value="<?= $y; ?>" selected><?= $y; ?></option>
                                                                     <?php else : ?>
                                                                         <option value="<?= $y; ?>"><?= $y; ?></option>

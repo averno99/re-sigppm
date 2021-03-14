@@ -19,15 +19,20 @@ class Dashboard extends CI_Controller
         $this->load->model('M_kasusmalaria');
         $this->load->model('M_kasusdbd');
         $this->load->model('M_kasuskusta');
-        $keyword = $this->input->get('cari');
 
         $data['judul'] = 'Dashboard';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['dash'] = $this->M_penduduk->cariData($keyword);
+        $data['dash'] = $this->M_penduduk->ambilPendudukBaru();
+        $data['rasioM'] = $this->M_kasusmalaria->rasioMalaria();
+        $data['rasioK'] = $this->M_kasuskusta->rasioKusta();
+        $data['rasioD'] = $this->M_kasusdbd->rasioDbd();
 
-        $data['rasioM'] = $this->M_kasusmalaria->rasioMalaria($keyword);
-        $data['rasioK'] = $this->M_kasuskusta->rasioKusta($keyword);
-        $data['rasioD'] = $this->M_kasusdbd->rasioDbd($keyword);
+        if ($this->input->get('cari')) {
+            $data['dash'] = $this->M_penduduk->cariData();
+            $data['rasioM'] = $this->M_kasusmalaria->cariRasioMalaria();
+            $data['rasioK'] = $this->M_kasuskusta->cariRasioKusta();
+            $data['rasioD'] = $this->M_kasusdbd->cariRasioDbd();
+        }
 
         $this->load->view('backend/template/head', $data);
         $this->load->view('backend/template/sidebar');
@@ -39,13 +44,18 @@ class Dashboard extends CI_Controller
     public function dash_malaria()
     {
         $this->load->model('M_kasusmalaria');
-        $keyword = $this->input->get('cari');
 
         $data['judul'] = 'Dashboard Malaria';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['rasioM'] = $this->M_kasusmalaria->rasioMalaria($keyword);
-        $data['apiM'] = $this->M_kasusmalaria->cariDataMalaria($keyword);
-        $data['usiaM'] = $this->M_kasusmalaria->usiaMalaria($keyword);
+        $data['rasioM'] = $this->M_kasusmalaria->rasioMalaria();
+        $data['apiM'] = $this->M_kasusmalaria->dataMalaria();
+        $data['usiaM'] = $this->M_kasusmalaria->usiaMalaria();
+
+        if ($this->input->get('cari')) {
+            $data['rasioM'] = $this->M_kasusmalaria->cariRasioMalaria();
+            $data['apiM'] = $this->M_kasusmalaria->cariDataMalaria();
+            $data['usiaM'] = $this->M_kasusmalaria->cariUsiaMalaria();
+        }
 
         $this->load->view('backend/template/head', $data);
         $this->load->view('backend/template/sidebar');
@@ -57,13 +67,18 @@ class Dashboard extends CI_Controller
     public function dash_kusta()
     {
         $this->load->model('M_kasuskusta');
-        $keyword = $this->input->get('cari');
 
         $data['judul'] = 'Dashboard Kusta';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['rasioK'] = $this->M_kasuskusta->rasioKusta($keyword);
-        $data['usiaK'] = $this->M_kasuskusta->usiaKusta($keyword);
-        $data['kusta'] = $this->M_kasuskusta->cariPerhitunganKusta($keyword);
+        $data['rasioK'] = $this->M_kasuskusta->rasioKusta();
+        $data['usiaK'] = $this->M_kasuskusta->usiaKusta();
+        $data['kusta'] = $this->M_kasuskusta->ambilPetaKusta();
+
+        if ($this->input->get('cari')) {
+            $data['rasioK'] = $this->M_kasuskusta->cariRasioKusta();
+            $data['usiaK'] = $this->M_kasuskusta->cariUsiaKusta();
+            $data['kusta'] = $this->M_kasuskusta->cariPerhitunganKusta();
+        }
 
         $this->load->view('backend/template/head', $data);
         $this->load->view('backend/template/sidebar');
@@ -75,14 +90,20 @@ class Dashboard extends CI_Controller
     public function dash_dbd()
     {
         $this->load->model('M_kasusdbd');
-        $keyword = $this->input->get('cari');
 
-        $data['judul'] = 'Dashboard';
+        $data['judul'] = 'Dashboard DBD';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['irDbd'] = $this->M_kasusdbd->cariPerhitunganDBD($keyword);
-        $data['rasioD'] = $this->M_kasusdbd->rasioDbd($keyword);
-        $data['usiaD'] = $this->M_kasusdbd->usiaDbd($keyword);
-        $data['waktuDbd'] = $this->M_kasusdbd->waktuDbd($keyword);
+        $data['irDbd'] = $this->M_kasusdbd->ambilPetaDBD();
+        $data['rasioD'] = $this->M_kasusdbd->rasioDbd();
+        $data['usiaD'] = $this->M_kasusdbd->usiaDbd();
+        $data['waktuDbd'] = $this->M_kasusdbd->waktuDbd();
+
+        if ($this->input->get('cari')) {
+            $data['irDbd'] = $this->M_kasusdbd->cariPerhitunganDBD();
+            $data['rasioD'] = $this->M_kasusdbd->cariRasioDbd();
+            $data['usiaD'] = $this->M_kasusdbd->cariUsiaDbd();
+            $data['waktuDbd'] = $this->M_kasusdbd->cariWaktuDbd();
+        }
 
         $this->load->view('backend/template/head', $data);
         $this->load->view('backend/template/sidebar');

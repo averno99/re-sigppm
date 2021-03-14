@@ -19,21 +19,9 @@ class Kasus_dbd extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['kasus'] = $this->M_kasusdbd->ambilKasusDBD();
 
-        $this->load->view('backend/template/head', $data);
-        $this->load->view('backend/template/sidebar');
-        $this->load->view('backend/template/topbar', $data);
-        $this->load->view('backend/pegawai/kasus/dbd/v_kasusDbd', $data);
-        $this->load->view('backend/template/footer');
-    }
-
-    public function cari()
-    {
-        $keyword = $this->input->post('cari');
-
-        $data['judul'] = 'Kelola Jumlah Kasus DBD';
-        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['kasus'] = $this->M_kasusdbd->cariDataDBD($keyword);
-
+        if ($this->input->get('cari')) {
+            $data['kasus'] = $this->M_kasusdbd->cariDataDBD();
+        }
 
         $this->load->view('backend/template/head', $data);
         $this->load->view('backend/template/sidebar');

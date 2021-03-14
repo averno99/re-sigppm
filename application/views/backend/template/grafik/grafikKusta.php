@@ -60,7 +60,7 @@
         data: {
             labels: ['PB', 'MB'],
             datasets: [{
-                label: <?= "'Kasus Kusta Tahun " . $this->input->get('cari') . "'" ?>,
+                label: "Kasus Kusta",
                 data: ['<?= $rasioK['totalPB'] ?>', '<?= $rasioK['totalMB'] ?>'],
                 backgroundColor: '#ADD8E6',
                 borderColor: '#93C3D2',
@@ -101,10 +101,7 @@
                 ?>
             ],
             datasets: [{
-                label: <?php
-                        if ($this->input->get('cari'))
-                            echo "' PR Tahun " . $this->input->get('cari') . "'";
-                        ?>,
+                label: "PR",
 
                 data: [
                     <?php foreach ($kusta as $k) {
@@ -154,10 +151,7 @@
                 ?>
             ],
             datasets: [{
-                label: <?php
-                        if ($this->input->get('cari'))
-                            echo "' CDR Tahun " . $this->input->get('cari') . "'";
-                        ?>,
+                label: "CDR",
 
                 data: [
                     <?php foreach ($kusta as $k) {

@@ -23,13 +23,13 @@
                                         <h4 class="mt-0 header-title">Pemetaan</h4>
                                         <div class="dropdown-divider mb-3"></div>
                                         <div class="mx-auto mb-3">
-                                            <form action="<?= base_url('pemetaan/dbd') ?>" method="POST">
+                                            <form action="" method="GET">
                                                 <div class="col-md-4">
                                                     <div class="input-group mt-2">
                                                         <select class="custom-select" name="cari" id="cari">
                                                             <option selected disabled>--Pilih Tahun--</option>
-                                                            <?php for ($y = date('Y'); $y >= 1990; $y--) : ?>
-                                                                <?php if ($y == $this->input->post('cari')) : ?>
+                                                            <?php for ($y = date('Y'); $y >= 2000; $y--) : ?>
+                                                                <?php if ($y == $this->input->get('cari')) : ?>
                                                                     <option value="<?= $y; ?>" selected><?= $y; ?></option>
                                                                 <?php else : ?>
                                                                     <option value="<?= $y; ?>"><?= $y; ?></option>
@@ -43,12 +43,12 @@
                                                 </div>
                                             </form>
                                         </div>
-                                        <?php if ($this->input->post('cari')) : ?>
-                                            <div id="mapDBD"></div>
-                                        <?php else : ?>
+                                        <?php if (empty($pemetaan)) : ?>
                                             <div class="alert alert-warning col-sm-12" role="alert">
-                                                <strong>Peta tidak tersedia!</strong> Pilih tahun untuk menampilkan peta.
+                                                Peta tidak tersedia.
                                             </div>
+                                        <?php else : ?>
+                                            <div id="mapDBD"></div>
                                         <?php endif; ?>
                                     </div>
                                 </div>

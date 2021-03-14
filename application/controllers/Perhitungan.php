@@ -19,21 +19,9 @@ class Perhitungan extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['kasus'] = $this->M_kasusmalaria->perhitunganMalaria();
 
-        $this->load->view('backend/template/head', $data);
-        $this->load->view('backend/template/sidebar');
-        $this->load->view('backend/template/topbar', $data);
-        $this->load->view('backend/pegawai/perhitungan/v_perhitunganmalaria', $data);
-        $this->load->view('backend/template/footer');
-    }
-
-    public function cari_malaria()
-    {
-        $this->load->model('M_kasusmalaria');
-        $keyword = $this->input->post('cari');
-
-        $data['judul'] = 'Kelola Perhitungan Malaria';
-        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['kasus'] = $this->M_kasusmalaria->cariPerhitunganMalaria($keyword);
+        if ($this->input->get('cari')) {
+            $data['kasus'] = $this->M_kasusmalaria->cariPerhitunganMalaria();
+        }
 
         $this->load->view('backend/template/head', $data);
         $this->load->view('backend/template/sidebar');
@@ -50,21 +38,9 @@ class Perhitungan extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['kasus'] = $this->M_kasuskusta->perhitunganKusta();
 
-        $this->load->view('backend/template/head', $data);
-        $this->load->view('backend/template/sidebar');
-        $this->load->view('backend/template/topbar', $data);
-        $this->load->view('backend/pegawai/perhitungan/v_perhitungankusta', $data);
-        $this->load->view('backend/template/footer');
-    }
-
-    public function cari_kusta()
-    {
-        $this->load->model('M_kasuskusta');
-        $keyword = $this->input->post('cari');
-
-        $data['judul'] = 'Kelola Perhitungan Kusta';
-        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['kasus'] = $this->M_kasuskusta->cariPerhitunganKusta($keyword);
+        if ($this->input->get('cari')) {
+            $data['kasus'] = $this->M_kasuskusta->cariPerhitunganKusta();
+        }
 
         $this->load->view('backend/template/head', $data);
         $this->load->view('backend/template/sidebar');
@@ -80,21 +56,9 @@ class Perhitungan extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['kasus'] = $this->M_kasusdbd->perhitunganDBD();
 
-        $this->load->view('backend/template/head', $data);
-        $this->load->view('backend/template/sidebar');
-        $this->load->view('backend/template/topbar', $data);
-        $this->load->view('backend/pegawai/perhitungan/v_perhitungandbd', $data);
-        $this->load->view('backend/template/footer');
-    }
-
-    public function cari_dbd()
-    {
-        $this->load->model('M_kasusdbd');
-        $keyword = $this->input->post('cari');
-
-        $data['judul'] = 'Kelola Perhitungan DBD';
-        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['kasus'] = $this->M_kasusdbd->cariPerhitunganDBD($keyword);
+        if ($this->input->get('cari')) {
+            $data['kasus'] = $this->M_kasusdbd->cariPerhitunganDBD();
+        }
 
         $this->load->view('backend/template/head', $data);
         $this->load->view('backend/template/sidebar');

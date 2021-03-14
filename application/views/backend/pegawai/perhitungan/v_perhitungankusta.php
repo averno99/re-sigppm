@@ -30,13 +30,13 @@
                                         <div class="row mb-4">
 
                                             <div class="col-sm-12 mx-auto">
-                                                <form action="<?= base_url('perhitungan/cari_kusta') ?>" method="POST">
+                                                <form action="" method="GET">
                                                     <div class="col-sm-3 ml-auto">
                                                         <div class="input-group mt-2">
                                                             <select class="custom-select" name="cari" id="cari">
                                                                 <option selected disabled>--Pilih Tahun--</option>
-                                                                <?php for ($y = date('Y'); $y >= 1990; $y--) : ?>
-                                                                    <?php if ($y == $this->input->post('cari')) : ?>
+                                                                <?php for ($y = date('Y'); $y >= 2000; $y--) : ?>
+                                                                    <?php if ($y == $this->input->get('cari')) : ?>
                                                                         <option value="<?= $y; ?>" selected><?= $y; ?></option>
                                                                     <?php else : ?>
                                                                         <option value="<?= $y; ?>"><?= $y; ?></option>

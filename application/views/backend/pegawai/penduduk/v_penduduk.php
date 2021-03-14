@@ -34,14 +34,14 @@
                                                 </a>
                                             </div>
                                             <div class="col-sm-4 mx-auto">
-                                                <form action="<?= base_url('penduduk/cariKecamatan') ?>" method="POST">
+                                                <form action="" method="GET">
                                                     <div class="col-sm-12 ml-auto">
                                                         <div class="input-group mt-2">
                                                             <select class="custom-select" name="kecamatan" id="kecamatan">
                                                                 <option selected disabled>--Pilih Kecamatan--</option>
 
                                                                 <?php foreach ($kecamatan as $kcm) : ?>
-                                                                    <?php if ($kcm['id'] == $this->input->post('kecamatan')) : ?>
+                                                                    <?php if ($kcm['id'] == $this->input->get('kecamatan')) : ?>
                                                                         <option value="<?= $kcm['id']; ?>" selected><?= $kcm['nama']; ?></option>
                                                                     <?php else : ?>
                                                                         <option value="<?= $kcm['id']; ?>"><?= $kcm['nama']; ?></option>
@@ -56,13 +56,13 @@
                                                 </form>
                                             </div>
                                             <div class="col-sm-4 mx-auto">
-                                                <form action="<?= base_url('penduduk/cari') ?>" method="POST">
+                                                <form action="" method="GET">
                                                     <div class="col-sm-12 ml-auto">
                                                         <div class="input-group mt-2">
                                                             <select class="custom-select" name="cari" id="cari">
                                                                 <option selected disabled>--Pilih Tahun--</option>
-                                                                <?php for ($y = date('Y'); $y >= 1990; $y--) : ?>
-                                                                    <?php if ($y == $this->input->post('cari')) : ?>
+                                                                <?php for ($y = date('Y'); $y >= 2000; $y--) : ?>
+                                                                    <?php if ($y == $this->input->get('cari')) : ?>
                                                                         <option value="<?= $y; ?>" selected><?= $y; ?></option>
                                                                     <?php else : ?>
                                                                         <option value="<?= $y; ?>"><?= $y; ?></option>

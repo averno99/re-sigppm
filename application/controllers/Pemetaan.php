@@ -15,12 +15,16 @@ class Pemetaan extends CI_Controller
     {
         $this->load->model('M_kasusmalaria');
         $this->load->model('M_kecamatan');
-        $keyword = $this->input->post('cari');
 
         $data['judul'] = 'Pemetaan Malaria';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['pemetaan'] = $this->M_kasusmalaria->cariPerhitunganMalaria($keyword);
+        $data['pemetaan'] = $this->M_kasusmalaria->ambilPetaMalaria();
         $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
+
+        if ($this->input->get('cari')) {
+            $data['pemetaan'] = $this->M_kasusmalaria->cariPerhitunganMalaria();
+            $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
+        }
 
         $this->load->view('backend/template/head', $data);
         $this->load->view('backend/template/sidebar');
@@ -33,12 +37,16 @@ class Pemetaan extends CI_Controller
     {
         $this->load->model('M_kasusdbd');
         $this->load->model('M_kecamatan');
-        $keyword = $this->input->post('cari');
 
         $data['judul'] = 'Pemetaan DBD';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['pemetaan'] = $this->M_kasusdbd->cariPerhitunganDBD($keyword);
+        $data['pemetaan'] = $this->M_kasusdbd->ambilPetaDBD();
         $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
+
+        if ($this->input->get('cari')) {
+            $data['pemetaan'] = $this->M_kasusdbd->cariPerhitunganDBD();
+            $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
+        }
 
         $this->load->view('backend/template/head', $data);
         $this->load->view('backend/template/sidebar');
@@ -51,12 +59,16 @@ class Pemetaan extends CI_Controller
     {
         $this->load->model('M_kasuskusta');
         $this->load->model('M_kecamatan');
-        $keyword = $this->input->post('cari');
 
         $data['judul'] = 'Pemetaan Kusta';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['pemetaan'] = $this->M_kasuskusta->cariPerhitunganKusta($keyword);
+        $data['pemetaan'] = $this->M_kasuskusta->ambilPetaKusta();
         $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
+
+        if ($this->input->get('cari')) {
+            $data['pemetaan'] = $this->M_kasuskusta->cariPerhitunganKusta();
+            $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
+        }
 
         $this->load->view('backend/template/head', $data);
         $this->load->view('backend/template/sidebar');

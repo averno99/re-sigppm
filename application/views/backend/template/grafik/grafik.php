@@ -10,10 +10,7 @@
                 ?>
             ],
             datasets: [{
-                label: <?php
-                        if ($this->input->get('cari'))
-                            echo "' Jumlah Penduduk Tahun " . $this->input->get('cari') . "'";
-                        ?>,
+                label: 'Jumlah Penduduk Tahun <?= $d['tahun'] ?>',
                 data: [
                     <?php foreach ($dash as $d) {
                         echo "'" . $d['jumlah'] . "',";

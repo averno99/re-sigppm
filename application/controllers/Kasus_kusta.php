@@ -19,21 +19,9 @@ class Kasus_kusta extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['kasus'] = $this->M_kasuskusta->ambilKasusKusta();
 
-        $this->load->view('backend/template/head', $data);
-        $this->load->view('backend/template/sidebar');
-        $this->load->view('backend/template/topbar', $data);
-        $this->load->view('backend/pegawai/kasus/kusta/v_kasusKusta', $data);
-        $this->load->view('backend/template/footer');
-    }
-
-    public function cari()
-    {
-        $keyword = $this->input->post('cari');
-
-        $data['judul'] = 'Kelola Jumlah Kasus Kusta';
-        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['kasus'] = $this->M_kasuskusta->cariDataKusta($keyword);
-
+        if ($this->input->get('cari')) {
+            $data['kasus'] = $this->M_kasuskusta->cariDataKusta();
+        }
 
         $this->load->view('backend/template/head', $data);
         $this->load->view('backend/template/sidebar');

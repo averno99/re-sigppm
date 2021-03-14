@@ -22,6 +22,14 @@ class Penduduk extends CI_Controller
         $data['penduduk'] = $this->M_penduduk->ambilSemuaPenduduk();
         $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
 
+        if ($this->input->get('cari')) {
+            $data['penduduk'] = $this->M_penduduk->cariData();
+            $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
+        } elseif ($this->input->get('kecamatan')) {
+            $data['penduduk'] = $this->M_penduduk->cariKecamatan();
+            $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
+        }
+
         $this->load->view('backend/template/head', $data);
         $this->load->view('backend/template/sidebar');
         $this->load->view('backend/template/topbar', $data);

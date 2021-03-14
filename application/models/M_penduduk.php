@@ -12,8 +12,21 @@ class M_penduduk extends CI_model
         return $query;
     }
 
-    public function cariData($keyword)
+    public function ambilPendudukBaru()
     {
+        $tahun = date('Y', strtotime('-1 year', strtotime(date('Y'))));
+        $query = $this->db->select('jumlah, tahun, nama, jumlah_penduduk.id, idKecamatan')
+            ->from('jumlah_penduduk')
+            ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')
+            ->where('tahun', $tahun)
+            ->order_by('tahun, kecamatan.nama')
+            ->get()->result_array();
+        return $query;
+    }
+
+    public function cariData()
+    {
+        $keyword = $this->input->get('cari');
         $query = $this->db->select('jumlah, tahun, nama, jumlah_penduduk.id, idKecamatan')
             ->from('jumlah_penduduk')
             ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')
@@ -23,12 +36,13 @@ class M_penduduk extends CI_model
         return $query;
     }
 
-    public function cariKecamatan($keyword2)
+    public function cariKecamatan()
     {
+        $keyword = $this->input->get('kecamatan');
         $query = $this->db->select('jumlah, tahun, nama, jumlah_penduduk.id, idKecamatan')
             ->from('jumlah_penduduk')
             ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')
-            ->where('idKecamatan', $keyword2)
+            ->where('idKecamatan', $keyword)
             ->order_by('tahun, kecamatan.nama')
             ->get()->result_array();
         return $query;

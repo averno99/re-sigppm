@@ -19,21 +19,9 @@ class Kasus_malaria extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['kasus'] = $this->M_kasusmalaria->ambilKasusMalaria();
 
-        $this->load->view('backend/template/head', $data);
-        $this->load->view('backend/template/sidebar');
-        $this->load->view('backend/template/topbar', $data);
-        $this->load->view('backend/pegawai/kasus/malaria/v_kasusMalaria', $data);
-        $this->load->view('backend/template/footer');
-    }
-
-    public function cari()
-    {
-        $keyword = $this->input->post('cari');
-
-        $data['judul'] = 'Kelola Jumlah Kasus Malaria';
-        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['kasus'] = $this->M_kasusmalaria->cariDataMalaria($keyword);
-
+        if ($this->input->get('cari')) {
+            $data['kasus'] = $this->M_kasusmalaria->cariDataMalaria();
+        }
 
         $this->load->view('backend/template/head', $data);
         $this->load->view('backend/template/sidebar');
