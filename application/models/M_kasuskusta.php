@@ -98,7 +98,8 @@ class M_kasuskusta extends CI_model
         (kus15LPB + kus15PPB + kus1625LPB + kus1625PPB + kus2635LPB + kus2635PPB +
         kus3645LPB + kus3645PPB + kus4655LPB + kus4655PPB + kus56LPB + kus56PPB) as pb,
         
-        (kusta_baruPB + kusta_baruMB) as kasus_baru')
+        (kusta_baruPB + kusta_baruMB) as kasus_baru,
+        (sembuhPB + sembuhMB) as sembuh')
             ->from('kasus_kusta')
             ->join('jumlah_penduduk', 'kasus_kusta.idPenduduk = jumlah_penduduk.id')
             ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')
@@ -119,7 +120,8 @@ class M_kasuskusta extends CI_model
         (kus15LPB + kus15PPB + kus1625LPB + kus1625PPB + kus2635LPB + kus2635PPB +
         kus3645LPB + kus3645PPB + kus4655LPB + kus4655PPB + kus56LPB + kus56PPB) as pb,
         
-        (kusta_baruPB + kusta_baruMB) as kasus_baru')
+        (kusta_baruPB + kusta_baruMB) as kasus_baru,
+        (sembuhPB + sembuhMB) as sembuh')
             ->from('kasus_kusta')
             ->join('jumlah_penduduk', 'kasus_kusta.idPenduduk = jumlah_penduduk.id')
             ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')

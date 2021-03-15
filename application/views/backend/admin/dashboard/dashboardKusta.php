@@ -75,7 +75,7 @@
                                             $total = $rasioK['totalPB'] + $rasioK['totalMB'];
                                             ?>
                                             <h5 class="mt-0 round-inner text-danger"><?= $total ?></h5>
-                                            <p class="mb-0 text-muted">Kasus Kusta di Tahun <?= $this->input->get('cari') ?></p>
+                                            <p class="mb-0 text-muted">Kasus Kusta di Tahun <?= $rasioK['tahun'] ?></p>
                                         </div>
                                     </div>
                                 </div>
@@ -131,9 +131,22 @@
                     <div class="col-lg-12">
                         <div class="card m-b-30">
                             <div class="card-body">
-                                <h4 class="mt-0 header-title">Grafik Kasus Malaria Positif Berdasarkan Umur</h4>
+                                <h4 class="mt-0 header-title">Grafik Kasus Kusta Terdaftar Berdasarkan Umur</h4>
                                 <div class="dropdown-divider mb-3"></div>
                                 <canvas id="usiaK" height="100"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end col -->
+                </div> <!-- end row -->
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card m-b-30">
+                            <div class="card-body">
+                                <h4 class="mt-0 header-title">Grafik Jumlah Kesembuhan Penderita Kusta</h4>
+                                <div class="dropdown-divider mb-3"></div>
+                                <canvas id="sembuh" height="100"></canvas>
                             </div>
                         </div>
                     </div>

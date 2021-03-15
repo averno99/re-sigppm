@@ -21,7 +21,7 @@ class M_kasusmalaria extends CI_model
     {
         $tahun = date('Y', strtotime('-1 year', strtotime(date('Y'))));
         $query = $this->db->select('kasus_malaria.id, idPenduduk, idPenyakit, penyakit, tahun, nama, jumlah_penduduk.jumlah as jumlahPenduduk,
-        malaria_klinis, malaria_positif, mik, rdt, pf, pv, pm, po, pk, mix,
+        malaria_klinis, malaria_positif, meninggal, mik, rdt, pf, pv, pm, po, pk, mix,
         mal011L, mal14L, mal59L, mal1014L, mal1564L, mal65L, 
         mal011P, mal14P, mal59P, mal1014P, mal1564P, mal65P')
             ->from('kasus_malaria')
@@ -38,7 +38,7 @@ class M_kasusmalaria extends CI_model
     {
         $keyword = $this->input->get('cari');
         $query = $this->db->select('kasus_malaria.id, idPenduduk, idPenyakit, penyakit, tahun, nama, jumlah_penduduk.jumlah as jumlahPenduduk,
-        malaria_klinis, malaria_positif, mik, rdt, pf, pv, pm, po, pk, mix,
+        malaria_klinis, malaria_positif, meninggal, mik, rdt, pf, pv, pm, po, pk, mix,
         mal011L, mal14L, mal59L, mal1014L, mal1564L, mal65L, 
         mal011P, mal14P, mal59P, mal1014P, mal1564P, mal65P')
             ->from('kasus_malaria')

@@ -100,5 +100,10 @@
     .features .feture-tabs {
       margin-top: 20px;
     }
+
+    .blog .entry .entry-title {
+      color: #012970;
+      transition: 0.3s;
+    }
   </style>
 </head>

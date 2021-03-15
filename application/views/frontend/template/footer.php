@@ -87,6 +87,9 @@
 <!-- Leaflet -->
 <script src="<?= base_url() ?>assets/frontend/vendor/leaflet/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
 <script src="<?= base_url() ?>assets/frontend/vendor/leaflet/leaflet.ajax.js"></script>
+<!-- Chart JS  -->
+<script src="<?= base_url() ?>assets/frontend/vendor/chartjs/Chart.bundle.min.js"></script>
+<script src="<?= base_url() ?>assets/frontend/vendor/chartjs/chartjs-plugin-datalabels.min.js"></script>
 
 <!-- Template Main JS File -->
 <script src="<?= base_url() ?>assets/frontend/js/main.js"></script>
@@ -100,6 +103,16 @@
     <?php include 'map/map_Kusta.php'; ?>
 <?php endif; ?>
 <!-- End Leaflet -->
+
+<!-- Grafik -->
+<?php if ($this->uri->segment(2) == 'grafik_malaria') : ?>
+    <?php include 'grafik/grafikMalaria.php'; ?>
+<?php elseif ($this->uri->segment(2) == 'grafik_kusta') : ?>
+    <?php include 'grafik/grafikKusta.php'; ?>
+<?php elseif ($this->uri->segment(2) == 'grafik_dbd') : ?>
+    <?php include 'grafik/grafikDbd.php'; ?>
+<?php endif; ?>
+<!-- End Grafik -->
 
 </body>
 

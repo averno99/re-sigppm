@@ -44,7 +44,18 @@ class Beranda extends CI_Controller
 
     public function grafik_malaria()
     {
+        $this->load->model('M_kasusmalaria');
+
         $data['judul'] = 'Grafik Malaria';
+        $data['rasioM'] = $this->M_kasusmalaria->rasioMalaria();
+        $data['apiM'] = $this->M_kasusmalaria->dataMalaria();
+        $data['usiaM'] = $this->M_kasusmalaria->usiaMalaria();
+
+        if ($this->input->get('cari')) {
+            $data['rasioM'] = $this->M_kasusmalaria->cariRasioMalaria();
+            $data['apiM'] = $this->M_kasusmalaria->cariDataMalaria();
+            $data['usiaM'] = $this->M_kasusmalaria->cariUsiaMalaria();
+        }
 
         $this->load->view('frontend/template/head');
         $this->load->view('frontend/template/header');
@@ -74,7 +85,20 @@ class Beranda extends CI_Controller
 
     public function grafik_dbd()
     {
+        $this->load->model('M_kasusdbd');
+
         $data['judul'] = 'Grafik DBD';
+        $data['irDbd'] = $this->M_kasusdbd->ambilPetaDBD();
+        $data['rasioD'] = $this->M_kasusdbd->rasioDbd();
+        $data['usiaD'] = $this->M_kasusdbd->usiaDbd();
+        $data['waktuDbd'] = $this->M_kasusdbd->waktuDbd();
+
+        if ($this->input->get('cari')) {
+            $data['irDbd'] = $this->M_kasusdbd->cariPerhitunganDBD();
+            $data['rasioD'] = $this->M_kasusdbd->cariRasioDbd();
+            $data['usiaD'] = $this->M_kasusdbd->cariUsiaDbd();
+            $data['waktuDbd'] = $this->M_kasusdbd->cariWaktuDbd();
+        }
 
         $this->load->view('frontend/template/head');
         $this->load->view('frontend/template/header');
@@ -104,7 +128,18 @@ class Beranda extends CI_Controller
 
     public function grafik_kusta()
     {
+        $this->load->model('M_kasuskusta');
+
         $data['judul'] = 'Grafik Kusta';
+        $data['rasioK'] = $this->M_kasuskusta->rasioKusta();
+        $data['usiaK'] = $this->M_kasuskusta->usiaKusta();
+        $data['kusta'] = $this->M_kasuskusta->ambilPetaKusta();
+
+        if ($this->input->get('cari')) {
+            $data['rasioK'] = $this->M_kasuskusta->cariRasioKusta();
+            $data['usiaK'] = $this->M_kasuskusta->cariUsiaKusta();
+            $data['kusta'] = $this->M_kasuskusta->cariPerhitunganKusta();
+        }
 
         $this->load->view('frontend/template/head');
         $this->load->view('frontend/template/header');

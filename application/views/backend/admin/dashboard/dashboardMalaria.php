@@ -135,6 +135,19 @@
                 </div> <!-- end row -->
 
                 <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card m-b-30">
+                            <div class="card-body">
+                                <h4 class="mt-0 header-title">Grafik Jumlah Kasus Malaria yang Hidup dan Meninggal</h4>
+                                <div class="dropdown-divider mb-3"></div>
+                                <canvas id="meninggal" height="100"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end col -->
+                </div> <!-- end row -->
+
+                <div class="row">
                     <div class="col-lg-6">
                         <div class="card m-b-30">
                             <div class="card-body">

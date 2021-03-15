@@ -31,7 +31,7 @@
                         </form>
                     </div>
                     <?php if (empty($pemetaan)) : ?>
-                        <div class="alert alert-warning col-sm-12" role="alert">
+                        <div class="alert alert-danger col-sm-12" role="alert">
                             Peta tidak tersedia.
                         </div>
                     <?php else : ?>
