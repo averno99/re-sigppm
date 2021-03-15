@@ -10,6 +10,14 @@
     ?>
     var PERHITUNGAN = <?= json_encode($data) ?>;
 
+    <?php
+    foreach ($pemetaan as $pmt) {
+
+        $data[$pmt['nama']] = $pmt['jumlah_kasus'];
+    }
+    ?>
+    var POSITIF = <?= json_encode($data) ?>;
+
     // Peta Dasar Koordinat tengah KKKU [-1.1505796, 109.5429503]
     var map = L.map('mapDBD').setView([-1.1505796, 109.5429503], 9);
     var LayerKita = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -34,7 +42,8 @@
 
     info.update = function(props) {
         this._div.innerHTML = '<h4>Incidence Rate</h4>' + (props ?
-            '<b>' + props.KECAMATAN + '</b><br /> IR ' + PERHITUNGAN[props.KECAMATAN] :
+            '<b>' + props.KECAMATAN + '</b><br/><br/> Kasus Positif = ' + POSITIF[props.KECAMATAN] +
+            '<br/> IR ' + PERHITUNGAN[props.KECAMATAN] :
             'Arahkan kursor untuk melihat');
     };
 
@@ -134,6 +143,6 @@
         var jsonTest = new L.GeoJSON.AJAX(["<?= base_url() ?>assets/geojson/<?= $kcm['geojson'] ?>"], {
             style: style,
             onEachFeature: onEachFeature
-        }).addTo(map);
+        }).addTo(map).bindPopup('<a href="<?= site_url() ?>beranda/grafik_dbd" target="_blank">Lihat Grafik DBD</a>');
     <?php endforeach; ?>
 </script>

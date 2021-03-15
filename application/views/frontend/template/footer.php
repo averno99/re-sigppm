@@ -5,49 +5,52 @@
         <div class="container">
             <div class="row gy-4">
                 <div class="col-lg-5 col-md-12 footer-info">
-                    <a href="index.html" class="logo d-flex align-items-center">
-                        <img src="<?= base_url() ?>assets/frontend/img/logo.png" alt="">
-                        <span>FlexStart</span>
+                    <a href="#" class="logo d-flex align-items-center">
+                        <img src="<?= base_url() ?>assets/frontend/img/logoicon.png" alt="">
+                        <span>SIGPPM-KKU</span>
                     </a>
-                    <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+                    <p>Sistem Informasi Geografis Pemetaan Penyakit Menular Kabupaten Kayong Utara adalah sebuah sistem untuk melakukan pemetaan penyakit menular berdasarkan pengukuran epidemiologi. Penyakit menular yang dipetakan dalam sistem ini ada 3 jenis yaitu DBD, Malaria, dan Kusta</p>
                     <div class="social-links mt-3">
                         <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                         <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
                         <a href="#" class="instagram"><i class="bi bi-instagram bx bxl-instagram"></i></a>
-                        <a href="#" class="linkedin"><i class="bi bi-linkedin bx bxl-linkedin"></i></a>
+                        <a href="#" class="whatsapp"><i class="bi bi-whatsapp bx bxl-whatsapp"></i></a>
                     </div>
                 </div>
 
                 <div class="col-lg-2 col-6 footer-links">
-                    <h4>Useful Links</h4>
+                    <h4>Link</h4>
                     <ul>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="#">Beranda</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="#">Penyakit</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="#">Pemetaan</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="#">Grafik</a></li>
                     </ul>
                 </div>
 
                 <div class="col-lg-2 col-6 footer-links">
-                    <h4>Our Services</h4>
+                    <h4>Puskesmas</h4>
                     <ul>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Web Design</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Web Development</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Product Management</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Marketing</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Graphic Design</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a style="pointer-events: none; display: inline-block;" href=" #"> Sukadana </a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a style="pointer-events: none; display: inline-block;" href="#"> Siduk </a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a style="pointer-events: none; display: inline-block;" href="#"> Teluk Melano </a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a style="pointer-events: none; display: inline-block;" href="#"> Teluk Batang </a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a style="pointer-events: none; display: inline-block;" href="#"> Sungai Paduan </a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a style="pointer-events: none; display: inline-block;" href="#"> Telaga Arum </a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a style="pointer-events: none; display: inline-block;" href="#"> Pelapis </a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a style="pointer-events: none; display: inline-block;" href="#"> Tanjung Satai </a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a style="pointer-events: none; display: inline-block;" href="#"> Matan Jaya </a></li>
                     </ul>
                 </div>
 
                 <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
-                    <h4>Contact Us</h4>
+                    <h4>Kontak Kami</h4>
                     <p>
-                        A108 Adam Street <br>
-                        New York, NY 535022<br>
-                        United States <br><br>
-                        <strong>Phone:</strong> +1 5589 55488 55<br>
-                        <strong>Email:</strong> info@example.com<br>
+                        Jl. Bhayangkara, Sutera, <br>
+                        Sukadana, Kabupaten Kayong Utara, <br>
+                        Kalimantan Barat 78852 <br><br>
+                        <strong>Telepon:</strong> (0561) 7706678<br>
+                        <strong>Email:</strong> dinkes_kku@example.com<br>
                     </p>
 
                 </div>
@@ -58,7 +61,7 @@
 
     <div class="container">
         <div class="copyright">
-            &copy; Copyright <strong><span>FlexStart</span></strong>. All Rights Reserved
+            Copyright &copy;2021 <strong><span>Averno</span></strong>
         </div>
         <div class="credits">
             <!-- All the links in the footer should remain intact. -->
@@ -80,6 +83,7 @@
 <script src="<?= base_url() ?>assets/frontend/vendor/purecounter/purecounter.js"></script>
 <script src="<?= base_url() ?>assets/frontend/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 <script src="<?= base_url() ?>assets/frontend/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="<?= base_url() ?>assets/frontend/vendor/fontawesome/js/all.min.js"></script>
 <!-- Leaflet -->
 <script src="<?= base_url() ?>assets/frontend/vendor/leaflet/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
 <script src="<?= base_url() ?>assets/frontend/vendor/leaflet/leaflet.ajax.js"></script>

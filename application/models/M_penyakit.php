@@ -4,7 +4,7 @@ class M_penyakit extends CI_model
 {
     public function ambilSemuaPenyakit()
     {
-        $query = $this->db->order_by('penyakit', 'ASC')->get('penyakit')->result_array();
+        $query = $this->db->order_by('id', 'ASC')->get('penyakit')->result_array();
         return $query;
     }
 

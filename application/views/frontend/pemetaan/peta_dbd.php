@@ -5,8 +5,8 @@
             <div class="container" data-aos="fade-up">
 
                 <header class="section-header">
-                    <h2>Pemetaan DBD</h2>
-                    <p>Incidence Rate (IR)</p>
+                    <h2><?= $judul ?></h2>
+                    <p>Menampilkan Pemetaan Penyakit DBD Berdasarkan Incidence Rate (IR)</p>
                 </header>
 
                 <div class="row">

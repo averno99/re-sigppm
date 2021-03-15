@@ -5,8 +5,8 @@
             <div class="container" data-aos="fade-up">
 
                 <header class="section-header">
-                    <h2>Pemetaan Kusta</h2>
-                    <p>Prevalence Rate (PR)</p>
+                    <h2><?= $judul ?></h2>
+                    <p>Menampilkan Pemetaan Penyakit Kusta Berdasarkan Prevalence Rate (PR)</p>
                 </header>
 
                 <div class="row">

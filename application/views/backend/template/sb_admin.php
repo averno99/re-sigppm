@@ -7,12 +7,6 @@
 </li>
 
 <li class="menu-title">MASTER DATA</li>
-<!-- <li>
-    <a href="<?= site_url('tahun') ?>" class="waves-effect">
-        <i class="mdi mdi-calendar"></i>
-        <span> Data Tahun </span>
-    </a>
-</li> -->
 <li>
     <a href="<?= site_url('kecamatan') ?>" class="waves-effect">
         <i class="mdi mdi-database"></i>

@@ -5,8 +5,8 @@
             <div class="container" data-aos="fade-up">
 
                 <header class="section-header">
-                    <h2>Pemetaan Malaria</h2>
-                    <p>Annual Parasite Incidence (API)</p>
+                    <h2><?= $judul ?></h2>
+                    <p>Menampilkan Pemetaan Penyakit Malaria Berdasarkan Annual Parasite Incidence (API)</p>
                 </header>
 
                 <div class="row">

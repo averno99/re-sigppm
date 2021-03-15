@@ -5,10 +5,20 @@ class Beranda extends CI_Controller
 {
     public function index()
     {
+        $this->load->model('M_kasusmalaria');
+        $this->load->model('M_kasusdbd');
+        $this->load->model('M_kasuskusta');
+        $this->load->model('M_penyakit');
+
+        $data['rasioM'] = $this->M_kasusmalaria->rasioMalaria();
+        $data['rasioK'] = $this->M_kasuskusta->rasioKusta();
+        $data['rasioD'] = $this->M_kasusdbd->rasioDbd();
+        $data['penyakit'] = $this->M_penyakit->ambilSemuaPenyakit();
+
         $this->load->view('frontend/template/head');
         $this->load->view('frontend/template/header');
         $this->load->view('frontend/template/container');
-        $this->load->view('frontend/template/content');
+        $this->load->view('frontend/template/content', $data);
         $this->load->view('frontend/template/footer');
     }
 
@@ -32,6 +42,16 @@ class Beranda extends CI_Controller
         $this->load->view('frontend/template/footer');
     }
 
+    public function grafik_malaria()
+    {
+        $data['judul'] = 'Grafik Malaria';
+
+        $this->load->view('frontend/template/head');
+        $this->load->view('frontend/template/header');
+        $this->load->view('frontend/grafik/grafik_malaria', $data);
+        $this->load->view('frontend/template/footer');
+    }
+
     public function pemetaan_dbd()
     {
         $this->load->model('M_kasusdbd');
@@ -52,6 +72,16 @@ class Beranda extends CI_Controller
         $this->load->view('frontend/template/footer');
     }
 
+    public function grafik_dbd()
+    {
+        $data['judul'] = 'Grafik DBD';
+
+        $this->load->view('frontend/template/head');
+        $this->load->view('frontend/template/header');
+        $this->load->view('frontend/grafik/grafik_dbd', $data);
+        $this->load->view('frontend/template/footer');
+    }
+
     public function pemetaan_kusta()
     {
         $this->load->model('M_kasuskusta');
@@ -69,6 +99,29 @@ class Beranda extends CI_Controller
         $this->load->view('frontend/template/head');
         $this->load->view('frontend/template/header');
         $this->load->view('frontend/pemetaan/peta_kusta', $data);
+        $this->load->view('frontend/template/footer');
+    }
+
+    public function grafik_kusta()
+    {
+        $data['judul'] = 'Grafik Kusta';
+
+        $this->load->view('frontend/template/head');
+        $this->load->view('frontend/template/header');
+        $this->load->view('frontend/grafik/grafik_kusta', $data);
+        $this->load->view('frontend/template/footer');
+    }
+
+    public function penyakit()
+    {
+        $this->load->model('M_penyakit');
+
+        $data['judul'] = 'Penyakit Menular';
+        $data['penyakit'] = $this->M_penyakit->ambilSemuaPenyakit();
+
+        $this->load->view('frontend/template/head');
+        $this->load->view('frontend/template/header');
+        $this->load->view('frontend/penyakit', $data);
         $this->load->view('frontend/template/footer');
     }
 }

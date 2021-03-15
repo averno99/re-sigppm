@@ -10,6 +10,15 @@
     ?>
     var PERHITUNGAN = <?= json_encode($data) ?>;
 
+    <?php
+    foreach ($pemetaan as $pmt) {
+
+        $total = $pmt['pb'] + $pmt['mb'];
+        $data[$pmt['nama']] = $total;
+    }
+    ?>
+    var POSITIF = <?= json_encode($data) ?>;
+
     // Peta Dasar Koordinat tengah KKKU [-1.1505796, 109.5429503]
     var map = L.map('mapKusta').setView([-1.1505796, 109.5429503], 9);
     var LayerKita = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -34,7 +43,8 @@
 
     info.update = function(props) {
         this._div.innerHTML = '<h4>Prevalence Rate</h4>' + (props ?
-            '<b>' + props.KECAMATAN + '</b><br /> PR ' + PERHITUNGAN[props.KECAMATAN] :
+            '<b>' + props.KECAMATAN + '</b><br/><br/> Kasus Kusta Terdaftar = ' + POSITIF[props.KECAMATAN] +
+            '<br/> PR ' + PERHITUNGAN[props.KECAMATAN] :
             'Arahkan kursor untuk melihat');
     };
 
@@ -132,6 +142,6 @@
         var jsonTest = new L.GeoJSON.AJAX(["<?= base_url() ?>assets/geojson/<?= $kcm['geojson'] ?>"], {
             style: style,
             onEachFeature: onEachFeature
-        }).addTo(map);
+        }).addTo(map).bindPopup('<a href="<?= site_url() ?>beranda/grafik_kusta" target="_blank">Lihat Grafik Kusta</a>');
     <?php endforeach; ?>
 </script>

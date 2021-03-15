@@ -23,6 +23,7 @@
   <link href="<?= base_url() ?>assets/frontend/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="<?= base_url() ?>assets/frontend/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <link href="<?= base_url() ?>assets/frontend/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="<?= base_url() ?>assets/frontend/vendor/fontawesome/css/all.min.css" rel="stylesheet">
   <!-- Leaflet -->
   <link rel="stylesheet" href="<?= base_url() ?>assets/frontend/vendor/leaflet/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
 
@@ -39,15 +40,15 @@
 
   <style>
     #mapMalaria {
-      height: 600px;
+      height: 480px;
     }
 
     #mapDBD {
-      height: 600px;
+      height: 480px;
     }
 
     #mapKusta {
-      height: 600px;
+      height: 480px;
     }
 
     .info {
@@ -76,6 +77,28 @@
       float: left;
       margin-right: 8px;
       opacity: 0.7;
+    }
+
+    .section-header h2 {
+      font-size: 30px;
+      letter-spacing: 1px;
+      font-weight: 700;
+      margin: 0;
+      color: #4154f1;
+      text-transform: uppercase;
+    }
+
+    .section-header p {
+      margin: 10px 0 0 0;
+      padding: 0;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 700;
+      color: #012970;
+    }
+
+    .features .feture-tabs {
+      margin-top: 20px;
     }
   </style>
 </head>
