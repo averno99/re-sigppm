@@ -6,7 +6,7 @@
 
                 <header class="section-header">
                     <h2><?= $judul ?></h2>
-                    <p>Menampilkan Pemetaan Penyakit Malaria Berdasarkan Annual Parasite Incidence (API)</p>
+                    <p>Menampilkan Pemetaan Penyakit Malaria Berdasarkan Annual Parasite Incidence (API) pada Tahun <?= $rasioM['tahun'] ?></p>
                 </header>
 
                 <div class="row">

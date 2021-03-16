@@ -299,18 +299,6 @@
                     borderWidth: 1
                 },
                 {
-                    label: 'Pk',
-                    data: [
-                        <?php foreach ($apiM as $d) {
-                            echo "'" . $d['pk'] . "',";
-                        }
-                        ?>
-                    ],
-                    backgroundColor: 'blue',
-                    borderColor: 'blue',
-                    borderWidth: 1
-                },
-                {
                     label: 'Mix',
                     data: [
                         <?php foreach ($apiM as $d) {

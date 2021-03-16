@@ -30,15 +30,15 @@
                     <div class="tab-content">
 
                         <div class="tab-pane fade show active" id="dbd">
-                            <p> Demam berdarah atau demam dengue (disingkat DBD) adalah infeksi yang disebabkan oleh virus dengue. Beberapa jenis nyamuk menularkan (atau menyebarkan) virus dengue.</p>
+                            <?php include 'dbd.php'; ?>
                         </div><!-- End Tab 1 Content -->
 
                         <div class="tab-pane fade show" id="malaria">
-                            <p>Malaria adalah penyakit yang ditularkan oleh nyamuk dari manusia dan hewan lain yang disebabkan oleh protozoa parasit (sekelompok mikroorganisme bersel tunggal) dalam tipe Plasmodium.</p>
+                            <?php include 'malaria.php'; ?>
                         </div><!-- End Tab 2 Content -->
 
                         <div class="tab-pane fade show" id="kusta">
-                            <p>Penyakit Hansen atau Morbus Hansen yang dahulu dikenal sebagai penyakit kusta atau lepra adalah sebuah penyakit infeksi kronis yang sebelumnya, diketahui hanya disebabkan oleh bakteri Mycobacterium leprae, hingga ditemukan bakteri Mycobacterium</p>
+                            <?php include 'kusta.php'; ?>
                         </div><!-- End Tab 3 Content -->
 
                     </div>

@@ -15,6 +15,13 @@ class Beranda extends CI_Controller
         $data['rasioD'] = $this->M_kasusdbd->rasioDbd();
         $data['penyakit'] = $this->M_penyakit->ambilSemuaPenyakit();
 
+        if ($this->input->get('cari')) {
+            $data['rasioM'] = $this->M_kasusmalaria->cariRasioMalaria();
+            $data['rasioK'] = $this->M_kasuskusta->cariRasioKusta();
+            $data['rasioD'] = $this->M_kasusdbd->cariRasioDbd();
+            $data['penyakit'] = $this->M_penyakit->ambilSemuaPenyakit();
+        }
+
         $this->load->view('frontend/template/head');
         $this->load->view('frontend/template/header');
         $this->load->view('frontend/template/container');
@@ -29,10 +36,12 @@ class Beranda extends CI_Controller
 
         $data['judul'] = 'Pemetaan Malaria';
         $data['pemetaan'] = $this->M_kasusmalaria->ambilPetaMalaria();
+        $data['rasioM'] = $this->M_kasusmalaria->rasioMalaria();
         $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
 
         if ($this->input->get('cari')) {
             $data['pemetaan'] = $this->M_kasusmalaria->cariPerhitunganMalaria();
+            $data['rasioM'] = $this->M_kasusmalaria->cariRasioMalaria();
             $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
         }
 
@@ -70,10 +79,12 @@ class Beranda extends CI_Controller
 
         $data['judul'] = 'Pemetaan DBD';
         $data['pemetaan'] = $this->M_kasusdbd->ambilPetaDBD();
+        $data['rasioD'] = $this->M_kasusdbd->rasioDbd();
         $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
 
         if ($this->input->get('cari')) {
             $data['pemetaan'] = $this->M_kasusdbd->cariPerhitunganDBD();
+            $data['rasioD'] = $this->M_kasusdbd->cariRasioDbd();
             $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
         }
 
@@ -113,10 +124,12 @@ class Beranda extends CI_Controller
 
         $data['judul'] = 'Pemetaan Kusta';
         $data['pemetaan'] = $this->M_kasuskusta->ambilPetaKusta();
+        $data['rasioK'] = $this->M_kasuskusta->rasioKusta();
         $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
 
         if ($this->input->get('cari')) {
             $data['pemetaan'] = $this->M_kasuskusta->cariPerhitunganKusta();
+            $data['rasioK'] = $this->M_kasuskusta->cariRasioKusta();
             $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
         }
 
@@ -156,7 +169,7 @@ class Beranda extends CI_Controller
 
         $this->load->view('frontend/template/head');
         $this->load->view('frontend/template/header');
-        $this->load->view('frontend/penyakit', $data);
+        $this->load->view('frontend/penyakit/penyakit', $data);
         $this->load->view('frontend/template/footer');
     }
 }

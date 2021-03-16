@@ -65,7 +65,7 @@
                                                     <th rowspan="3">Suspek</th>
                                                     <th colspan="12">Umur</th>
                                                     <th colspan="2">Konfirmasi Lab</th>
-                                                    <th colspan="6">Jenis Parasit</th>
+                                                    <th colspan="5">Jenis Parasit</th>
                                                     <th rowspan="3">Positif</th>
                                                     <th rowspan="3">Aksi</th>
                                                 </tr>
@@ -82,7 +82,6 @@
                                                     <th rowspan="2">Pv</th>
                                                     <th rowspan="2">Pm</th>
                                                     <th rowspan="2">Po</th>
-                                                    <th rowspan="2">Pk</th>
                                                     <th rowspan="2">Mix</th>
                                                 </tr>
                                                 <tr>
@@ -127,7 +126,6 @@
                                                         <td><?= $kps['pv']; ?></td>
                                                         <td><?= $kps['pm']; ?></td>
                                                         <td><?= $kps['po']; ?></td>
-                                                        <td><?= $kps['pk']; ?></td>
                                                         <td><?= $kps['mix']; ?></td>
                                                         <td><?= $kps['malaria_positif']; ?></td>
                                                         <td>

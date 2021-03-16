@@ -151,9 +151,6 @@
                                                             <input type="text" class="form-control" name="po" id="po" placeholder="Po" value="<?= set_value('po'); ?>">
                                                         </div>
                                                         <div class="form-group col">
-                                                            <input type="text" class="form-control" name="pk" id="pk" placeholder="Pk" value="<?= set_value('pk'); ?>">
-                                                        </div>
-                                                        <div class="form-group col">
                                                             <input type="text" class="form-control" name="mix" id="mix" placeholder="Mix" value="<?= set_value('mix'); ?>">
                                                         </div>
                                                     </div>

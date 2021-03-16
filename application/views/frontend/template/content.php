@@ -5,11 +5,35 @@
 
             <header class="section-header">
                 <h2>JUMLAH KASUS</h2>
-                <?php $tahun = date('Y', strtotime('-1 year', strtotime(date('Y')))); ?>
-                <p>Menampilkan Data Jumlah Kasus yang Terdaftar pada Tahun <?= $tahun ?></p>
+                <p>Menampilkan Data Jumlah Kasus yang Terdaftar pada Tahun <?= $rasioM['tahun'] ?></p>
             </header>
 
+            <div class="row">
+                <div class="col-md-12 mx-auto mb-3">
+                    <form action="" method="GET">
+                        <div class="col-md-3 ml-auto">
+                            <div class="input-group mt-2">
+                                <select class="form-select" name="cari" id="cari">
+                                    <option selected disabled>--Pilih Tahun--</option>
+                                    <?php for ($y = date('Y'); $y >= 2000; $y--) : ?>
+                                        <?php if ($y == $this->input->get('cari')) : ?>
+                                            <option value="<?= $y; ?>" selected><?= $y; ?></option>
+                                        <?php else : ?>
+                                            <option value="<?= $y; ?>"><?= $y; ?></option>
+                                        <?php endif; ?>
+                                    <?php endfor; ?>
+                                </select>
+                                <div class="input-group-append">
+                                    <button class="btn btn-success" type="submit">Pilih</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
             <div class="row gy-4">
+
 
                 <div class="col-lg-4 col-md-6">
                     <div class="count-box">

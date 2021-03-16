@@ -6,7 +6,7 @@
 
                 <header class="section-header">
                     <h2><?= $judul ?></h2>
-                    <p>Menampilkan Informasi Penyakit Kusta dalam Bentuk Grafik</p>
+                    <p>Menampilkan Informasi Penyakit Kusta dalam Bentuk Grafik Tahun <?= $rasioK['tahun'] ?></p>
                 </header>
 
                 <div class="row">

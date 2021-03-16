@@ -125,9 +125,6 @@
                                                         <input type="text" class="form-control" name="po" id="po" placeholder="Po" value="<?= $kasus['po'] ?>">
                                                     </div>
                                                     <div class="form-group col">
-                                                        <input type="text" class="form-control" name="pk" id="pk" placeholder="Pk" value="<?= $kasus['pk'] ?>">
-                                                    </div>
-                                                    <div class="form-group col">
                                                         <input type="text" class="form-control" name="mix" id="mix" placeholder="Mix" value="<?= $kasus['mix'] ?>">
                                                     </div>
                                                 </div>
