@@ -6,7 +6,7 @@
 
                 <header class="section-header">
                     <h2><?= $judul ?></h2>
-                    <p>Menampilkan Informasi Penyakit DBD dalam Bentuk Grafik Tahun <?= $rasioD['tahun'] ?></p>
+                    <p>Menampilkan Informasi Penyakit DBD dalam Bentuk Grafik di Kabupaten Kayong Utara Tahun <?= $rasioD['tahun'] ?></p>
                 </header>
 
                 <div class="row">
@@ -43,31 +43,31 @@
                         <div class="col-lg-12 entries">
 
                             <article class="entry">
-                                <h2 class="entry-title">Grafik IR Kasus DBD</h2>
+                                <h2 class="entry-title text-center">GRAFIK INCIDENCE RATE DI KABUPATEN KAYONG UTARA TAHUN <?= $rasioD['tahun'] ?></h2>
                                 <div class="dropdown-divider mb-3"></div>
                                 <canvas id="ir" height="100"></canvas>
                             </article><!-- End blog entry -->
 
                             <article class="entry">
-                                <h2 class="entry-title">Grafik Jumlah Kasus DBD Berdasarkan Bulan</h2>
+                                <h2 class="entry-title text-center">GRAFIK JUMLAH KASUS DBD BERDASARKAN BULAN DI KABUPATEN KAYONG UTARA TAHUN <?= $rasioD['tahun'] ?></h2>
                                 <div class="dropdown-divider mb-3"></div>
                                 <canvas id="waktu" height="100"></canvas>
                             </article><!-- End blog entry -->
 
                             <article class="entry">
-                                <h2 class="entry-title">Grafik Jumlah Kasus DBD yang Hidup dan Meninggal</h2>
+                                <h2 class="entry-title text-center">GRAFIK KASUS DBD YANG HIDUP DAN MENINGGAL MENURUT KECAMATAN DI KABUPATEN KAYONG UTARA TAHUN <?= $rasioD['tahun'] ?></h2>
                                 <div class="dropdown-divider mb-3"></div>
                                 <canvas id="meninggal" height="100"></canvas>
                             </article><!-- End blog entry -->
 
                             <article class="entry">
-                                <h2 class="entry-title">Grafik Jumlah Kasus DBD Berdasarkan Umur</h2>
+                                <h2 class="entry-title text-center">GRAFIK KASUS DBD BERDASARKAN UMUR DI KABUPATEN KAYONG UTARA TAHUN <?= $rasioD['tahun'] ?></h2>
                                 <div class="dropdown-divider mb-3"></div>
                                 <canvas id="usiaD" height="100"></canvas>
                             </article><!-- End blog entry -->
 
                             <article class="entry">
-                                <h2 class="entry-title">Grafik Perbandingan Kasus DBD Berdasarkan Jenis Kelamin</h2>
+                                <h2 class="entry-title text-center">GRAFIK PERSENTASE KASUS DBD BERDASARKAN JENIS KELAMIN DI KABUPATEN KAYONG UTARA TAHUN <?= $rasioD['tahun'] ?></h2>
                                 <div class="dropdown-divider mb-3"></div>
                                 <canvas id="rasioDbd" height="100"></canvas>
                             </article><!-- End blog entry -->

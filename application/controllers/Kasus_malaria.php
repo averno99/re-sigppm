@@ -1,6 +1,11 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+require('./application/third_party/phpoffice/vendor/autoload.php');
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 class Kasus_malaria extends CI_Controller
 {
     public function __construct()
@@ -38,7 +43,7 @@ class Kasus_malaria extends CI_Controller
         $data['judul'] = 'Tambah Data Kasus Malaria';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['penyakit'] = $this->db->get('penyakit')->result_array();
-        $data['penduduk'] = $this->M_penduduk->cariData($keyword);
+        $data['penduduk'] = $this->M_penduduk->filterTahun($keyword);
 
         $this->form_validation->set_rules(
             'penduduk',
@@ -66,7 +71,7 @@ class Kasus_malaria extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['kasus'] = $this->M_kasusmalaria->ambilIdKasus($idKasus);
 
-        $this->form_validation->set_rules('malaria_positif', 'Jumlah Kasus Positif Malaria', 'required|trim');
+        $this->form_validation->set_rules('malaria_klinis', 'Jumlah Kasus Positif Malaria', 'required|trim');
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('backend/template/head', $data);

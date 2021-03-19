@@ -28,11 +28,14 @@
                                         <h4 class="mt-0 header-title">Data Kasus Positif Malaria</h4>
                                         <div class="dropdown-divider mb-3"></div>
                                         <div class="row mb-4">
+
                                             <div class="col-sm-6">
                                                 <a href="<?= site_url('kasus_malaria/tambah'); ?>" class="btn btn-primary mb-3 ml-3 waves-effect waves-light">
                                                     <i class="fa fa-plus pr-1"></i> Tambah
                                                 </a>
                                             </div>
+
+
                                             <div class="col-sm-6 mx-auto">
                                                 <form action="" method="GET">
                                                     <div class="col-sm-6 ml-auto">
@@ -56,17 +59,17 @@
                                             </div>
                                         </div>
 
-                                        <table id="example1" class="table table-striped table-bordered table-responsive" cellspacing="0" width="100%">
+                                        <table id="example1" class="table table-striped table-bordered table-responsive text-center" cellspacing="0" width="100%">
                                             <thead>
                                                 <tr>
                                                     <th rowspan="3">No</th>
                                                     <th rowspan="3">Tahun</th>
                                                     <th rowspan="3">Kecamatan</th>
                                                     <th rowspan="3">Suspek</th>
-                                                    <th colspan="12">Umur</th>
-                                                    <th colspan="2">Konfirmasi Lab</th>
-                                                    <th colspan="5">Jenis Parasit</th>
-                                                    <th rowspan="3">Positif</th>
+                                                    <th colspan="12">Penderita Terdaftar</th>
+                                                    <th colspan="2" rowspan="2">Konfirmasi Lab</th>
+                                                    <th colspan="5" rowspan="2">Jenis Parasit</th>
+                                                    <th rowspan="3">Total Kasus Positif</th>
                                                     <th rowspan="3">Aksi</th>
                                                 </tr>
                                                 <tr>
@@ -76,13 +79,6 @@
                                                     <th colspan="2">10-14 thn</th>
                                                     <th colspan="2">15-64 thn</th>
                                                     <th colspan="2">&gt;64 thn</th>
-                                                    <th rowspan="2">RDT</th>
-                                                    <th rowspan="2">Mikroskop</th>
-                                                    <th rowspan="2">Pf</th>
-                                                    <th rowspan="2">Pv</th>
-                                                    <th rowspan="2">Pm</th>
-                                                    <th rowspan="2">Po</th>
-                                                    <th rowspan="2">Mix</th>
                                                 </tr>
                                                 <tr>
                                                     <th>L</th>
@@ -97,6 +93,13 @@
                                                     <th>P</th>
                                                     <th>L</th>
                                                     <th>P</th>
+                                                    <th>RDT</th>
+                                                    <th>Mikroskop</th>
+                                                    <th>Pf</th>
+                                                    <th>Pv</th>
+                                                    <th>Pm</th>
+                                                    <th>Po</th>
+                                                    <th>Mix</th>
                                                 </tr>
                                             </thead>
                                             <tbody>

@@ -29,9 +29,21 @@
                                         <div class="dropdown-divider mb-3"></div>
                                         <div class="row mb-4">
 
-                                            <div class="col-sm-12 mx-auto">
+                                            <div class="offset-1 col-sm-5">
+                                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Excel
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <?php foreach ($tahun as $thn) : ?>
+                                                        <a class="dropdown-item" href="<?= site_url(''); ?>perhitungan/excel_malaria/<?= $thn['tahun'] ?>"><?= $thn['tahun'] ?></a>
+                                                    <?php endforeach; ?>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6 mx-auto">
                                                 <form action="" method="GET">
-                                                    <div class="col-sm-3 ml-auto">
+                                                    <div class="col-sm-6 ml-auto">
                                                         <div class="input-group mt-2">
                                                             <select class="custom-select" name="cari" id="cari">
                                                                 <option selected disabled>--Pilih Tahun--</option>

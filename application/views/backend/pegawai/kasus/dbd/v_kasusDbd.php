@@ -56,7 +56,7 @@
                                             </div>
                                         </div>
 
-                                        <table id="example1" class="table table-striped table-bordered table-responsive" cellspacing="0" width="100%">
+                                        <table id="example1" class="table table-striped table-bordered table-responsive text-center" cellspacing="0" width="100%">
                                             <thead>
                                                 <tr>
                                                     <th rowspan="3">No</th>
@@ -65,7 +65,7 @@
                                                     <th rowspan="3">Kecamatan</th>
                                                     <th colspan="14">Penderita Terdaftar</th>
                                                     <th rowspan="3">Meninggal</th>
-                                                    <th rowspan="3">Jumlah Kasus</th>
+                                                    <th rowspan="3">Total Kasus</th>
                                                     <th rowspan="3">Aksi</th>
                                                 </tr>
                                                 <tr>

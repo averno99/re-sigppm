@@ -11,7 +11,7 @@
                 ?>
             ],
             datasets: [{
-                    label: 'Penderita',
+                    label: 'Jumlah Kasus',
                     data: [
                         <?php foreach ($kusta as $d) {
                             $total_kasus = $d['pb'] + $d['mb'];
@@ -25,7 +25,7 @@
                     borderWidth: 1
                 },
                 {
-                    label: 'Sembuh',
+                    label: 'Kesembuhan',
                     data: [
                         <?php foreach ($kusta as $d) {
                             echo "'" . $d['sembuh'] . "',";

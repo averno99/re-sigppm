@@ -6,7 +6,7 @@
 
                 <header class="section-header">
                     <h2><?= $judul ?></h2>
-                    <p>Menampilkan Pemetaan Penyakit Malaria Berdasarkan Annual Parasite Incidence (API) pada Tahun <?= $rasioM['tahun'] ?></p>
+                    <p>Menampilkan Peta Statifikasi Malaria Menurut API Tahun <?= $rasioM['tahun'] ?></p>
                 </header>
 
                 <div class="row">
@@ -36,6 +36,15 @@
                         </div>
                     <?php else : ?>
                         <div id="mapMalaria"></div>
+                        <div class="mt-5">
+                            <p><b> Annnual Parasite Incidence (API) </b> ~ Annual Parasite Incidence merupakan jumlah penderita malaria dengan konfirmasi laboratorium positif terhadap populasi di wilayah tertentu dan waktu tertentu per 1000 penduduk.</p>
+                            <p>Legend :</p>
+                            <ul>
+                                <li>Hijau</li>
+                                <li>Kuning</li>
+                                <li>Merah</li>
+                            </ul>
+                        </div>
                     <?php endif; ?>
 
                 </div>

@@ -6,7 +6,7 @@
 
                 <header class="section-header">
                     <h2><?= $judul ?></h2>
-                    <p>Menampilkan Informasi Penyakit Kusta dalam Bentuk Grafik Tahun <?= $rasioK['tahun'] ?></p>
+                    <p>Menampilkan Informasi Penyakit Kusta dalam Bentuk Grafik di Kabupaten Kayong Utara Tahun <?= $rasioK['tahun'] ?></p>
                 </header>
 
                 <div class="row">
@@ -43,37 +43,37 @@
                         <div class="col-lg-12 entries">
 
                             <article class="entry">
-                                <h2 class="entry-title">Grafik PR Kasus Kusta</h2>
+                                <h2 class="entry-title text-center">GRAFIK PREVALENCE RATE DI KABUPATEN KAYONG UTARA <?= $rasioK['tahun'] ?></h2>
                                 <div class="dropdown-divider mb-3"></div>
                                 <canvas id="pr" height="100"></canvas>
                             </article><!-- End blog entry -->
 
                             <article class="entry">
-                                <h2 class="entry-title">Grafik CDR Kasus Kusta</h2>
+                                <h2 class="entry-title text-center">GRAFIK CASE DETECTION RATE DI KABUPATEN KAYONG UTARA <?= $rasioK['tahun'] ?></h2>
                                 <div class="dropdown-divider mb-3"></div>
                                 <canvas id="cdr" height="100"></canvas>
                             </article><!-- End blog entry -->
 
                             <article class="entry">
-                                <h2 class="entry-title">Grafik Kasus Kusta Berdasarkan Tipe Kusta</h2>
+                                <h2 class="entry-title text-center">GRAFIK KASUS KUSTA TERDAFTAR BERDASARKAN TIPE KUSTA DI KABUPATEN KAYONG UTARA TAHUN <?= $rasioK['tahun'] ?></h2>
                                 <div class="dropdown-divider mb-3"></div>
                                 <canvas id="tipeKusta" height="100"></canvas>
                             </article><!-- End blog entry -->
 
                             <article class="entry">
-                                <h2 class="entry-title">Grafik Kasus Kusta Terdaftar Berdasarkan Umur</h2>
+                                <h2 class="entry-title text-center">GRAFIK KASUS KUSTA TERDAFTAR BERDASARKAN UMUR DI KABUPATEN KAYONG UTARA TAHUN <?= $rasioK['tahun'] ?></h2>
                                 <div class="dropdown-divider mb-3"></div>
                                 <canvas id="usiaK" height="100"></canvas>
                             </article><!-- End blog entry -->
 
                             <article class="entry">
-                                <h2 class="entry-title">Grafik Jumlah Kesembuhan Penderita Kusta</h2>
+                                <h2 class="entry-title text-center">GRAFIK KASUS KUSTA TERDAFTAR YANG SEMBUH DAN CACAT MENURUT KECAMATAN DI KABUPATEN KAYONG UTARA TAHUN <?= $rasioK['tahun'] ?></h2>
                                 <div class="dropdown-divider mb-3"></div>
                                 <canvas id="sembuh" height="100"></canvas>
                             </article><!-- End blog entry -->
 
                             <article class="entry">
-                                <h2 class="entry-title">Grafik Perbandingan Kasus Kusta Berdasarkan Jenis Kelamin</h2>
+                                <h2 class="entry-title text-center">GRAFIK PERSENTASE KASUS KUSTA TERDAFTAR BERDASARKAN JENIS KELAMIN DI KABUPATEN KAYONG UTARA TAHUN <?= $rasioK['tahun'] ?></h2>
                                 <div class="dropdown-divider mb-3"></div>
                                 <canvas id="rasioKusta" height="100"></canvas>
                             </article><!-- End blog entry -->

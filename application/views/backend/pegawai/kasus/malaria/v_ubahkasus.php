@@ -41,98 +41,151 @@
                                                     <input type="text" class="form-control" name="penyakit" id="penyakit" value="<?= $kasus['penyakit'] ?>" disabled>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Suspek</label>
-                                                    <input type="text" class="form-control" name="malaria_klinis" id="malaria_klinis" placeholder="Suspek" value="<?= $kasus['malaria_klinis'] ?>">
+                                                    <label>Suspek Malaria</label>
+                                                    <input type="text" class="form-control" name="malaria_klinis" id="malaria_klinis" value="<?= $kasus['malaria_klinis'] ?>">
                                                 </div>
-
-                                                <label>Konfirmasi Laboratorium</label>
-                                                <div class="form-row mb-3">
-                                                    <div class="form-group col">
-                                                        <input type="text" class="form-control" name="rdt" id="rdt" placeholder="RDT" value="<?= $kasus['rdt'] ?>">
-                                                    </div>
-                                                    <div class="form-group col">
-                                                        <input type="text" class="form-control" name="mik" id="mik" placeholder="Mikroskop" value="<?= $kasus['mik'] ?>">
-                                                    </div>
-                                                </div>
-
-                                                <label>Usia 0 - 11 bulan</label>
-                                                <div class="form-row">
-                                                    <div class="form-group col">
-                                                        <input type="text" class="form-control" name="mal011L" id="mal011L" placeholder="Laki - Laki" value="<?= $kasus['mal011L'] ?>">
-                                                    </div>
-                                                    <div class="form-group col">
-                                                        <input type="text" class="form-control" name="mal011P" id="mal011P" placeholder="Perempuan" value="<?= $kasus['mal011P'] ?>">
-                                                    </div>
-                                                </div>
-                                                <label>Usia 1 - 4 tahun</label>
-                                                <div class="form-row">
-                                                    <div class="form-group col">
-                                                        <input type="text" class="form-control" name="mal14L" id="mal14L" placeholder="Laki - Laki" value="<?= $kasus['mal14L'] ?>">
-                                                    </div>
-                                                    <div class="form-group col">
-                                                        <input type="text" class="form-control" name="mal14P" id="mal14P" placeholder="Perempuan" value="<?= $kasus['mal14P'] ?>">
-                                                    </div>
-                                                </div>
-                                                <label>Usia 5 - 9 tahun</label>
-                                                <div class="form-row">
-                                                    <div class="form-group col">
-                                                        <input type="text" class="form-control" name="mal59L" id="mal59L" placeholder="Laki - Laki" value="<?= $kasus['mal59L'] ?>">
-                                                    </div>
-                                                    <div class="form-group col">
-                                                        <input type="text" class="form-control" name="mal59P" id="mal59P" placeholder="Perempuan" value="<?= $kasus['mal59P'] ?>">
-                                                    </div>
-                                                </div>
-                                                <label>Usia 10 - 14 tahun</label>
-                                                <div class="form-row">
-                                                    <div class="form-group col">
-                                                        <input type="text" class="form-control" name="mal1014L" id="mal1014L" placeholder="Laki - Laki" value="<?= $kasus['mal1014L'] ?>">
-                                                    </div>
-                                                    <div class="form-group col">
-                                                        <input type="text" class="form-control" name="mal1014P" id="mal1014P" placeholder="Perempuan" value="<?= $kasus['mal1014P'] ?>">
-                                                    </div>
-                                                </div>
-                                                <label>Usia 15 - 64 tahun</label>
-                                                <div class="form-row">
-                                                    <div class="form-group col">
-                                                        <input type="text" class="form-control" name="mal1564L" id="mal1564L" placeholder="Laki - Laki" value="<?= $kasus['mal1564L'] ?>">
-                                                    </div>
-                                                    <div class="form-group col">
-                                                        <input type="text" class="form-control" name="mal1564P" id="mal1564P" placeholder="Perempuan" value="<?= $kasus['mal1564P'] ?>">
-                                                    </div>
-                                                </div>
-                                                <label>Usia >64 tahun</label>
-                                                <div class="form-row mb-3">
-                                                    <div class="form-group col">
-                                                        <input type="text" class="form-control" name="mal65L" id="mal65L" placeholder="Laki - Laki" value="<?= $kasus['mal65L'] ?>">
-                                                    </div>
-                                                    <div class="form-group col">
-                                                        <input type="text" class="form-control" name="mal65P" id="mal65P" placeholder="perempuan" value="<?= $kasus['mal65P'] ?>">
-                                                    </div>
-                                                </div>
-
-                                                <label>Jenis Parasit</label>
-                                                <div class="form-row">
-                                                    <div class="form-group col">
-                                                        <input type="text" class="form-control" name="pf" id="pf" placeholder="Pf" value="<?= $kasus['pf'] ?>">
-                                                    </div>
-                                                    <div class="form-group col">
-                                                        <input type="text" class="form-control" name="pv" id="pv" placeholder="Pv" value="<?= $kasus['pv'] ?>">
-                                                    </div>
-                                                    <div class="form-group col">
-                                                        <input type="text" class="form-control" name="pm" id="pm" placeholder="Pm" value="<?= $kasus['pm'] ?>">
-                                                    </div>
-                                                    <div class="form-group col">
-                                                        <input type="text" class="form-control" name="po" id="po" placeholder="Po" value="<?= $kasus['po'] ?>">
-                                                    </div>
-                                                    <div class="form-group col">
-                                                        <input type="text" class="form-control" name="mix" id="mix" placeholder="Mix" value="<?= $kasus['mix'] ?>">
-                                                    </div>
-                                                </div>
-
                                                 <div class="form-group">
-                                                    <label for="malaria_positif">Positif</label>
-                                                    <input type="text" class="form-control" name="malaria_positif" id="malaria_positif" placeholder="Jumlah Kasus Positif Malaria" value="<?= $kasus['malaria_positif'] ?>">
+                                                    <label>Meninggal</label>
+                                                    <input type="text" class="form-control" name="meninggal" id="meninggal" value="<?= $kasus['meninggal'] ?>">
                                                 </div>
+
+                                                <h4 class="mt-5 header-title">Penderita Positif</h4>
+                                                <div class="dropdown-divider mb-3"></div>
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="card-body">
+                                                            <label>Usia 0 - 11 bulan</label>
+                                                            <div class="form-group row">
+                                                                <label for="example-text-input" class="col-form-label">L</label>
+                                                                <div class="col-sm-5">
+                                                                    <input type="text" class="form-control" name="mal011L" id="mal011L" value="<?= $kasus['mal011L'] ?>">
+                                                                </div>
+                                                                <label for="example-text-input" class="offset-sm-1 col-form-label">P</label>
+                                                                <div class="col-sm-5">
+                                                                    <input type="text" class="form-control" name="mal011P" id="mal011P" value="<?= $kasus['mal011P'] ?>">
+                                                                </div>
+                                                            </div>
+                                                            <label>Usia 1 - 4 tahun</label>
+                                                            <div class="form-group row">
+                                                                <label for="example-text-input" class="col-form-label">L</label>
+                                                                <div class="col-sm-5">
+                                                                    <input type="text" class="form-control" name="mal14L" id="mal14L" value="<?= $kasus['mal14L'] ?>">
+                                                                </div>
+                                                                <label for="example-text-input" class="offset-sm-1 col-form-label">P</label>
+                                                                <div class="col-sm-5">
+                                                                    <input type="text" class="form-control" name="mal14P" id="mal14P" value="<?= $kasus['mal14P'] ?>">
+                                                                </div>
+                                                            </div>
+                                                            <label>Usia 5 - 9 tahun</label>
+                                                            <div class="form-group row">
+                                                                <label for="example-text-input" class="col-form-label">L</label>
+                                                                <div class="col-sm-5">
+                                                                    <input type="text" class="form-control" name="mal59L" id="mal59L" value="<?= $kasus['mal59L'] ?>">
+                                                                </div>
+                                                                <label for="example-text-input" class="offset-sm-1 col-form-label">P</label>
+                                                                <div class="col-sm-5">
+                                                                    <input type="text" class="form-control" name="mal59P" id="mal59P" value="<?= $kasus['mal59P'] ?>">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="card-body">
+                                                            <label>Usia 10 - 14 tahun</label>
+                                                            <div class="form-group row">
+                                                                <label for="example-text-input" class="col-form-label">L</label>
+                                                                <div class="col-sm-5">
+                                                                    <input type="text" class="form-control" name="mal1014L" id="mal1014L" value="<?= $kasus['mal1014L'] ?>">
+                                                                </div>
+                                                                <label for="example-text-input" class="offset-sm-1 col-form-label">P</label>
+                                                                <div class="col-sm-5">
+                                                                    <input type="text" class="form-control" name="mal1014P" id="mal1014P" value="<?= $kasus['mal1014P'] ?>">
+                                                                </div>
+                                                            </div>
+                                                            <label>Usia 15 - 64 tahun</label>
+                                                            <div class="form-group row">
+                                                                <label for="example-text-input" class="col-form-label">L</label>
+                                                                <div class="col-sm-5">
+                                                                    <input type="text" class="form-control" name="mal1564L" id="mal1564L" value="<?= $kasus['mal1564L'] ?>">
+                                                                </div>
+                                                                <label for="example-text-input" class="offset-sm-1 col-form-label">P</label>
+                                                                <div class="col-sm-5">
+                                                                    <input type="text" class="form-control" name="mal1564P" id="mal1564P" value="<?= $kasus['mal1564P'] ?>">
+                                                                </div>
+                                                            </div>
+                                                            <label>Usia > 64 tahun</label>
+                                                            <div class="form-group row">
+                                                                <label for="example-text-input" class="col-form-label">L</label>
+                                                                <div class="col-sm-5">
+                                                                    <input type="text" class="form-control" name="mal65L" id="mal65L" value="<?= $kasus['mal65L'] ?>">
+                                                                </div>
+                                                                <label for="example-text-input" class="offset-sm-1 col-form-label">P</label>
+                                                                <div class="col-sm-5">
+                                                                    <input type="text" class="form-control" name="mal65P" id="mal65P" value="<?= $kasus['mal65P'] ?>">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <h4 class="mt-5 header-title">Konfirmasi Laboratorium</h4>
+                                                <div class="dropdown-divider mb-3"></div>
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="card-body">
+                                                            <div class="form-group row">
+                                                                <label for="example-text-input" class="col-form-label">RDT</label>
+                                                                <div class="col-sm-4">
+                                                                    <input type="text" class="form-control" name="rdt" id="rdt" value="<?= $kasus['rdt'] ?>">
+                                                                </div>
+                                                                <label for="example-text-input" class="offset-sm-1 col-form-label">Mikroskop</label>
+                                                                <div class="col-sm-4">
+                                                                    <input type="text" class="form-control" name="mik" id="mik" value="<?= $kasus['mik']; ?>">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <h4 class="mt-5 header-title">Jenis Parasit</h4>
+                                                <div class="dropdown-divider mb-3"></div>
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="card-body">
+                                                            <div class="form-group row">
+                                                                <label for="example-text-input" class="col-form-label">Pf</label>
+                                                                <div class="col-sm-3">
+                                                                    <input type="text" class="form-control" name="pf" id="pf" value="<?= $kasus['pf']; ?>">
+                                                                </div>
+                                                                <label for="example-text-input" class="offset-sm-1 col-form-label">Pv</label>
+                                                                <div class="col-sm-3">
+                                                                    <input type="text" class="form-control" name="pv" id="pv" value="<?= $kasus['pv']; ?>">
+                                                                </div>
+                                                                <label for="example-text-input" class="offset-sm-1 col-form-label">Pm</label>
+                                                                <div class="col-sm-3">
+                                                                    <input type="text" class="form-control" name="pm" id="pm" value="<?= $kasus['pm']; ?>">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="card-body">
+                                                            <div class="form-group row">
+                                                                <label for="example-text-input" class="col-form-label">Po</label>
+                                                                <div class="col-sm-3">
+                                                                    <input type="text" class="form-control" name="po" id="po" value="<?= $kasus['po']; ?>">
+                                                                </div>
+                                                                <label for="example-text-input" class="offset-sm-1 col-form-label">Mix</label>
+                                                                <div class="col-sm-3">
+                                                                    <input type="text" class="form-control" name="mix" id="mix" value="<?= $kasus['mix']; ?>">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                             </div>
                                             <div class="ml-4">
                                                 <a href="<?= site_url('kasus_malaria'); ?>" type="button" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-reply"></i> Kembali</a>

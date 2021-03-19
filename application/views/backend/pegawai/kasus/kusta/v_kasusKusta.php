@@ -56,14 +56,14 @@
                                             </div>
                                         </div>
 
-                                        <table id="example1" class="table table-striped table-bordered table-responsive" cellspacing="0" width="100%">
+                                        <table id="example1" class="table table-striped table-bordered table-responsive text-center" cellspacing="0" width="100%">
                                             <thead>
                                                 <tr>
                                                     <th rowspan="4">No</th>
                                                     <th rowspan="4">Tahun</th>
                                                     <th rowspan="4">Kecamatan</th>
                                                     <th colspan="25">Penderita Terdaftar</th>
-                                                    <th colspan="2">Kasus Baru</th>
+                                                    <th colspan="2" rowspan="3">Kasus Baru</th>
                                                     <th rowspan="4">Aksi</th>
                                                 </tr>
                                                 <tr>
@@ -73,9 +73,7 @@
                                                     <th colspan="4">36-45 thn</th>
                                                     <th colspan="4">46-55 thn</th>
                                                     <th colspan="4">&gt;56 thn</th>
-                                                    <th rowspan="3">Total</th>
-                                                    <th rowspan="3">PB</th>
-                                                    <th rowspan="3">MB</th>
+                                                    <th rowspan="3">Total Kasus</th>
                                                 </tr>
                                                 <tr>
                                                     <th colspan="2">PB</th>
@@ -116,6 +114,8 @@
                                                     <th>P</th>
                                                     <th>L</th>
                                                     <th>P</th>
+                                                    <th>PB</th>
+                                                    <th>MB</th>
                                                 </tr>
                                             </thead>
                                             <tbody>

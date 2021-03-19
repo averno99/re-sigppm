@@ -343,7 +343,7 @@
         data: {
             labels: ['0 - 11 bln', '1 - 4 th', '5 - 9 th', '10 - 14 th', '15 - 64 th', '> 64 th'],
             datasets: [{
-                label: 'Usia',
+                label: 'Jumlah Kasus',
                 data: [
                     '<?= $usiaM['mal011']; ?>',
                     '<?= $usiaM['mal14']; ?>',

@@ -36,6 +36,17 @@ class M_penduduk extends CI_model
         return $query;
     }
 
+    public function filterTahun($keyword)
+    {
+        $query = $this->db->select('jumlah, tahun, nama, jumlah_penduduk.id, idKecamatan')
+            ->from('jumlah_penduduk')
+            ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')
+            ->where('tahun', $keyword)
+            ->order_by('tahun, kecamatan.nama')
+            ->get()->result_array();
+        return $query;
+    }
+
     public function cariKecamatan()
     {
         $keyword = $this->input->get('kecamatan');

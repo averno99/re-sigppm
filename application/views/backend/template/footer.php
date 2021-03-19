@@ -73,10 +73,10 @@
 
 <!-- Datatables -->
 <script>
-    $(function() {
-        $("#example1").DataTable({
-            "responsive": false,
-            "autoWidth": false,
+    $(document).ready(function() {
+        $('#example1').DataTable({
+            responsive: false,
+            autoWidth: false,
             "language": {
                 "sEmptyTable": "Tidak ada data yang tersedia pada tabel ini",
                 "sProcessing": "Sedang memproses...",
