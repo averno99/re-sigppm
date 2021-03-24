@@ -46,7 +46,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Meninggal</label>
-                                                    <input type="text" class="form-control" name="meninggal" id="meninggal" value="<?= $kasus['meninggal'] ?>">
+                                                    <input type="text" class="form-control" name="meninggal" id="meninggal" value="<?= $kasus['malaria_meninggal'] ?>">
                                                 </div>
 
                                                 <h4 class="mt-5 header-title">Penderita Positif</h4>

@@ -123,7 +123,8 @@
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Hapus Data!'
+            confirmButtonText: 'Hapus Data!',
+            cancelButtonText: 'Batal'
         }).then((result) => {
             if (result.value) {
                 document.location.href = href;

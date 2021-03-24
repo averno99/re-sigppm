@@ -15,7 +15,7 @@
                     data: [
                         <?php foreach ($apiM as $d) {
                             $total_kasus = $d['malaria_positif'];
-                            $meninggal = $d['meninggal'];
+                            $meninggal = $d['malaria_meninggal'];
                             $hidup = $total_kasus - $meninggal;
 
                             echo "'" . $hidup . "',";
@@ -30,7 +30,7 @@
                     label: 'Mati',
                     data: [
                         <?php foreach ($apiM as $d) {
-                            echo "'" . $d['meninggal'] . "',";
+                            echo "'" . $d['malaria_meninggal'] . "',";
                         }
                         ?>
                     ],
@@ -345,12 +345,12 @@
             datasets: [{
                 label: 'Jumlah Kasus',
                 data: [
-                    '<?= $usiaM['mal011']; ?>',
-                    '<?= $usiaM['mal14']; ?>',
-                    '<?= $usiaM['mal59']; ?>',
-                    '<?= $usiaM['mal1014']; ?>',
-                    '<?= $usiaM['mal1564']; ?>',
-                    '<?= $usiaM['mal65']; ?>'
+                    '<?= $rasioM['mal011']; ?>',
+                    '<?= $rasioM['mal14']; ?>',
+                    '<?= $rasioM['mal59']; ?>',
+                    '<?= $rasioM['mal1014']; ?>',
+                    '<?= $rasioM['mal1564']; ?>',
+                    '<?= $rasioM['mal65']; ?>'
                 ],
                 backgroundColor: 'yellow',
                 borderColor: 'yellow',

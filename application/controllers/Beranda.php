@@ -10,15 +10,15 @@ class Beranda extends CI_Controller
         $this->load->model('M_kasuskusta');
         $this->load->model('M_penyakit');
 
-        $data['rasioM'] = $this->M_kasusmalaria->rasioMalaria();
-        $data['rasioK'] = $this->M_kasuskusta->rasioKusta();
-        $data['rasioD'] = $this->M_kasusdbd->rasioDbd();
+        $data['rasioM'] = $this->M_kasusmalaria->rasioMalaria()->row_array();
+        $data['rasioK'] = $this->M_kasuskusta->rasioKusta()->row_array();
+        $data['rasioD'] = $this->M_kasusdbd->rasioDbd()->row_array();
         $data['penyakit'] = $this->M_penyakit->ambilSemuaPenyakit();
 
         if ($this->input->get('cari')) {
-            $data['rasioM'] = $this->M_kasusmalaria->cariRasioMalaria();
-            $data['rasioK'] = $this->M_kasuskusta->cariRasioKusta();
-            $data['rasioD'] = $this->M_kasusdbd->cariRasioDbd();
+            $data['rasioM'] = $this->M_kasusmalaria->cariRasioMalaria()->row_array();
+            $data['rasioK'] = $this->M_kasuskusta->cariRasioKusta()->row_array();
+            $data['rasioD'] = $this->M_kasusdbd->cariRasioDbd()->row_array();
             $data['penyakit'] = $this->M_penyakit->ambilSemuaPenyakit();
         }
 
@@ -35,13 +35,13 @@ class Beranda extends CI_Controller
         $this->load->model('M_kecamatan');
 
         $data['judul'] = 'Pemetaan Malaria';
-        $data['pemetaan'] = $this->M_kasusmalaria->ambilPetaMalaria();
-        $data['rasioM'] = $this->M_kasusmalaria->rasioMalaria();
+        $data['pemetaan'] = $this->M_kasusmalaria->dataMalaria()->result_array();
+        $data['rasioM'] = $this->M_kasusmalaria->rasioMalaria()->row_array();
         $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
 
         if ($this->input->get('cari')) {
-            $data['pemetaan'] = $this->M_kasusmalaria->cariPerhitunganMalaria();
-            $data['rasioM'] = $this->M_kasusmalaria->cariRasioMalaria();
+            $data['pemetaan'] = $this->M_kasusmalaria->cariDataMalaria()->result_array();
+            $data['rasioM'] = $this->M_kasusmalaria->cariRasioMalaria()->row_array();
             $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
         }
 
@@ -56,14 +56,12 @@ class Beranda extends CI_Controller
         $this->load->model('M_kasusmalaria');
 
         $data['judul'] = 'Grafik Malaria';
-        $data['rasioM'] = $this->M_kasusmalaria->rasioMalaria();
-        $data['apiM'] = $this->M_kasusmalaria->dataMalaria();
-        $data['usiaM'] = $this->M_kasusmalaria->usiaMalaria();
+        $data['rasioM'] = $this->M_kasusmalaria->rasioMalaria()->row_array();
+        $data['apiM'] = $this->M_kasusmalaria->dataMalaria()->result_array();
 
         if ($this->input->get('cari')) {
-            $data['rasioM'] = $this->M_kasusmalaria->cariRasioMalaria();
-            $data['apiM'] = $this->M_kasusmalaria->cariDataMalaria();
-            $data['usiaM'] = $this->M_kasusmalaria->cariUsiaMalaria();
+            $data['rasioM'] = $this->M_kasusmalaria->cariRasioMalaria()->row_array();
+            $data['apiM'] = $this->M_kasusmalaria->cariDataMalaria()->result_array();
         }
 
         $this->load->view('frontend/template/head');
@@ -78,13 +76,13 @@ class Beranda extends CI_Controller
         $this->load->model('M_kecamatan');
 
         $data['judul'] = 'Pemetaan DBD';
-        $data['pemetaan'] = $this->M_kasusdbd->ambilPetaDBD();
-        $data['rasioD'] = $this->M_kasusdbd->rasioDbd();
+        $data['pemetaan'] = $this->M_kasusdbd->ambilPetaDBD()->result_array();
+        $data['rasioD'] = $this->M_kasusdbd->rasioDbd()->row_array();
         $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
 
         if ($this->input->get('cari')) {
-            $data['pemetaan'] = $this->M_kasusdbd->cariPerhitunganDBD();
-            $data['rasioD'] = $this->M_kasusdbd->cariRasioDbd();
+            $data['pemetaan'] = $this->M_kasusdbd->cariPerhitunganDBD()->result_array();
+            $data['rasioD'] = $this->M_kasusdbd->cariRasioDbd()->row_array();
             $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
         }
 
@@ -99,16 +97,14 @@ class Beranda extends CI_Controller
         $this->load->model('M_kasusdbd');
 
         $data['judul'] = 'Grafik DBD';
-        $data['irDbd'] = $this->M_kasusdbd->ambilPetaDBD();
-        $data['rasioD'] = $this->M_kasusdbd->rasioDbd();
-        $data['usiaD'] = $this->M_kasusdbd->usiaDbd();
-        $data['waktuDbd'] = $this->M_kasusdbd->waktuDbd();
+        $data['irDbd'] = $this->M_kasusdbd->ambilPetaDBD()->result_array();
+        $data['rasioD'] = $this->M_kasusdbd->rasioDbd()->row_array();
+        $data['waktuDbd'] = $this->M_kasusdbd->waktuDbd()->result_array();
 
         if ($this->input->get('cari')) {
-            $data['irDbd'] = $this->M_kasusdbd->cariPerhitunganDBD();
-            $data['rasioD'] = $this->M_kasusdbd->cariRasioDbd();
-            $data['usiaD'] = $this->M_kasusdbd->cariUsiaDbd();
-            $data['waktuDbd'] = $this->M_kasusdbd->cariWaktuDbd();
+            $data['irDbd'] = $this->M_kasusdbd->cariPerhitunganDBD()->result_array();
+            $data['rasioD'] = $this->M_kasusdbd->cariRasioDbd()->row_array();
+            $data['waktuDbd'] = $this->M_kasusdbd->cariWaktuDbd()->result_array();
         }
 
         $this->load->view('frontend/template/head');
@@ -123,13 +119,13 @@ class Beranda extends CI_Controller
         $this->load->model('M_kecamatan');
 
         $data['judul'] = 'Pemetaan Kusta';
-        $data['pemetaan'] = $this->M_kasuskusta->ambilPetaKusta();
-        $data['rasioK'] = $this->M_kasuskusta->rasioKusta();
+        $data['pemetaan'] = $this->M_kasuskusta->ambilPetaKusta()->result_array();
+        $data['rasioK'] = $this->M_kasuskusta->rasioKusta()->row_array();
         $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
 
         if ($this->input->get('cari')) {
-            $data['pemetaan'] = $this->M_kasuskusta->cariPerhitunganKusta();
-            $data['rasioK'] = $this->M_kasuskusta->cariRasioKusta();
+            $data['pemetaan'] = $this->M_kasuskusta->cariDataKusta()->result_array();
+            $data['rasioK'] = $this->M_kasuskusta->cariRasioKusta()->row_array();
             $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
         }
 
@@ -144,14 +140,12 @@ class Beranda extends CI_Controller
         $this->load->model('M_kasuskusta');
 
         $data['judul'] = 'Grafik Kusta';
-        $data['rasioK'] = $this->M_kasuskusta->rasioKusta();
-        $data['usiaK'] = $this->M_kasuskusta->usiaKusta();
-        $data['kusta'] = $this->M_kasuskusta->ambilPetaKusta();
+        $data['rasioK'] = $this->M_kasuskusta->rasioKusta()->row_array();
+        $data['kusta'] = $this->M_kasuskusta->ambilPetaKusta()->result_array();
 
         if ($this->input->get('cari')) {
-            $data['rasioK'] = $this->M_kasuskusta->cariRasioKusta();
-            $data['usiaK'] = $this->M_kasuskusta->cariUsiaKusta();
-            $data['kusta'] = $this->M_kasuskusta->cariPerhitunganKusta();
+            $data['rasioK'] = $this->M_kasuskusta->cariRasioKusta()->row_array();
+            $data['kusta'] = $this->M_kasuskusta->cariDataKusta()->result_array();
         }
 
         $this->load->view('frontend/template/head');

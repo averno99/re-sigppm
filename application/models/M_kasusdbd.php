@@ -18,7 +18,7 @@ class M_kasusdbd extends CI_model
             ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')
             ->join('penyakit', 'kasus_dbd.idPenyakit = penyakit.id')
             ->order_by('jumlah_penduduk.tahun, penyakit.penyakit, kecamatan.nama')
-            ->get()->result_array();
+            ->get();
         return $query;
     }
 
@@ -40,7 +40,7 @@ class M_kasusdbd extends CI_model
             ->join('penyakit', 'kasus_dbd.idPenyakit = penyakit.id')
             ->where('tahun', $keyword)
             ->order_by('jumlah_penduduk.tahun, penyakit.penyakit, kecamatan.nama')
-            ->get()->result_array();
+            ->get();
         return $query;
     }
 
@@ -53,7 +53,7 @@ class M_kasusdbd extends CI_model
             ->join('penyakit', 'kasus_dbd.idPenyakit = penyakit.id')
             ->where('kasus_dbd.id', $idKasus)
             ->order_by('jumlah_penduduk.tahun, penyakit.penyakit, kecamatan.nama')
-            ->get()->row_array();
+            ->get();
         return $query;
     }
 
@@ -70,7 +70,7 @@ class M_kasusdbd extends CI_model
             ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')
             ->join('penyakit', 'kasus_dbd.idPenyakit = penyakit.id')
             ->order_by('jumlah_penduduk.tahun, penyakit.penyakit, kecamatan.nama')
-            ->get()->result_array();
+            ->get();
         return $query;
     }
 
@@ -89,7 +89,7 @@ class M_kasusdbd extends CI_model
             ->join('penyakit', 'kasus_dbd.idPenyakit = penyakit.id')
             ->where('tahun', $tahun)
             ->order_by('jumlah_penduduk.tahun, penyakit.penyakit, kecamatan.nama')
-            ->get()->result_array();
+            ->get();
         return $query;
     }
 
@@ -108,7 +108,7 @@ class M_kasusdbd extends CI_model
             ->join('penyakit', 'kasus_dbd.idPenyakit = penyakit.id')
             ->where('tahun', $keyword)
             ->order_by('jumlah_penduduk.tahun, penyakit.penyakit, kecamatan.nama')
-            ->get()->result_array();
+            ->get();
         return $query;
     }
 
@@ -125,7 +125,7 @@ class M_kasusdbd extends CI_model
             ->join('penyakit', 'kasus_dbd.idPenyakit = penyakit.id')
             ->where('tahun', $tahun)
             ->order_by('jumlah_penduduk.tahun, penyakit.penyakit, kecamatan.nama')
-            ->get()->result_array();
+            ->get();
         return $query;
     }
 
@@ -142,7 +142,7 @@ class M_kasusdbd extends CI_model
             ->join('penyakit', 'kasus_dbd.idPenyakit = penyakit.id')
             ->where('tahun', $keyword)
             ->order_by('jumlah_penduduk.tahun, penyakit.penyakit, kecamatan.nama')
-            ->get()->result_array();
+            ->get();
         return $query;
     }
 
@@ -157,14 +157,22 @@ class M_kasusdbd extends CI_model
 
         SUM(dbd1P + dbd14P + dbd59P + dbd1014P + dbd1519P + dbd2044P + dbd45P) as totalP,
 
-        SUM(dbd_meninggal) as dbd_meninggal')
+        SUM(dbd_meninggal) as dbd_meninggal,
+        
+        SUM(dbd1L + dbd1P) as dbd1,
+        SUM(dbd14L + dbd14P) as dbd14,
+        SUM(dbd59L + dbd59P) as dbd59,
+        SUM(dbd1014L + dbd1014P) as dbd1014,
+        SUM(dbd1519L + dbd1519P) as dbd1519,
+        SUM(dbd2044L + dbd2044P) as dbd2044,
+        SUM(dbd45L + dbd45P) as dbd45')
             ->from('kasus_dbd')
             ->join('jumlah_penduduk', 'kasus_dbd.idPenduduk = jumlah_penduduk.id')
             ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')
             ->join('penyakit', 'kasus_dbd.idPenyakit = penyakit.id')
             ->where('tahun', $tahun)
             ->order_by('jumlah_penduduk.tahun, penyakit.penyakit, kecamatan.nama')
-            ->get()->row_array();
+            ->get();
         return $query;
     }
 
@@ -179,42 +187,8 @@ class M_kasusdbd extends CI_model
 
         SUM(dbd1P + dbd14P + dbd59P + dbd1014P + dbd1519P + dbd2044P + dbd45P) as totalP,
 
-        SUM(dbd_meninggal) as dbd_meninggal')
-            ->from('kasus_dbd')
-            ->join('jumlah_penduduk', 'kasus_dbd.idPenduduk = jumlah_penduduk.id')
-            ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')
-            ->join('penyakit', 'kasus_dbd.idPenyakit = penyakit.id')
-            ->where('tahun', $keyword)
-            ->order_by('jumlah_penduduk.tahun, penyakit.penyakit, kecamatan.nama')
-            ->get()->row_array();
-        return $query;
-    }
-
-    public function usiaDbd()
-    {
-        $tahun = date('Y', strtotime('-1 year', strtotime(date('Y'))));
-        $query = $this->db->select('bulan, tahun, nama, jumlah_penduduk.jumlah as jumlahPenduduk,
-        SUM(dbd1L + dbd1P) as dbd1,
-        SUM(dbd14L + dbd14P) as dbd14,
-        SUM(dbd59L + dbd59P) as dbd59,
-        SUM(dbd1014L + dbd1014P) as dbd1014,
-        SUM(dbd1519L + dbd1519P) as dbd1519,
-        SUM(dbd2044L + dbd2044P) as dbd2044,
-        SUM(dbd45L + dbd45P) as dbd45')
-            ->from('kasus_dbd')
-            ->join('jumlah_penduduk', 'kasus_dbd.idPenduduk = jumlah_penduduk.id')
-            ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')
-            ->join('penyakit', 'kasus_dbd.idPenyakit = penyakit.id')
-            ->where('tahun', $tahun)
-            ->order_by('jumlah_penduduk.tahun, penyakit.penyakit, kecamatan.nama')
-            ->get()->row_array();
-        return $query;
-    }
-
-    public function cariUsiaDbd()
-    {
-        $keyword = $this->input->get('cari');
-        $query = $this->db->select('bulan, tahun, nama, jumlah_penduduk.jumlah as jumlahPenduduk,
+        SUM(dbd_meninggal) as dbd_meninggal,
+        
         SUM(dbd1L + dbd1P) as dbd1,
         SUM(dbd14L + dbd14P) as dbd14,
         SUM(dbd59L + dbd59P) as dbd59,
@@ -228,7 +202,7 @@ class M_kasusdbd extends CI_model
             ->join('penyakit', 'kasus_dbd.idPenyakit = penyakit.id')
             ->where('tahun', $keyword)
             ->order_by('jumlah_penduduk.tahun, penyakit.penyakit, kecamatan.nama')
-            ->get()->row_array();
+            ->get();
         return $query;
     }
 

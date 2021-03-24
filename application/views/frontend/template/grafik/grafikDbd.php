@@ -174,13 +174,13 @@
             datasets: [{
                 label: 'Jumlah Kasus',
                 data: [
-                    '<?= $usiaD['dbd1']; ?>',
-                    '<?= $usiaD['dbd14']; ?>',
-                    '<?= $usiaD['dbd59']; ?>',
-                    '<?= $usiaD['dbd1014']; ?>',
-                    '<?= $usiaD['dbd1519']; ?>',
-                    '<?= $usiaD['dbd2044']; ?>',
-                    '<?= $usiaD['dbd45']; ?>'
+                    '<?= $rasioD['dbd1']; ?>',
+                    '<?= $rasioD['dbd14']; ?>',
+                    '<?= $rasioD['dbd59']; ?>',
+                    '<?= $rasioD['dbd1014']; ?>',
+                    '<?= $rasioD['dbd1519']; ?>',
+                    '<?= $rasioD['dbd2044']; ?>',
+                    '<?= $rasioD['dbd45']; ?>'
                 ],
                 backgroundColor: 'yellow',
                 borderColor: 'yellow',

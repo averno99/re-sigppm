@@ -33,7 +33,7 @@
                     </div>
                 </div>
 
-                <?php if (empty($rasioK && $usiaK && $kusta)) : ?>
+                <?php if (empty($rasioK && $kusta)) : ?>
                     <div class="alert alert-danger col-sm-12" role="alert">
                         Data tidak ditemukan.
                     </div>

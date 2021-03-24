@@ -69,6 +69,7 @@
                                                     <th colspan="12">Penderita Terdaftar</th>
                                                     <th colspan="2" rowspan="2">Konfirmasi Lab</th>
                                                     <th colspan="5" rowspan="2">Jenis Parasit</th>
+                                                    <th rowspan="3">Meninggal</th>
                                                     <th rowspan="3">Total Kasus Positif</th>
                                                     <th rowspan="3">Aksi</th>
                                                 </tr>
@@ -130,6 +131,7 @@
                                                         <td><?= $kps['pm']; ?></td>
                                                         <td><?= $kps['po']; ?></td>
                                                         <td><?= $kps['mix']; ?></td>
+                                                        <td><?= $kps['malaria_meninggal']; ?></td>
                                                         <td><?= $kps['malaria_positif']; ?></td>
                                                         <td>
                                                             <div class="btn-group">

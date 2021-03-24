@@ -1,11 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-require('./application/third_party/phpoffice/vendor/autoload.php');
-
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
-
 class Kasus_malaria extends CI_Controller
 {
     public function __construct()
@@ -22,10 +17,10 @@ class Kasus_malaria extends CI_Controller
     {
         $data['judul'] = 'Kelola Jumlah Kasus Malaria';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['kasus'] = $this->M_kasusmalaria->ambilKasusMalaria();
+        $data['kasus'] = $this->M_kasusmalaria->ambilKasusMalaria()->result_array();
 
         if ($this->input->get('cari')) {
-            $data['kasus'] = $this->M_kasusmalaria->cariDataMalaria();
+            $data['kasus'] = $this->M_kasusmalaria->cariDataMalaria()->result_array();
         }
 
         $this->load->view('backend/template/head', $data);
@@ -69,7 +64,7 @@ class Kasus_malaria extends CI_Controller
     {
         $data['judul'] = 'Ubah Data Kasus Malaria';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['kasus'] = $this->M_kasusmalaria->ambilIdKasus($idKasus);
+        $data['kasus'] = $this->M_kasusmalaria->ambilIdKasus($idKasus)->row_array();
 
         $this->form_validation->set_rules('malaria_klinis', 'Jumlah Kasus Positif Malaria', 'required|trim');
 

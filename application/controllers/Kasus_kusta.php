@@ -17,10 +17,10 @@ class Kasus_kusta extends CI_Controller
     {
         $data['judul'] = 'Kelola Jumlah Kasus Kusta';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['kasus'] = $this->M_kasuskusta->ambilKasusKusta();
+        $data['kasus'] = $this->M_kasuskusta->ambilKasusKusta()->result_array();
 
         if ($this->input->get('cari')) {
-            $data['kasus'] = $this->M_kasuskusta->cariDataKusta();
+            $data['kasus'] = $this->M_kasuskusta->cariDataKusta()->result_array();
         }
 
         $this->load->view('backend/template/head', $data);
@@ -64,7 +64,7 @@ class Kasus_kusta extends CI_Controller
     {
         $data['judul'] = 'Ubah Data Kasus Kusta';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['kasus'] = $this->M_kasuskusta->ambilIdKasus($idKasus);
+        $data['kasus'] = $this->M_kasuskusta->ambilIdKasus($idKasus)->row_array();
 
         $this->form_validation->set_rules('pb', 'PB Kusta', 'required|trim');
         $this->form_validation->set_rules('mb', 'MB Kusta', 'required|trim');

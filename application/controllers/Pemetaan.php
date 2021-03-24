@@ -18,11 +18,11 @@ class Pemetaan extends CI_Controller
 
         $data['judul'] = 'Pemetaan Malaria';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['pemetaan'] = $this->M_kasusmalaria->ambilPetaMalaria();
+        $data['pemetaan'] = $this->M_kasusmalaria->dataMalaria()->result_array();
         $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
 
         if ($this->input->get('cari')) {
-            $data['pemetaan'] = $this->M_kasusmalaria->cariPerhitunganMalaria();
+            $data['pemetaan'] = $this->M_kasusmalaria->cariDataMalaria()->result_array();
             $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
         }
 
@@ -40,11 +40,11 @@ class Pemetaan extends CI_Controller
 
         $data['judul'] = 'Pemetaan DBD';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['pemetaan'] = $this->M_kasusdbd->ambilPetaDBD();
+        $data['pemetaan'] = $this->M_kasusdbd->ambilPetaDBD()->result_array();
         $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
 
         if ($this->input->get('cari')) {
-            $data['pemetaan'] = $this->M_kasusdbd->cariPerhitunganDBD();
+            $data['pemetaan'] = $this->M_kasusdbd->cariPerhitunganDBD()->result_array();
             $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
         }
 
@@ -62,11 +62,11 @@ class Pemetaan extends CI_Controller
 
         $data['judul'] = 'Pemetaan Kusta';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['pemetaan'] = $this->M_kasuskusta->ambilPetaKusta();
+        $data['pemetaan'] = $this->M_kasuskusta->ambilPetaKusta()->result_array();
         $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
 
         if ($this->input->get('cari')) {
-            $data['pemetaan'] = $this->M_kasuskusta->cariPerhitunganKusta();
+            $data['pemetaan'] = $this->M_kasuskusta->cariDataKusta()->result_array();
             $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
         }
 

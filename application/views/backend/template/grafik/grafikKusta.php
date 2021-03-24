@@ -258,12 +258,12 @@
             datasets: [{
                     label: 'PB',
                     data: [
-                        '<?= $usiaK['kus15PB']; ?>',
-                        '<?= $usiaK['kus1625PB']; ?>',
-                        '<?= $usiaK['kus2635PB']; ?>',
-                        '<?= $usiaK['kus3645PB']; ?>',
-                        '<?= $usiaK['kus4655PB']; ?>',
-                        '<?= $usiaK['kus56PB']; ?>'
+                        '<?= $rasioK['kus15PB']; ?>',
+                        '<?= $rasioK['kus1625PB']; ?>',
+                        '<?= $rasioK['kus2635PB']; ?>',
+                        '<?= $rasioK['kus3645PB']; ?>',
+                        '<?= $rasioK['kus4655PB']; ?>',
+                        '<?= $rasioK['kus56PB']; ?>'
                     ],
                     backgroundColor: 'blue',
                     borderColor: 'blue',
@@ -272,12 +272,12 @@
                 {
                     label: 'MB',
                     data: [
-                        '<?= $usiaK['kus15MB']; ?>',
-                        '<?= $usiaK['kus1625MB']; ?>',
-                        '<?= $usiaK['kus2635MB']; ?>',
-                        '<?= $usiaK['kus3645MB']; ?>',
-                        '<?= $usiaK['kus4655MB']; ?>',
-                        '<?= $usiaK['kus56MB']; ?>'
+                        '<?= $rasioK['kus15MB']; ?>',
+                        '<?= $rasioK['kus1625MB']; ?>',
+                        '<?= $rasioK['kus2635MB']; ?>',
+                        '<?= $rasioK['kus3645MB']; ?>',
+                        '<?= $rasioK['kus4655MB']; ?>',
+                        '<?= $rasioK['kus56MB']; ?>'
                     ],
                     backgroundColor: 'yellow',
                     borderColor: 'yellow',

@@ -22,12 +22,12 @@ class Perhitungan extends CI_Controller
 
         $data['judul'] = 'Kelola Perhitungan Malaria';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['kasus'] = $this->M_kasusmalaria->perhitunganMalaria();
-        $data['tahun'] = $this->M_kasusmalaria->ambilTahun();
+        $data['kasus'] = $this->M_kasusmalaria->ambilKasusMalaria()->result_array();
+        $data['tahun'] = $this->M_kasusmalaria->ambilTahun()->result_array();
 
         if ($this->input->get('cari')) {
-            $data['kasus'] = $this->M_kasusmalaria->cariPerhitunganMalaria();
-            $data['tahun'] = $this->M_kasusmalaria->ambilTahun();
+            $data['kasus'] = $this->M_kasusmalaria->cariDataMalaria()->result_array();
+            $data['tahun'] = $this->M_kasusmalaria->ambilTahun()->result_array();
         }
 
         $this->load->view('backend/template/head', $data);
@@ -42,8 +42,8 @@ class Perhitungan extends CI_Controller
         $this->load->model('M_kasusmalaria');
 
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $kasus = $this->M_kasusmalaria->exportMalaria($tahun);
-        $tahun = $this->M_kasusmalaria->ambilCariTahun($tahun);
+        $kasus = $this->M_kasusmalaria->exportMalaria($tahun)->result();
+        $tahun = $this->M_kasusmalaria->ambilCariTahun($tahun)->row();
 
 
 
@@ -202,7 +202,7 @@ class Perhitungan extends CI_Controller
                 ->setCellValue('Z' . $kolom, $kss->pm)
                 ->setCellValue('AA' . $kolom, $kss->po)
                 ->setCellValue('AB' . $kolom, $kss->mix)
-                ->setCellValue('AC' . $kolom, $kss->meninggal)
+                ->setCellValue('AC' . $kolom, $kss->malaria_meninggal)
                 ->setCellValue('AD' . $kolom, number_format($ami, 2))
                 ->setCellValue('AE' . $kolom, number_format($api, 2));
 
@@ -256,10 +256,10 @@ class Perhitungan extends CI_Controller
 
         $data['judul'] = 'Kelola Perhitungan Kusta';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['kasus'] = $this->M_kasuskusta->perhitunganKusta();
+        $data['kasus'] = $this->M_kasuskusta->ambilKasusKusta()->result_array();
 
         if ($this->input->get('cari')) {
-            $data['kasus'] = $this->M_kasuskusta->cariPerhitunganKusta();
+            $data['kasus'] = $this->M_kasuskusta->cariDataKusta()->result_array();
         }
 
         $this->load->view('backend/template/head', $data);
@@ -274,10 +274,10 @@ class Perhitungan extends CI_Controller
         $this->load->model('M_kasusdbd');
         $data['judul'] = 'Kelola Perhitungan DBD';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['kasus'] = $this->M_kasusdbd->perhitunganDBD();
+        $data['kasus'] = $this->M_kasusdbd->perhitunganDBD()->result_array();
 
         if ($this->input->get('cari')) {
-            $data['kasus'] = $this->M_kasusdbd->cariPerhitunganDBD();
+            $data['kasus'] = $this->M_kasusdbd->cariPerhitunganDBD()->result_array();
         }
 
         $this->load->view('backend/template/head', $data);

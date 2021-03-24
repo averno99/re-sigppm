@@ -53,7 +53,7 @@
                 </div>
             </div>
 
-            <?php if (empty($rasioM && $apiM && $usiaM)) : ?>
+            <?php if (empty($rasioM && $apiM)) : ?>
                 <div class="alert alert-danger col-sm-12" role="alert">
                     Data tidak ditemukan.
                 </div>

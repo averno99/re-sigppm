@@ -17,10 +17,10 @@ class Kasus_dbd extends CI_Controller
     {
         $data['judul'] = 'Kelola Jumlah Kasus DBD';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['kasus'] = $this->M_kasusdbd->ambilKasusDBD();
+        $data['kasus'] = $this->M_kasusdbd->ambilKasusDBD()->result_array();
 
         if ($this->input->get('cari')) {
-            $data['kasus'] = $this->M_kasusdbd->cariDataDBD();
+            $data['kasus'] = $this->M_kasusdbd->cariDataDBD()->result_array();
         }
 
         $this->load->view('backend/template/head', $data);
@@ -70,7 +70,7 @@ class Kasus_dbd extends CI_Controller
     {
         $data['judul'] = 'Ubah Data Kasus DBD';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['kasus'] = $this->M_kasusdbd->ambilIdKasus($idKasus);
+        $data['kasus'] = $this->M_kasusdbd->ambilIdKasus($idKasus)->row_array();
 
         $this->form_validation->set_rules('jumlah', 'Jumlah Kasus Positif DBD', 'required|trim');
 
