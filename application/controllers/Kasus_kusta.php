@@ -15,7 +15,7 @@ class Kasus_kusta extends CI_Controller
 
     public function index()
     {
-        $data['judul'] = 'Kelola Jumlah Kasus Kusta';
+        $data['judul'] = 'Kelola Data Kasus Kusta';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['kasus'] = $this->M_kasuskusta->ambilKasusKusta()->result_array();
 

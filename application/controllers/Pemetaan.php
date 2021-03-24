@@ -16,7 +16,7 @@ class Pemetaan extends CI_Controller
         $this->load->model('M_kasusmalaria');
         $this->load->model('M_kecamatan');
 
-        $data['judul'] = 'Pemetaan Malaria';
+        $data['judul'] = 'Pemetaan Kasus Malaria';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['pemetaan'] = $this->M_kasusmalaria->dataMalaria()->result_array();
         $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
@@ -38,7 +38,7 @@ class Pemetaan extends CI_Controller
         $this->load->model('M_kasusdbd');
         $this->load->model('M_kecamatan');
 
-        $data['judul'] = 'Pemetaan DBD';
+        $data['judul'] = 'Pemetaan Kasus DBD';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['pemetaan'] = $this->M_kasusdbd->ambilPetaDBD()->result_array();
         $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
@@ -60,7 +60,7 @@ class Pemetaan extends CI_Controller
         $this->load->model('M_kasuskusta');
         $this->load->model('M_kecamatan');
 
-        $data['judul'] = 'Pemetaan Kusta';
+        $data['judul'] = 'Pemetaan Kasus Kusta';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['pemetaan'] = $this->M_kasuskusta->ambilPetaKusta()->result_array();
         $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();

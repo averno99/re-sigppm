@@ -7,8 +7,8 @@
                     <div class="page-title-box">
                         <div class="btn-group float-right">
                             <ol class="breadcrumb hide-phone p-0 m-0">
-                                <li class="breadcrumb-item">Beranda</li>
-                                <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                                <li class="breadcrumb-item"><a href="<?= site_url('dashboard') ?>">Dashboard</a></li>
+                                <li class="breadcrumb-item">Grafik Kusta</li>
                             </ol>
                         </div>
                         <h4 class="page-title"><?= $judul ?></h4>

@@ -35,6 +35,18 @@
                     backgroundColor: 'yellow',
                     borderColor: 'yellow',
                     borderWidth: 1
+                },
+                {
+                    label: 'Cacat Tk2',
+                    data: [
+                        <?php foreach ($kusta as $d) {
+                            echo "'" . $d['cacat'] . "',";
+                        }
+                        ?>
+                    ],
+                    backgroundColor: 'blue',
+                    borderColor: 'blue',
+                    borderWidth: 1
                 }
             ]
         },

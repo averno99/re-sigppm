@@ -1,13 +1,3 @@
-<!-- <li class="menu-title">EDITED</li>
-<li class="has_sub">
-    <a href="#" class="waves-effect"><i class="mdi mdi-account"></i> <span> User </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
-    <ul class="list-unstyled">
-        <li><a href="<?= site_url('profil') ?>">Profil</a></li>
-        <li><a href="<?= site_url('profil/ubah') ?>">Ubah Profil</a></li>
-     
-    </ul>
-</li> -->
-
 <li class="menu-title">MENU</li>
 <li>
     <a href="<?= site_url('penduduk') ?>" class="waves-effect">
@@ -15,14 +5,9 @@
         <span> Jumlah Penduduk </span>
     </a>
 </li>
-<!-- <li>
-    <a href="<?= site_url('kasus') ?>" class="waves-effect">
-        <i class="mdi mdi-hospital"></i>
-        <span> Kasus Positif </span>
-    </a>
-</li> -->
+
 <li class="has_sub">
-    <a href="#" class="waves-effect"><i class="mdi mdi-hospital"></i> <span> Kasus Positif </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+    <a href="#" class="waves-effect"><i class="mdi mdi-hospital"></i> <span> Kasus </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
     <ul class="list-unstyled">
         <li><a href="<?= site_url('kasus_malaria') ?>">Malaria</a></li>
     </ul>
@@ -34,12 +19,6 @@
     </ul>
 </li>
 
-<!-- <li>
-    <a href="<?= site_url('perhitungan') ?>" class="waves-effect">
-        <i class="mdi mdi-calculator"></i>
-        <span> Perhitungan </span>
-    </a>
-</li> -->
 <li class="has_sub">
     <a href="#" class="waves-effect"><i class="mdi mdi-calculator"></i> <span> Perhitungan </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
     <ul class="list-unstyled">

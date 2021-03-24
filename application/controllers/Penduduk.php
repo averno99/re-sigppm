@@ -17,7 +17,7 @@ class Penduduk extends CI_Controller
     {
         $this->load->model('M_kecamatan');
 
-        $data['judul'] = 'Kelola Jumlah Penduduk';
+        $data['judul'] = 'Kelola Data Jumlah Penduduk';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['penduduk'] = $this->M_penduduk->ambilSemuaPenduduk();
         $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
@@ -29,25 +29,6 @@ class Penduduk extends CI_Controller
             $data['penduduk'] = $this->M_penduduk->cariKecamatan();
             $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
         }
-
-        $this->load->view('backend/template/head', $data);
-        $this->load->view('backend/template/sidebar');
-        $this->load->view('backend/template/topbar', $data);
-        $this->load->view('backend/pegawai/penduduk/v_penduduk', $data);
-        $this->load->view('backend/template/footer');
-    }
-
-    public function cari()
-    {
-        $this->load->model('M_kecamatan');
-
-        $keyword = $this->input->post('cari');
-        $keyword2 = $this->input->post('kecamatan');
-
-        $data['judul'] = 'Kelola Jumlah Penduduk';
-        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
-        $data['penduduk'] = $this->M_penduduk->cariData($keyword);
 
         $this->load->view('backend/template/head', $data);
         $this->load->view('backend/template/sidebar');
@@ -78,7 +59,7 @@ class Penduduk extends CI_Controller
     public function tambah()
     {
 
-        $data['judul'] = 'Tambah Data Penduduk';
+        $data['judul'] = 'Tambah Data Jumlah Penduduk';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['kecamatan'] = $this->db->get('kecamatan')->result_array();
 
@@ -99,7 +80,7 @@ class Penduduk extends CI_Controller
 
     public function ubah($idPenduduk)
     {
-        $data['judul'] = 'Ubah Data Penduduk';
+        $data['judul'] = 'Ubah Data Jumlah Penduduk';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['penduduk'] = $this->M_penduduk->ambilIdPenduduk($idPenduduk);
         $data['kecamatan'] = $this->db->get('kecamatan')->result_array();

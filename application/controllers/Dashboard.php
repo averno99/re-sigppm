@@ -45,7 +45,7 @@ class Dashboard extends CI_Controller
     {
         $this->load->model('M_kasusmalaria');
 
-        $data['judul'] = 'Dashboard Malaria';
+        $data['judul'] = 'Grafik Malaria';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['rasioM'] = $this->M_kasusmalaria->rasioMalaria()->row_array();
         $data['apiM'] = $this->M_kasusmalaria->dataMalaria()->result_array();
@@ -66,7 +66,7 @@ class Dashboard extends CI_Controller
     {
         $this->load->model('M_kasuskusta');
 
-        $data['judul'] = 'Dashboard Kusta';
+        $data['judul'] = 'Grafik Kusta';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['rasioK'] = $this->M_kasuskusta->rasioKusta()->row_array();
         $data['kusta'] = $this->M_kasuskusta->ambilPetaKusta()->result_array();
@@ -87,7 +87,7 @@ class Dashboard extends CI_Controller
     {
         $this->load->model('M_kasusdbd');
 
-        $data['judul'] = 'Dashboard DBD';
+        $data['judul'] = 'Grafik DBD';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['irDbd'] = $this->M_kasusdbd->ambilPetaDBD()->result_array();
         $data['rasioD'] = $this->M_kasusdbd->rasioDbd()->row_array();

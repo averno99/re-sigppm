@@ -15,7 +15,7 @@ class Kasus_dbd extends CI_Controller
 
     public function index()
     {
-        $data['judul'] = 'Kelola Jumlah Kasus DBD';
+        $data['judul'] = 'Kelola Data Kasus DBD';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['kasus'] = $this->M_kasusdbd->ambilKasusDBD()->result_array();
 

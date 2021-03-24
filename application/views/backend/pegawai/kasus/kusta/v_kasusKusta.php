@@ -11,8 +11,8 @@
                                 <div class="page-title-box">
                                     <div class="btn-group float-right">
                                         <ol class="breadcrumb hide-phone p-0 m-0">
-                                            <li class="breadcrumb-item">Beranda</li>
-                                            <li class="breadcrumb-item active">Data Kasus Positif</li>
+                                            <li class="breadcrumb-item active">Kelola Data Kasus</li>
+                                            <li class="breadcrumb-item">Kelola Data Kasus Kusta</li>
                                         </ol>
                                     </div>
                                     <h4 class="page-title"><?= $judul ?></h4>
@@ -25,7 +25,7 @@
                             <div class="col-lg-12 col-sm-12">
                                 <div class="card m-b-30">
                                     <div class="card-body table-responsive">
-                                        <h4 class="mt-0 header-title">Data Kasus Positif Kusta</h4>
+                                        <h4 class="mt-0 header-title">Data Kasus Kusta</h4>
                                         <div class="dropdown-divider mb-3"></div>
                                         <div class="row mb-4">
                                             <div class="col-sm-6">
@@ -76,44 +76,44 @@
                                                     <th rowspan="3">Total Kasus</th>
                                                 </tr>
                                                 <tr>
-                                                    <th colspan="2">PB</th>
-                                                    <th colspan="2">MB</th>
-                                                    <th colspan="2">PB</th>
-                                                    <th colspan="2">MB</th>
-                                                    <th colspan="2">PB</th>
-                                                    <th colspan="2">MB</th>
-                                                    <th colspan="2">PB</th>
-                                                    <th colspan="2">MB</th>
-                                                    <th colspan="2">PB</th>
-                                                    <th colspan="2">MB</th>
-                                                    <th colspan="2">PB</th>
-                                                    <th colspan="2">MB</th>
+                                                    <th colspan="2">L</th>
+                                                    <th colspan="2">P</th>
+                                                    <th colspan="2">L</th>
+                                                    <th colspan="2">P</th>
+                                                    <th colspan="2">L</th>
+                                                    <th colspan="2">P</th>
+                                                    <th colspan="2">L</th>
+                                                    <th colspan="2">P</th>
+                                                    <th colspan="2">L</th>
+                                                    <th colspan="2">P</th>
+                                                    <th colspan="2">L</th>
+                                                    <th colspan="2">P</th>
                                                 </tr>
                                                 <tr>
-                                                    <th>L</th>
-                                                    <th>P</th>
-                                                    <th>L</th>
-                                                    <th>P</th>
-                                                    <th>L</th>
-                                                    <th>P</th>
-                                                    <th>L</th>
-                                                    <th>P</th>
-                                                    <th>L</th>
-                                                    <th>P</th>
-                                                    <th>L</th>
-                                                    <th>P</th>
-                                                    <th>L</th>
-                                                    <th>P</th>
-                                                    <th>L</th>
-                                                    <th>P</th>
-                                                    <th>L</th>
-                                                    <th>P</th>
-                                                    <th>L</th>
-                                                    <th>P</th>
-                                                    <th>L</th>
-                                                    <th>P</th>
-                                                    <th>L</th>
-                                                    <th>P</th>
+                                                    <th>PB</th>
+                                                    <th>MB</th>
+                                                    <th>PB</th>
+                                                    <th>MB</th>
+                                                    <th>PB</th>
+                                                    <th>MB</th>
+                                                    <th>PB</th>
+                                                    <th>MB</th>
+                                                    <th>PB</th>
+                                                    <th>MB</th>
+                                                    <th>PB</th>
+                                                    <th>MB</th>
+                                                    <th>PB</th>
+                                                    <th>MB</th>
+                                                    <th>PB</th>
+                                                    <th>MB</th>
+                                                    <th>PB</th>
+                                                    <th>MB</th>
+                                                    <th>PB</th>
+                                                    <th>MB</th>
+                                                    <th>PB</th>
+                                                    <th>MB</th>
+                                                    <th>PB</th>
+                                                    <th>MB</th>
                                                     <th>PB</th>
                                                     <th>MB</th>
                                                 </tr>
@@ -127,28 +127,28 @@
                                                         <td><?= $kps['tahun']; ?></td>
                                                         <td><?= $kps['nama']; ?></td>
                                                         <td><?= $kps['kus15LPB']; ?></td>
-                                                        <td><?= $kps['kus15PPB']; ?></td>
                                                         <td><?= $kps['kus15LMB']; ?></td>
+                                                        <td><?= $kps['kus15PPB']; ?></td>
                                                         <td><?= $kps['kus15PMB']; ?></td>
                                                         <td><?= $kps['kus1625LPB']; ?></td>
-                                                        <td><?= $kps['kus1625PPB']; ?></td>
                                                         <td><?= $kps['kus1625LMB']; ?></td>
+                                                        <td><?= $kps['kus1625PPB']; ?></td>
                                                         <td><?= $kps['kus1625PMB']; ?></td>
                                                         <td><?= $kps['kus2635LPB']; ?></td>
-                                                        <td><?= $kps['kus2635PPB']; ?></td>
                                                         <td><?= $kps['kus2635LMB']; ?></td>
+                                                        <td><?= $kps['kus2635PPB']; ?></td>
                                                         <td><?= $kps['kus2635PMB']; ?></td>
                                                         <td><?= $kps['kus3645LPB']; ?></td>
-                                                        <td><?= $kps['kus3645PPB']; ?></td>
                                                         <td><?= $kps['kus3645LMB']; ?></td>
+                                                        <td><?= $kps['kus3645PPB']; ?></td>
                                                         <td><?= $kps['kus3645PMB']; ?></td>
                                                         <td><?= $kps['kus4655LPB']; ?></td>
-                                                        <td><?= $kps['kus4655PPB']; ?></td>
                                                         <td><?= $kps['kus4655LMB']; ?></td>
+                                                        <td><?= $kps['kus4655PPB']; ?></td>
                                                         <td><?= $kps['kus4655PMB']; ?></td>
                                                         <td><?= $kps['kus56LPB']; ?></td>
-                                                        <td><?= $kps['kus56PPB']; ?></td>
                                                         <td><?= $kps['kus56LMB']; ?></td>
+                                                        <td><?= $kps['kus56PPB']; ?></td>
                                                         <td><?= $kps['kus56PMB']; ?></td>
                                                         <td><?= $kps['kus_total']; ?></td>
                                                         <td><?= $kps['kusta_baruPB']; ?></td>

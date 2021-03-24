@@ -37,6 +37,71 @@ class M_kasuskusta extends CI_model
         return $query;
     }
 
+    public function exportKusta($tahun)
+    {
+        $query = $this->db->select('penyakit, tahun, nama, kasus_kusta.id, jumlah_penduduk.jumlah as jumlahPenduduk,
+        kus15LMB, kus15PMB, kus15LPB, kus15PPB,
+        kus1625LMB, kus1625PMB, kus1625LPB, kus1625PPB, 
+        kus2635LMB, kus2635PMB, kus2635LPB, kus2635PPB,
+        kus3645LMB, kus3645PMB, kus3645LPB, kus3645PPB, 
+        kus4655LMB, kus4655PMB, kus4655LPB, kus4655PPB,
+        kus56LMB, kus56PMB, kus56LPB, kus56PPB,
+        
+        (kus15LMB + kus15PMB + kus15LPB + kus15PPB +
+        kus1625LMB + kus1625PMB + kus1625LPB + kus1625PPB +
+        kus2635LMB + kus2635PMB + kus2635LPB + kus2635PPB +
+        kus3645LMB + kus3645PMB + kus3645LPB + kus3645PPB + 
+        kus4655LMB + kus4655PMB + kus4655LPB + kus4655PPB +
+        kus56LMB + kus56PMB + kus56LPB + kus56PPB) as kus_total,
+        
+        kusta_baruPB, kusta_baruMB, sembuhPB, sembuhMB, cacatPB, cacatMB,
+        
+        (kus15LMB + kus15PMB + kus1625LMB + kus1625PMB + kus2635LMB + kus2635PMB + 
+        kus3645LMB + kus3645PMB + kus4655LMB + kus4655PMB + kus56LMB + kus56PMB) as mb,
+
+        (kus15LPB + kus15PPB + kus1625LPB + kus1625PPB + kus2635LPB + kus2635PPB +
+        kus3645LPB + kus3645PPB + kus4655LPB + kus4655PPB + kus56LPB + kus56PPB) as pb,
+        
+        (kusta_baruPB + kusta_baruMB) as kasus_baru,
+        (sembuhPB + sembuhMB) as sembuh,
+        (cacatPB + cacatMB) as cacat')
+            ->from('kasus_kusta')
+            ->join('jumlah_penduduk', 'kasus_kusta.idPenduduk = jumlah_penduduk.id')
+            ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')
+            ->join('penyakit', 'kasus_kusta.idPenyakit = penyakit.id')
+            ->where('tahun', $tahun)
+            ->order_by('jumlah_penduduk.tahun, penyakit.penyakit, kecamatan.nama')
+            ->get();
+        return $query;
+    }
+
+    public function ambilTahun()
+    {
+        $query = $this->db->select('tahun')
+            ->from('kasus_kusta')
+            ->group_by('tahun')
+            ->join('jumlah_penduduk', 'kasus_kusta.idPenduduk = jumlah_penduduk.id')
+            ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')
+            ->join('penyakit', 'kasus_kusta.idPenyakit = penyakit.id')
+            ->order_by('jumlah_penduduk.tahun')
+            ->get();
+        return $query;
+    }
+
+    public function ambilCariTahun($tahun)
+    {
+        $query = $this->db->select('tahun')
+            ->from('kasus_kusta')
+            ->group_by('tahun')
+            ->join('jumlah_penduduk', 'kasus_kusta.idPenduduk = jumlah_penduduk.id')
+            ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')
+            ->join('penyakit', 'kasus_kusta.idPenyakit = penyakit.id')
+            ->where('tahun', $tahun)
+            ->order_by('jumlah_penduduk.tahun')
+            ->get();
+        return $query;
+    }
+
     public function cariDataKusta()
     {
         $keyword = $this->input->get('cari');
@@ -63,7 +128,8 @@ class M_kasuskusta extends CI_model
         kus3645LPB + kus3645PPB + kus4655LPB + kus4655PPB + kus56LPB + kus56PPB) as pb,
         
         (kusta_baruPB + kusta_baruMB) as kasus_baru,
-        (sembuhPB + sembuhMB) as sembuh')
+        (sembuhPB + sembuhMB) as sembuh,
+        (cacatPB + cacatMB) as cacat')
             ->from('kasus_kusta')
             ->join('jumlah_penduduk', 'kasus_kusta.idPenduduk = jumlah_penduduk.id')
             ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')
@@ -85,7 +151,8 @@ class M_kasuskusta extends CI_model
         kus3645LPB + kus3645PPB + kus4655LPB + kus4655PPB + kus56LPB + kus56PPB) as pb,
         
         (kusta_baruPB + kusta_baruMB) as kasus_baru,
-        (sembuhPB + sembuhMB) as sembuh')
+        (sembuhPB + sembuhMB) as sembuh,
+        (cacatPB + cacatMB) as cacat')
             ->from('kasus_kusta')
             ->join('jumlah_penduduk', 'kasus_kusta.idPenduduk = jumlah_penduduk.id')
             ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')

@@ -7,8 +7,7 @@
                     <div class="page-title-box">
                         <div class="btn-group float-right">
                             <ol class="breadcrumb hide-phone p-0 m-0">
-                                <li class="breadcrumb-item">Beranda</li>
-                                <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                                <li class="breadcrumb-item">Dashboard</li>
                             </ol>
                         </div>
                         <h4 class="page-title"><?= $judul ?></h4>
@@ -75,7 +74,7 @@
                                         <div class="m-l-10">
                                             <h5 class="mt-0 round-inner text-danger"><?= $rasioM['mal_positif'] ?></h5>
                                             <p class="mb-0 text-muted">Kasus Malaria di Tahun <?= $rasioM['tahun'] ?></p>
-                                            <a href="<?= site_url('dashboard/dash_malaria'); ?>" type="button" class="btn btn-primary">Info..</a>
+                                            <a href="<?= site_url('dashboard/dash_malaria'); ?>"><span>Lebih Lanjut</span> <i class="mdi mdi-arrow-right mt-3"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -97,7 +96,7 @@
                                         <div class="m-l-10 ">
                                             <h5 class="mt-0 round-inner text-danger"><?= $rasioD['jumlah_kasus'] ?></h5>
                                             <p class="mb-0 text-muted">Kasus DBD di Tahun <?= $rasioD['tahun'] ?></p>
-                                            <a href="<?= site_url('dashboard/dash_dbd'); ?>" type="button" class="btn btn-primary">Info..</a>
+                                            <a href="<?= site_url('dashboard/dash_dbd'); ?>"><span>Lebih Lanjut</span> <i class="mdi mdi-arrow-right mt-3"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -122,7 +121,7 @@
                                             ?>
                                             <h5 class="mt-0 round-inner text-danger"><?= $total ?></h5>
                                             <p class="mb-0 text-muted">Kasus Kusta di Tahun <?= $rasioK['tahun'] ?></p>
-                                            <a href="<?= site_url('dashboard/dash_kusta'); ?>" type="button" class="btn btn-primary">Info..</a>
+                                            <a href="<?= site_url('dashboard/dash_kusta'); ?>"><span>Lebih Lanjut</span> <i class="mdi mdi-arrow-right mt-3"></i></a>
                                         </div>
                                     </div>
                                 </div>

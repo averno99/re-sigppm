@@ -15,7 +15,7 @@ class Kasus_malaria extends CI_Controller
 
     public function index()
     {
-        $data['judul'] = 'Kelola Jumlah Kasus Malaria';
+        $data['judul'] = 'Kelola Data Kasus Malaria';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['kasus'] = $this->M_kasusmalaria->ambilKasusMalaria()->result_array();
 

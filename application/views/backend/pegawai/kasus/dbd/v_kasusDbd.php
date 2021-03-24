@@ -11,8 +11,8 @@
                                 <div class="page-title-box">
                                     <div class="btn-group float-right">
                                         <ol class="breadcrumb hide-phone p-0 m-0">
-                                            <li class="breadcrumb-item">Beranda</li>
-                                            <li class="breadcrumb-item active">Data Kasus Positif</li>
+                                            <li class="breadcrumb-item active">Kelola Data Kasus</li>
+                                            <li class="breadcrumb-item">Kelola Data Kasus DBD</li>
                                         </ol>
                                     </div>
                                     <h4 class="page-title"><?= $judul ?></h4>
@@ -25,7 +25,7 @@
                             <div class="col-lg-12 col-sm-12">
                                 <div class="card m-b-30">
                                     <div class="card-body table-responsive">
-                                        <h4 class="mt-0 header-title">Data Kasus Positif DBD</h4>
+                                        <h4 class="mt-0 header-title">Data Kasus DBD</h4>
                                         <div class="dropdown-divider mb-3"></div>
                                         <div class="row mb-4">
                                             <div class="col-sm-6">

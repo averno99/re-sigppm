@@ -7,12 +7,12 @@
                                 <div class="page-title-box">
                                     <div class="btn-group float-right">
                                         <ol class="breadcrumb hide-phone p-0 m-0">
-                                            <li class="breadcrumb-item">Beranda</li>
-                                            <li class="breadcrumb-item"><a href="<?= site_url('kasus_dbd') ?>">Data Kasus Positif DBD</a></li>
-                                            <li class="breadcrumb-item active"><?= $judul ?></li>
+                                            <li class="breadcrumb-item active">Kelola Data Kasus</li>
+                                            <li class="breadcrumb-item"><a href="<?= site_url('kasus_dbd') ?>">Kelola Data Kasus DBD</a></li>
+                                            <li class="breadcrumb-item"><?= $judul ?></li>
                                         </ol>
                                     </div>
-                                    <h4 class="page-title"><?= $judul ?></h4>
+                                    <h4 class=" page-title"><?= $judul ?></h4>
                                 </div>
                             </div>
                         </div>

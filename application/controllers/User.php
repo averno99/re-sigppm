@@ -30,7 +30,7 @@ class User extends CI_Controller
 
     public function lihat($idUser)
     {
-        $data['judul'] = 'Kelola Data User';
+        $data['judul'] = 'Lihat Data User';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['users'] = $this->M_user->ambilIdUser($idUser);
 

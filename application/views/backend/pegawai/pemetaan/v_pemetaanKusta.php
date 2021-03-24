@@ -7,8 +7,8 @@
                                 <div class="page-title-box">
                                     <div class="btn-group float-right">
                                         <ol class="breadcrumb hide-phone p-0 m-0">
-                                            <li class="breadcrumb-item">Beranda</li>
                                             <li class="breadcrumb-item active">Pemetaan</li>
+                                            <li class="breadcrumb-item"><?= $judul ?></li>
                                         </ol>
                                     </div>
                                     <h4 class="page-title"><?= $judul ?></h4>
@@ -20,7 +20,7 @@
                             <div class="col-lg-12 col-sm-12">
                                 <div class="card m-b-30">
                                     <div class="card-body">
-                                        <h4 class="mt-0 header-title">Pemetaan</h4>
+                                        <h4 class="mt-0 header-title">Pemetaan Kasus Kusta</h4>
                                         <div class="dropdown-divider mb-3"></div>
                                         <div class="mx-auto mb-3">
                                             <form action="" method="GET">

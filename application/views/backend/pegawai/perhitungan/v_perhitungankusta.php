@@ -11,8 +11,8 @@
                                 <div class="page-title-box">
                                     <div class="btn-group float-right">
                                         <ol class="breadcrumb hide-phone p-0 m-0">
-                                            <li class="breadcrumb-item">Beranda</li>
-                                            <li class="breadcrumb-item active">Data Kasus Positif</li>
+                                            <li class="breadcrumb-item active">Kelola Data Kasus</li>
+                                            <li class="breadcrumb-item"><?= $judul ?></li>
                                         </ol>
                                     </div>
                                     <h4 class="page-title"><?= $judul ?></h4>
@@ -25,13 +25,25 @@
                             <div class="col-lg-12 col-sm-12">
                                 <div class="card m-b-30">
                                     <div class="card-body table-responsive">
-                                        <h4 class="mt-0 header-title">Data Kasus Positif Kusta</h4>
+                                        <h4 class="mt-0 header-title">Data Kasus Kusta</h4>
                                         <div class="dropdown-divider mb-3"></div>
                                         <div class="row mb-4">
 
-                                            <div class="col-sm-12 mx-auto">
+                                            <div class="offset-1 col-sm-5">
+                                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Excel
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <?php foreach ($tahun as $thn) : ?>
+                                                        <a class="dropdown-item" href="<?= site_url(''); ?>perhitungan/excel_kusta/<?= $thn['tahun'] ?>"><?= $thn['tahun'] ?></a>
+                                                    <?php endforeach; ?>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6 mx-auto">
                                                 <form action="" method="GET">
-                                                    <div class="col-sm-3 ml-auto">
+                                                    <div class="col-sm-6 ml-auto">
                                                         <div class="input-group mt-2">
                                                             <select class="custom-select" name="cari" id="cari">
                                                                 <option selected disabled>--Pilih Tahun--</option>

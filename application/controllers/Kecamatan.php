@@ -30,7 +30,7 @@ class Kecamatan extends CI_Controller
 
     public function lihat($idKecamatan)
     {
-        $data['judul'] = 'Kelola Data Kecamatan';
+        $data['judul'] = 'Lihat Data Kecamatan';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['kecamatan'] = $this->M_kecamatan->ambilIdKecamatan($idKecamatan);
 
