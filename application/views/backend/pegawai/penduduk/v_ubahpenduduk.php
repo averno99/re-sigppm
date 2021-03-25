@@ -30,7 +30,7 @@
                                                 <div class="form-group">
                                                     <label for="tahun">Tahun</label>
                                                     <select class="form-control" name="tahun" id="tahun">
-                                                        <?php for ($y = date('Y'); $y >= 1990; $y--) : ?>
+                                                        <?php for ($y = date('Y'); $y >= 2000; $y--) : ?>
                                                             <?php if ($y == $penduduk['tahun']) : ?>
                                                                 <option value="<?= $y; ?>" selected><?= $y; ?></option>
                                                             <?php else : ?>

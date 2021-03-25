@@ -206,7 +206,6 @@ class M_kasusmalaria extends CI_model
     public function ubahKasus()
     {
         $data = [
-            "idPenduduk" => $this->input->post('penduduk', true),
             "malaria_klinis" => $this->input->post('malaria_klinis', true),
             "malaria_meninggal" => $this->input->post('meninggal', true),
             "mal011L" => $this->input->post('mal011L', true),

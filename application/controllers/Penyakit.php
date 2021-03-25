@@ -34,7 +34,12 @@ class Penyakit extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['penyakit'] = $this->M_penyakit->ambilIdPenyakit($idPenyakit);
 
-        $this->form_validation->set_rules('keterangan', 'Keterangan penyakit', 'required|trim');
+        $this->form_validation->set_rules(
+            'keterangan',
+            'Keterangan penyakit',
+            'required|trim',
+            array('required' => 'Keterangan penyakit tidak boleh kosong')
+        );
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('backend/template/head', $data);

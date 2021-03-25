@@ -46,8 +46,18 @@ class Kecamatan extends CI_Controller
         $data['judul'] = 'Tambah Data Kecamatan';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
 
-        $this->form_validation->set_rules('nama', 'Nama kecamatan', 'required|trim');
-        $this->form_validation->set_rules('keterangan', 'Keterangan kecamatan', 'required|trim');
+        $this->form_validation->set_rules(
+            'nama',
+            'Nama kecamatan',
+            'required|trim',
+            array('required' => 'Nama kecamatan tidak boleh kosong')
+        );
+        $this->form_validation->set_rules(
+            'keterangan',
+            'Keterangan kecamatan',
+            'required|trim',
+            array('required' => 'Keterangan kecamatan tidak boleh kosong')
+        );
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('backend/template/head', $data);
@@ -86,8 +96,18 @@ class Kecamatan extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['kecamatan'] = $this->M_kecamatan->ambilIdKecamatan($idKecamatan);
 
-        $this->form_validation->set_rules('nama', 'Nama kecamatan', 'required|trim');
-        $this->form_validation->set_rules('keterangan', 'Keterangan kecamatan', 'required|trim');
+        $this->form_validation->set_rules(
+            'nama',
+            'Nama kecamatan',
+            'required|trim',
+            array('required' => 'Nama kecamatan tidak boleh kosong')
+        );
+        $this->form_validation->set_rules(
+            'keterangan',
+            'Keterangan kecamatan',
+            'required|trim',
+            array('required' => 'Keterangan kecamatan tidak boleh kosong')
+        );
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('backend/template/head', $data);

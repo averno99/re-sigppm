@@ -63,7 +63,27 @@ class Penduduk extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['kecamatan'] = $this->db->get('kecamatan')->result_array();
 
-        $this->form_validation->set_rules('jumlah', 'Jumlah Penduduk', 'required|trim');
+        $this->form_validation->set_rules(
+            'tahun',
+            'Tahun',
+            'required|trim',
+            array('required' => 'Tahun tidak boleh kosong')
+        );
+        $this->form_validation->set_rules(
+            'kecamatan',
+            'Kecamatan',
+            'required|trim|callback_kecamatan_check',
+            array('required' => 'Kecamatan tidak boleh kosong')
+        );
+        $this->form_validation->set_rules(
+            'jumlah',
+            'Jumlah Penduduk',
+            'required|trim|numeric',
+            array(
+                'required' => 'Jumlah penduduk tidak boleh kosong',
+                'numeric' => 'Jumlah penduduk harus angka'
+            )
+        );
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('backend/template/head', $data);
@@ -78,6 +98,18 @@ class Penduduk extends CI_Controller
         }
     }
 
+    function kecamatan_check()
+    {
+        $post = $this->input->post(NULL, TRUE);
+        $query = $this->db->query("SELECT * FROM jumlah_penduduk WHERE tahun = '$post[tahun]' AND idKecamatan = '$post[kecamatan]'");
+        if ($query->num_rows() > 0) {
+            $this->form_validation->set_message('kecamatan_check', 'Data sudah ada');
+            return FALSE;
+        } else {
+            return TRUE;
+        }
+    }
+
     public function ubah($idPenduduk)
     {
         $data['judul'] = 'Ubah Data Jumlah Penduduk';
@@ -85,7 +117,15 @@ class Penduduk extends CI_Controller
         $data['penduduk'] = $this->M_penduduk->ambilIdPenduduk($idPenduduk);
         $data['kecamatan'] = $this->db->get('kecamatan')->result_array();
 
-        $this->form_validation->set_rules('jumlah', 'Jumlah Penduduk', 'required|trim');
+        $this->form_validation->set_rules(
+            'jumlah',
+            'Jumlah Penduduk',
+            'required|trim|numeric',
+            array(
+                'required' => 'Jumlah penduduk tidak boleh kosong',
+                'numeric' => 'Jumlah penduduk harus angka'
+            )
+        );
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('backend/template/head', $data);

@@ -30,9 +30,9 @@ class M_user extends CI_model
     public function ubahUser()
     {
         $data = [
-            'username' => $this->input->post('username', true),
-            'nama' => $this->input->post('nama', true),
-            'alamat' => $this->input->post('alamat', true),
+
+            'nama' => htmlspecialchars($this->input->post('nama', true)),
+            'alamat' => htmlspecialchars($this->input->post('alamat', true)),
             'levelUser' => $this->input->post('levelUser', true),
             'status' => $this->input->post('status', true)
         ];

@@ -47,24 +47,44 @@ class User extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['levelUser'] = ['Admin', 'Pegawai'];
 
-        $this->form_validation->set_rules('nama', 'Nama user', 'required|trim');
-        $this->form_validation->set_rules('username', 'Username', 'required|trim|is_unique[user.username]');
+        $this->form_validation->set_rules(
+            'nama',
+            'Nama user',
+            'required|trim',
+            array('required' => 'Nama user tidak boleh kosong')
+        );
+        $this->form_validation->set_rules(
+            'username',
+            'Username',
+            'required|trim|is_unique[user.username]|min_length[5]',
+            array(
+                'required' => 'Username tidak boleh kosong',
+                'is_unique' => 'Username telah digunakan',
+                'min_length' => 'Mohon masukkan username minimal 5 karakter'
+            )
+        );
         $this->form_validation->set_rules(
             'password1',
             'Password',
             'required|trim|min_length[4]|max_length[16]',
             array(
                 'min_length' => 'Mohon masukkan password dengan 4 - 16 karakter',
-                'max_length' => 'Mohon masukkan password dengan 4 - 16 karakter'
+                'max_length' => 'Mohon masukkan password dengan 4 - 16 karakter',
+                'required' => 'Password tidak boleh kosong'
             )
         );
         $this->form_validation->set_rules(
             'password2',
             'Ulangi password',
-            'required|trim|matches[password1]',
+            'trim|matches[password1]',
             array('matches' => 'Password tidak sesuai.')
         );
-        $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
+        $this->form_validation->set_rules(
+            'alamat',
+            'Alamat',
+            'required|trim',
+            array('required' => 'Alamat tidak boleh kosong')
+        );
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('backend/template/head', $data);
@@ -109,8 +129,18 @@ class User extends CI_Controller
         $data['levelUser'] = ['Admin', 'Pegawai'];
         $data['status'] = ['Aktif', 'Tidak Aktif'];
 
-        $this->form_validation->set_rules('nama', 'Nama user', 'required|trim');
-        $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
+        $this->form_validation->set_rules(
+            'nama',
+            'Nama user',
+            'required|trim',
+            array('required' => 'Nama user tidak boleh kosong')
+        );
+        $this->form_validation->set_rules(
+            'alamat',
+            'Alamat',
+            'required|trim',
+            array('required' => 'Alamat tidak boleh kosong')
+        );
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('backend/template/head', $data);

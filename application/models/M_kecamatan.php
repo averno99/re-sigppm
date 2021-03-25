@@ -11,9 +11,9 @@ class M_kecamatan extends CI_model
     public function tambahKecamatan($upload_geojson)
     {
         $data = [
-            "nama" => $this->input->post('nama', true),
-            "keterangan" => $this->input->post('keterangan', true),
-            "geojson" => $upload_geojson
+            "nama" => htmlspecialchars($this->input->post('nama', true)),
+            "keterangan" => htmlspecialchars($this->input->post('keterangan', true)),
+            "geojson" => htmlspecialchars($upload_geojson)
         ];
 
         $this->db->insert('kecamatan', $data);
@@ -27,8 +27,8 @@ class M_kecamatan extends CI_model
     public function ubahKecamatan()
     {
         $data = [
-            "nama" => $this->input->post('nama', true),
-            "keterangan" => $this->input->post('keterangan', true)
+            "nama" => htmlspecialchars($this->input->post('nama', true)),
+            "keterangan" => htmlspecialchars($this->input->post('keterangan', true))
         ];
 
         $this->db->where('id', $this->input->post('id'));

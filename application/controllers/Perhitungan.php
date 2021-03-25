@@ -563,9 +563,11 @@ class Perhitungan extends CI_Controller
         $data['judul'] = 'Perhitungan Kasus DBD';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['kasus'] = $this->M_kasusdbd->perhitunganDBD()->result_array();
+        $data['tahun'] = $this->M_kasusdbd->ambilTahun()->result_array();
 
         if ($this->input->get('cari')) {
             $data['kasus'] = $this->M_kasusdbd->cariPerhitunganDBD()->result_array();
+            $data['tahun'] = $this->M_kasusdbd->ambilTahun()->result_array();
         }
 
         $this->load->view('backend/template/head', $data);
@@ -573,5 +575,233 @@ class Perhitungan extends CI_Controller
         $this->load->view('backend/template/topbar', $data);
         $this->load->view('backend/pegawai/perhitungan/v_perhitungandbd', $data);
         $this->load->view('backend/template/footer');
+    }
+
+    public function excel_dbd($tahun)
+    {
+        $this->load->model('M_kasusdbd');
+
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $kasus = $this->M_kasusdbd->exportDBD($tahun)->result();
+        $tahun = $this->M_kasusdbd->ambilCariTahun($tahun)->row();
+
+        $spreadsheet = new Spreadsheet;
+
+        $styleCol = [
+            'font' => [
+                'bold' => true,
+            ],
+            'alignment' => [
+                'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
+                'vertical' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER
+            ],
+            'borders' => [
+                'top' => ['borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN],
+                'right' => ['borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN],
+                'bottom' => ['borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN],
+                'left' => ['borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN],
+            ]
+
+        ];
+
+        $styleRow = [
+            'alignment' => [
+                'vertical' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER
+            ],
+            'borders' => [
+                'top' => ['borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN],
+                'right' => ['borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN],
+                'bottom' => ['borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN],
+                'left' => ['borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN],
+            ]
+
+        ];
+
+        $spreadsheet->setActiveSheetIndex(0)
+            ->setCellValue('B4', 'No')->mergeCells('B4:B6')
+            ->setCellValue('C4', 'Tahun')->mergeCells('C4:C6')
+            ->setCellValue('D4', 'Kecamatan')->mergeCells('D4:D6')
+            ->setCellValue('E4', 'Jumlah Penduduk')->mergeCells('E4:E6')
+            ->setCellValue('F4', 'Penderita Positif')->mergeCells('F4:V4')
+            ->setCellValue('F5', '< 1 thn')->mergeCells('F5:G5')
+            ->setCellValue('H5', '1 - 4 thn')->mergeCells('H5:I5')
+            ->setCellValue('J5', '5 - 9 thn')->mergeCells('J5:K5')
+            ->setCellValue('L5', '10 - 14 thn')->mergeCells('L5:M5')
+            ->setCellValue('N5', '15 - 19 thn')->mergeCells('N5:O5')
+            ->setCellValue('P5', '20 - 44 thn')->mergeCells('P5:Q5')
+            ->setCellValue('R5', '> 45 thn')->mergeCells('R5:S5')
+            ->setCellValue('T5', 'Jumlah')->mergeCells('T5:U5')
+            ->setCellValue('V5', 'Total')->mergeCells('V5:V6')
+            ->setCellValue('W4', 'Meninggal')->mergeCells('W4:W6')
+            ->setCellValue('X4', 'CFR')->mergeCells('X4:X6')
+            ->setCellValue('Y4', 'IR')->mergeCells('Y4:Y6')
+            ->setCellValue('F6', 'L')
+            ->setCellValue('G6', 'P')
+            ->setCellValue('H6', 'L')
+            ->setCellValue('I6', 'P')
+            ->setCellValue('J6', 'L')
+            ->setCellValue('K6', 'P')
+            ->setCellValue('L6', 'L')
+            ->setCellValue('M6', 'P')
+            ->setCellValue('N6', 'L')
+            ->setCellValue('O6', 'P')
+            ->setCellValue('P6', 'L')
+            ->setCellValue('Q6', 'P')
+            ->setCellValue('R6', 'L')
+            ->setCellValue('S6', 'P')
+            ->setCellValue('T6', 'L')
+            ->setCellValue('U6', 'P');
+
+
+        $spreadsheet->getActiveSheet()->getStyle('B4:B6')->applyFromArray($styleCol);
+        $spreadsheet->getActiveSheet()->getStyle('C4:C6')->applyFromArray($styleCol);
+        $spreadsheet->getActiveSheet()->getStyle('D4:D6')->applyFromArray($styleCol);
+        $spreadsheet->getActiveSheet()->getStyle('E4:E6')->applyFromArray($styleCol);
+        $spreadsheet->getActiveSheet()->getStyle('F4:V4')->applyFromArray($styleCol);
+        $spreadsheet->getActiveSheet()->getStyle('F5:G5')->applyFromArray($styleCol);
+        $spreadsheet->getActiveSheet()->getStyle('H5:I5')->applyFromArray($styleCol);
+        $spreadsheet->getActiveSheet()->getStyle('J5:K5')->applyFromArray($styleCol);
+        $spreadsheet->getActiveSheet()->getStyle('L5:M5')->applyFromArray($styleCol);
+        $spreadsheet->getActiveSheet()->getStyle('N5:O5')->applyFromArray($styleCol);
+        $spreadsheet->getActiveSheet()->getStyle('P5:Q5')->applyFromArray($styleCol);
+        $spreadsheet->getActiveSheet()->getStyle('R5:S5')->applyFromArray($styleCol);
+        $spreadsheet->getActiveSheet()->getStyle('T5:U5')->applyFromArray($styleCol);
+        $spreadsheet->getActiveSheet()->getStyle('V5:V6')->applyFromArray($styleCol);
+        $spreadsheet->getActiveSheet()->getStyle('W4:W6')->applyFromArray($styleCol);
+        $spreadsheet->getActiveSheet()->getStyle('X4:X6')->applyFromArray($styleCol);
+        $spreadsheet->getActiveSheet()->getStyle('Y4:Y6')->applyFromArray($styleCol);
+        $spreadsheet->getActiveSheet()->getStyle('F6')->applyFromArray($styleCol);
+        $spreadsheet->getActiveSheet()->getStyle('G6')->applyFromArray($styleCol);
+        $spreadsheet->getActiveSheet()->getStyle('H6')->applyFromArray($styleCol);
+        $spreadsheet->getActiveSheet()->getStyle('I6')->applyFromArray($styleCol);
+        $spreadsheet->getActiveSheet()->getStyle('J6')->applyFromArray($styleCol);
+        $spreadsheet->getActiveSheet()->getStyle('K6')->applyFromArray($styleCol);
+        $spreadsheet->getActiveSheet()->getStyle('L6')->applyFromArray($styleCol);
+        $spreadsheet->getActiveSheet()->getStyle('M6')->applyFromArray($styleCol);
+        $spreadsheet->getActiveSheet()->getStyle('N6')->applyFromArray($styleCol);
+        $spreadsheet->getActiveSheet()->getStyle('O6')->applyFromArray($styleCol);
+        $spreadsheet->getActiveSheet()->getStyle('P6')->applyFromArray($styleCol);
+        $spreadsheet->getActiveSheet()->getStyle('Q6')->applyFromArray($styleCol);
+        $spreadsheet->getActiveSheet()->getStyle('R6')->applyFromArray($styleCol);
+        $spreadsheet->getActiveSheet()->getStyle('S6')->applyFromArray($styleCol);
+        $spreadsheet->getActiveSheet()->getStyle('T6')->applyFromArray($styleCol);
+        $spreadsheet->getActiveSheet()->getStyle('U6')->applyFromArray($styleCol);
+
+
+
+        $kolom = 7;
+        $nomor = 1;
+        foreach ($kasus as $kss) {
+
+            $jumlahPenduduk = $kss->jumlahPenduduk;
+            $total_kasus = $kss->jumlah_kasus;
+            $meninggal = $kss->dbd_meninggal;
+
+            $ir = $total_kasus / $jumlahPenduduk * 100000;
+
+            if ($meninggal != 0) {
+                $cfr = round($meninggal / $total_kasus * 100, 2);
+            } else {
+                $cfr = $meninggal;
+            }
+
+            $spreadsheet->setActiveSheetIndex(0)
+                ->setCellValue('B' . $kolom, $nomor)
+                ->setCellValue('C' . $kolom, $kss->tahun)
+                ->setCellValue('D' . $kolom, $kss->nama)
+                ->setCellValue('E' . $kolom, $kss->jumlahPenduduk)
+                ->setCellValue('F' . $kolom, $kss->dbd1L)
+                ->setCellValue('G' . $kolom, $kss->dbd1P)
+                ->setCellValue('H' . $kolom, $kss->dbd14L)
+                ->setCellValue('I' . $kolom, $kss->dbd14P)
+                ->setCellValue('J' . $kolom, $kss->dbd59L)
+                ->setCellValue('K' . $kolom, $kss->dbd59P)
+                ->setCellValue('L' . $kolom, $kss->dbd1014L)
+                ->setCellValue('M' . $kolom, $kss->dbd1014P)
+                ->setCellValue('N' . $kolom, $kss->dbd1519L)
+                ->setCellValue('O' . $kolom, $kss->dbd1519P)
+                ->setCellValue('P' . $kolom, $kss->dbd2044L)
+                ->setCellValue('Q' . $kolom, $kss->dbd2044P)
+                ->setCellValue('R' . $kolom, $kss->dbd45L)
+                ->setCellValue('S' . $kolom, $kss->dbd45P)
+                ->setCellValue('T' . $kolom, $kss->totalL)
+                ->setCellValue('U' . $kolom, $kss->totalP)
+                ->setCellValue('V' . $kolom, $kss->jumlah_kasus)
+                ->setCellValue('W' . $kolom, $kss->dbd_meninggal)
+                ->setCellValue('X' . $kolom, number_format($cfr, 2) . '%')
+                ->setCellValue('Y' . $kolom, number_format($ir, 2));
+
+
+
+            $spreadsheet->getActiveSheet()->getStyle('B' . $kolom)->applyFromArray($styleRow);
+            $spreadsheet->getActiveSheet()->getStyle('C' . $kolom)->applyFromArray($styleRow);
+            $spreadsheet->getActiveSheet()->getStyle('D' . $kolom)->applyFromArray($styleRow);
+            $spreadsheet->getActiveSheet()->getStyle('E' . $kolom)->applyFromArray($styleRow);
+            $spreadsheet->getActiveSheet()->getStyle('F' . $kolom)->applyFromArray($styleRow);
+            $spreadsheet->getActiveSheet()->getStyle('G' . $kolom)->applyFromArray($styleRow);
+            $spreadsheet->getActiveSheet()->getStyle('H' . $kolom)->applyFromArray($styleRow);
+            $spreadsheet->getActiveSheet()->getStyle('I' . $kolom)->applyFromArray($styleRow);
+            $spreadsheet->getActiveSheet()->getStyle('J' . $kolom)->applyFromArray($styleRow);
+            $spreadsheet->getActiveSheet()->getStyle('K' . $kolom)->applyFromArray($styleRow);
+            $spreadsheet->getActiveSheet()->getStyle('L' . $kolom)->applyFromArray($styleRow);
+            $spreadsheet->getActiveSheet()->getStyle('M' . $kolom)->applyFromArray($styleRow);
+            $spreadsheet->getActiveSheet()->getStyle('N' . $kolom)->applyFromArray($styleRow);
+            $spreadsheet->getActiveSheet()->getStyle('O' . $kolom)->applyFromArray($styleRow);
+            $spreadsheet->getActiveSheet()->getStyle('P' . $kolom)->applyFromArray($styleRow);
+            $spreadsheet->getActiveSheet()->getStyle('Q' . $kolom)->applyFromArray($styleRow);
+            $spreadsheet->getActiveSheet()->getStyle('R' . $kolom)->applyFromArray($styleRow);
+            $spreadsheet->getActiveSheet()->getStyle('S' . $kolom)->applyFromArray($styleRow);
+            $spreadsheet->getActiveSheet()->getStyle('T' . $kolom)->applyFromArray($styleRow);
+            $spreadsheet->getActiveSheet()->getStyle('U' . $kolom)->applyFromArray($styleRow);
+            $spreadsheet->getActiveSheet()->getStyle('V' . $kolom)->applyFromArray($styleRow);
+            $spreadsheet->getActiveSheet()->getStyle('W' . $kolom)->applyFromArray($styleRow);
+            $spreadsheet->getActiveSheet()->getStyle('X' . $kolom)->applyFromArray($styleRow);
+            $spreadsheet->getActiveSheet()->getStyle('Y' . $kolom)->applyFromArray($styleRow);
+
+            $kolom++;
+            $nomor++;
+        }
+
+        // $spreadsheet->createSheet();
+        // $spreadsheet->setActiveSheetIndex(1)
+        //     ->setCellValue('B4', 'No')->mergeCells('B4:B6')
+        //     ->setCellValue('C4', 'Tahun')->mergeCells('C4:C6')
+        //     ->setCellValue('D4', 'Kecamatan')->mergeCells('D4:D6')
+        //     ->setCellValue('E4', 'Jumlah Penduduk')->mergeCells('E4:E6');
+
+
+        // $spreadsheet->getActiveSheet()->getStyle('B4:B6')->applyFromArray($styleCol);
+        // $spreadsheet->getActiveSheet()->getStyle('C4:C6')->applyFromArray($styleCol);
+        // $spreadsheet->getActiveSheet()->getStyle('D4:D6')->applyFromArray($styleCol);
+        // $spreadsheet->getActiveSheet()->getStyle('E4:E6')->applyFromArray($styleCol);
+
+
+
+        // $kolom = 7;
+        // $nomor = 1;
+        // foreach ($kasus as $kss) {
+
+        //     $spreadsheet->setActiveSheetIndex(1)
+        //         ->setCellValue('B' . $kolom, $nomor)
+        //         ->setCellValue('C' . $kolom, $kss->tahun)
+        //         ->setCellValue('D' . $kolom, $kss->nama)
+        //         ->setCellValue('E' . $kolom, $kss->jumlahPenduduk);
+
+        //     $spreadsheet->getActiveSheet()->getStyle('B' . $kolom)->applyFromArray($styleRow);
+        //     $spreadsheet->getActiveSheet()->getStyle('C' . $kolom)->applyFromArray($styleRow);
+        //     $spreadsheet->getActiveSheet()->getStyle('D' . $kolom)->applyFromArray($styleRow);
+        //     $spreadsheet->getActiveSheet()->getStyle('E' . $kolom)->applyFromArray($styleRow);
+
+        //     $kolom++;
+        //     $nomor++;
+        // }
+
+        $writer = new Xlsx($spreadsheet);
+
+        header('Content-Type: application/vnd.ms-excel');
+        header('Content-Disposition: attachment;filename="Kasus-dbd-tahun-' . $tahun->tahun . '.xlsx"');
+        header('Cache-Control: max-age=0');
+
+        $writer->save('php://output');
     }
 }

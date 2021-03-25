@@ -16,7 +16,7 @@ class M_penyakit extends CI_model
     public function ubahPenyakit()
     {
         $data = [
-            "keterangan" => $this->input->post('keterangan', true)
+            "keterangan" => htmlspecialchars($this->input->post('keterangan', true))
         ];
 
         $this->db->where('id', $this->input->post('id'));

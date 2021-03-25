@@ -22,6 +22,86 @@ class M_kasusdbd extends CI_model
         return $query;
     }
 
+    public function exportBulanDbd($tahun)
+    {
+        $query = $this->db->select('bulan, tahun, nama, jumlah_penduduk.jumlah as jumlahPenduduk,
+        SUM(dbd1L + dbd1P + dbd14L + dbd14P + dbd59L + dbd59P + dbd1014L + dbd1014P + 
+        dbd1519L + dbd1519P + dbd2044L + dbd2044P + dbd45L + dbd45P) as jumlah_kasus')
+            ->from('kasus_dbd')
+            ->group_by('tahun, bulan, nama')
+            ->join('jumlah_penduduk', 'kasus_dbd.idPenduduk = jumlah_penduduk.id')
+            ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')
+            ->join('penyakit', 'kasus_dbd.idPenyakit = penyakit.id')
+            ->where('tahun', $tahun)
+            ->order_by('jumlah_penduduk.tahun, penyakit.penyakit, kecamatan.nama')
+            ->get();
+        return $query;
+    }
+
+    public function exportDBD($tahun)
+    {
+        $query = $this->db->select('bulan, penyakit, tahun, nama, kasus_dbd.id, jumlah_penduduk.jumlah as jumlahPenduduk,
+        SUM(dbd1L) as dbd1L, 
+        SUM(dbd1P) as dbd1P, 
+        SUM(dbd14L) as dbd14L, 
+        SUM(dbd14P) as dbd14P, 
+        SUM(dbd59L) as dbd59L, 
+        SUM(dbd59P) as dbd59P, 
+        SUM(dbd1014L) as dbd1014L, 
+        SUM(dbd1014P) as dbd1014P,
+        SUM(dbd1519L) as dbd1519L, 
+        SUM(dbd1519P) as dbd1519P, 
+        SUM(dbd2044L) as dbd2044L, 
+        SUM(dbd2044P) as dbd2044P, 
+        SUM(dbd45L) as dbd45L, 
+        SUM(dbd45P) as dbd45P,
+
+        SUM(dbd1L + dbd14L + dbd59L + dbd1014L + dbd1519L + dbd2044L + dbd45L) as totalL,
+
+        SUM(dbd1P + dbd14P + dbd59P + dbd1014P + dbd1519P + dbd2044P + dbd45P) as totalP,
+
+        SUM(dbd1L + dbd1P + dbd14L + dbd14P + dbd59L + dbd59P + dbd1014L + dbd1014P + 
+        dbd1519L + dbd1519P + dbd2044L + dbd2044P + dbd45L + dbd45P) as jumlah_kasus,
+
+        SUM(dbd_meninggal) as dbd_meninggal')
+            ->from('kasus_dbd')
+            ->group_by('tahun, nama')
+            ->join('jumlah_penduduk', 'kasus_dbd.idPenduduk = jumlah_penduduk.id')
+            ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')
+            ->join('penyakit', 'kasus_dbd.idPenyakit = penyakit.id')
+            ->where('tahun', $tahun)
+            ->order_by('jumlah_penduduk.tahun, penyakit.penyakit, kecamatan.nama')
+            ->get();
+        return $query;
+    }
+
+    public function ambilTahun()
+    {
+        $query = $this->db->select('tahun')
+            ->from('kasus_dbd')
+            ->group_by('tahun')
+            ->join('jumlah_penduduk', 'kasus_dbd.idPenduduk = jumlah_penduduk.id')
+            ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')
+            ->join('penyakit', 'kasus_dbd.idPenyakit = penyakit.id')
+            ->order_by('jumlah_penduduk.tahun')
+            ->get();
+        return $query;
+    }
+
+    public function ambilCariTahun($tahun)
+    {
+        $query = $this->db->select('tahun')
+            ->from('kasus_dbd')
+            ->group_by('tahun')
+            ->join('jumlah_penduduk', 'kasus_dbd.idPenduduk = jumlah_penduduk.id')
+            ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')
+            ->join('penyakit', 'kasus_dbd.idPenyakit = penyakit.id')
+            ->where('tahun', $tahun)
+            ->order_by('jumlah_penduduk.tahun')
+            ->get();
+        return $query;
+    }
+
     public function cariDataDBD()
     {
         $keyword = $this->input->get('cari');

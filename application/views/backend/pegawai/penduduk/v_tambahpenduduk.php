@@ -31,18 +31,20 @@
                                                     <select class="form-control" name="tahun" id="tahun">
                                                         <option selected disabled>--Pilih Tahun--</option>
                                                         <?php for ($y = date('Y'); $y >= 2000; $y--) : ?>
-                                                            <option value="<?= $y; ?>"><?= $y; ?></option>
+                                                            <option value="<?= $y; ?>" <?= set_value('tahun') == $y ? "selected" : NULL ?>><?= $y; ?></option>
                                                         <?php endfor; ?>
                                                     </select>
+                                                    <?= form_error('tahun', ' <small class="text-danger">', '</small>'); ?>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="kecamatan">Kecamatan</label>
                                                     <select class="form-control" name="kecamatan" id="kecamatan">
                                                         <option selected disabled>--Pilih Kecamatan--</option>
                                                         <?php foreach ($kecamatan as $kcm) : ?>
-                                                            <option value="<?= $kcm['id']; ?>"><?= $kcm['nama']; ?></option>
+                                                            <option value="<?= $kcm['id']; ?>" <?= set_value('kecamatan') == $kcm['id'] ? "selected" : NULL ?>><?= $kcm['nama']; ?></option>
                                                         <?php endforeach; ?>
                                                     </select>
+                                                    <?= form_error('kecamatan', ' <small class="text-danger">', '</small>'); ?>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="jumlah">Jumlah Penduduk</label>

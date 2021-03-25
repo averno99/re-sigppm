@@ -49,7 +49,6 @@
                                         </div>
                                         <div class="ml-4">
                                             <a href="<?= site_url('user'); ?>" type="button" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-reply"></i> Kembali</a>
-                                            <button type="submit" name="tambah" class="btn btn-success waves-effect waves-light"><i class="mdi mdi-content-save"></i> Simpan</button>
                                         </div>
                                         <!-- /.card-body -->
 
