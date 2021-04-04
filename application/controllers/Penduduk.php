@@ -37,25 +37,6 @@ class Penduduk extends CI_Controller
         $this->load->view('backend/template/footer');
     }
 
-    public function cariKecamatan()
-    {
-        $this->load->model('M_kecamatan');
-
-        $keyword = $this->input->post('cari');
-        $keyword2 = $this->input->post('kecamatan');
-
-        $data['judul'] = 'Kelola Jumlah Penduduk';
-        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['kecamatan'] = $this->M_kecamatan->ambilSemuaKecamatan();
-        $data['penduduk'] = $this->M_penduduk->cariKecamatan($keyword2);
-
-        $this->load->view('backend/template/head', $data);
-        $this->load->view('backend/template/sidebar');
-        $this->load->view('backend/template/topbar', $data);
-        $this->load->view('backend/pegawai/penduduk/v_penduduk', $data);
-        $this->load->view('backend/template/footer');
-    }
-
     public function tambah()
     {
 

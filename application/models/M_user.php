@@ -41,6 +41,16 @@ class M_user extends CI_model
         $this->db->update('user', $data);
     }
 
+    public function resetPassword()
+    {
+        $data = [
+            'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT)
+        ];
+
+        $this->db->where('id', $this->input->post('id'));
+        $this->db->update('user', $data);
+    }
+
     public function hapusUser($idUser)
     {
         $this->db->where('id', $idUser);

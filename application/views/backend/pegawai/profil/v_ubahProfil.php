@@ -64,6 +64,7 @@
                                             </div>
                                             <div class="form-group row justify-content-end">
                                                 <div class="col-sm-9">
+                                                    <a href="<?= site_url('profil'); ?>" type="button" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-reply"></i> Kembali</a>
                                                     <button type="submit" class="btn btn-success waves-effect waves-light"><i class="mdi mdi-content-save"></i> Simpan</button>
                                                 </div>
                                             </div>

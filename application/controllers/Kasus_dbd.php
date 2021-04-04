@@ -37,21 +37,133 @@ class Kasus_dbd extends CI_Controller
 
         $data['judul'] = 'Tambah Data Kasus DBD';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['penduduk'] = $this->M_penduduk->cariData($keyword);
+        $data['penduduk'] = $this->M_penduduk->filterTahun($keyword);
         $data['bulan'] = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+
+        $this->form_validation->set_rules(
+            'bulan',
+            'Bulan',
+            'required|trim|callback_kecamatan_check',
+            array(
+                'required' => "<small class='text-muted'><span class='text-danger'>*</span> Bulan harus diisi</small>",
+                'is_unique' => "<small class='text-danger'>Data sudah ada</small>"
+            )
+        );
 
         $this->form_validation->set_rules(
             'penduduk',
             'Kecamatan',
             'required|trim',
-            array('required' => "<small class='text-muted'><span class='text-danger'>*</span> Kecamatan harus diisi</small>")
+            array(
+                'required' => "<small class='text-muted'><span class='text-danger'>*</span> Kecamatan harus diisi</small>"
+            )
         );
+
         $this->form_validation->set_rules(
-            'bulan',
-            'Bulan',
-            'required|trim',
-            array('required' => "<small class='text-muted'><span class='text-danger'>*</span> Bulan harus diisi</small>")
+            'dbd1L',
+            'Laki - Laki',
+            'numeric|trim',
+            array('numeric' => "Data harus berupa angka")
         );
+
+        $this->form_validation->set_rules(
+            'dbd1P',
+            'Perempuan',
+            'numeric|trim',
+            array('numeric' => "Data harus berupa angka")
+        );
+
+        $this->form_validation->set_rules(
+            'dbd14L',
+            'Laki - Laki',
+            'numeric|trim',
+            array('numeric' => "Data harus berupa angka")
+        );
+
+        $this->form_validation->set_rules(
+            'dbd14P',
+            'Perempuan',
+            'numeric|trim',
+            array('numeric' => "Data harus berupa angka")
+        );
+
+        $this->form_validation->set_rules(
+            'dbd59L',
+            'Laki - Laki',
+            'numeric|trim',
+            array('numeric' => "Data harus berupa angka")
+        );
+
+        $this->form_validation->set_rules(
+            'dbd59P',
+            'Perempuan',
+            'numeric|trim',
+            array('numeric' => "Data harus berupa angka")
+        );
+
+        $this->form_validation->set_rules(
+            'dbd1014L',
+            'Laki - Laki',
+            'numeric|trim',
+            array('numeric' => "Data harus berupa angka")
+        );
+
+        $this->form_validation->set_rules(
+            'dbd1014P',
+            'Perempuan',
+            'numeric|trim',
+            array('numeric' => "Data harus berupa angka")
+        );
+
+        $this->form_validation->set_rules(
+            'dbd1519L',
+            'Laki - Laki',
+            'numeric|trim',
+            array('numeric' => "Data harus berupa angka")
+        );
+
+        $this->form_validation->set_rules(
+            'dbd1519P',
+            'Perempuan',
+            'numeric|trim',
+            array('numeric' => "Data harus berupa angka")
+        );
+
+        $this->form_validation->set_rules(
+            'dbd2044L',
+            'Laki - Laki',
+            'numeric|trim',
+            array('numeric' => "Data harus berupa angka")
+        );
+
+        $this->form_validation->set_rules(
+            'dbd2044P',
+            'Perempuan',
+            'numeric|trim',
+            array('numeric' => "Data harus berupa angka")
+        );
+
+        $this->form_validation->set_rules(
+            'dbd45L',
+            'Laki - Laki',
+            'numeric|trim',
+            array('numeric' => "Data harus berupa angka")
+        );
+
+        $this->form_validation->set_rules(
+            'dbd45P',
+            'Perempuan',
+            'numeric|trim',
+            array('numeric' => "Data harus berupa angka")
+        );
+
+        $this->form_validation->set_rules(
+            'meninggal',
+            'Laki - Laki',
+            'numeric|trim',
+            array('numeric' => "Data harus berupa angka")
+        );
+
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('backend/template/head', $data);
@@ -66,13 +178,130 @@ class Kasus_dbd extends CI_Controller
         }
     }
 
+    function kecamatan_check()
+    {
+        if ($this->input->post('bulan') and $this->input->post('penduduk')) {
+            $post = $this->input->post(NULL, TRUE);
+            $query = $this->db->query("SELECT * FROM kasus_dbd WHERE bulan = '$post[bulan]' AND idPenduduk = '$post[penduduk]'");
+            if ($query->num_rows() > 0) {
+                $this->form_validation->set_message('kecamatan_check', 'Data sudah ada');
+                return FALSE;
+            } else {
+                return TRUE;
+            }
+        }
+    }
+
     public function ubah($idKasus)
     {
         $data['judul'] = 'Ubah Data Kasus DBD';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['kasus'] = $this->M_kasusdbd->ambilIdKasus($idKasus)->row_array();
 
-        $this->form_validation->set_rules('jumlah', 'Jumlah Kasus Positif DBD', 'required|trim');
+        $this->form_validation->set_rules(
+            'dbd1L',
+            'Laki - Laki',
+            'numeric|trim',
+            array('numeric' => "Data harus berupa angka")
+        );
+
+        $this->form_validation->set_rules(
+            'dbd1P',
+            'Perempuan',
+            'numeric|trim',
+            array('numeric' => "Data harus berupa angka")
+        );
+
+        $this->form_validation->set_rules(
+            'dbd14L',
+            'Laki - Laki',
+            'numeric|trim',
+            array('numeric' => "Data harus berupa angka")
+        );
+
+        $this->form_validation->set_rules(
+            'dbd14P',
+            'Perempuan',
+            'numeric|trim',
+            array('numeric' => "Data harus berupa angka")
+        );
+
+        $this->form_validation->set_rules(
+            'dbd59L',
+            'Laki - Laki',
+            'numeric|trim',
+            array('numeric' => "Data harus berupa angka")
+        );
+
+        $this->form_validation->set_rules(
+            'dbd59P',
+            'Perempuan',
+            'numeric|trim',
+            array('numeric' => "Data harus berupa angka")
+        );
+
+        $this->form_validation->set_rules(
+            'dbd1014L',
+            'Laki - Laki',
+            'numeric|trim',
+            array('numeric' => "Data harus berupa angka")
+        );
+
+        $this->form_validation->set_rules(
+            'dbd1014P',
+            'Perempuan',
+            'numeric|trim',
+            array('numeric' => "Data harus berupa angka")
+        );
+
+        $this->form_validation->set_rules(
+            'dbd1519L',
+            'Laki - Laki',
+            'numeric|trim',
+            array('numeric' => "Data harus berupa angka")
+        );
+
+        $this->form_validation->set_rules(
+            'dbd1519P',
+            'Perempuan',
+            'numeric|trim',
+            array('numeric' => "Data harus berupa angka")
+        );
+
+        $this->form_validation->set_rules(
+            'dbd2044L',
+            'Laki - Laki',
+            'numeric|trim',
+            array('numeric' => "Data harus berupa angka")
+        );
+
+        $this->form_validation->set_rules(
+            'dbd2044P',
+            'Perempuan',
+            'numeric|trim',
+            array('numeric' => "Data harus berupa angka")
+        );
+
+        $this->form_validation->set_rules(
+            'dbd45L',
+            'Laki - Laki',
+            'numeric|trim',
+            array('numeric' => "Data harus berupa angka")
+        );
+
+        $this->form_validation->set_rules(
+            'dbd45P',
+            'Perempuan',
+            'numeric|trim',
+            array('numeric' => "Data harus berupa angka")
+        );
+
+        $this->form_validation->set_rules(
+            'meninggal',
+            'Laki - Laki',
+            'numeric|trim',
+            array('numeric' => "Data harus berupa angka")
+        );
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('backend/template/head', $data);

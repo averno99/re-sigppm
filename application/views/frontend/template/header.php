@@ -11,7 +11,7 @@
             <nav id="navbar" class="navbar">
                 <ul>
                     <li><a class="nav-link scrollto" href="<?= site_url() ?>beranda">Beranda</a></li>
-                    <li><a class="nav-link scrollto" href="<?= site_url() ?>beranda/penyakit">Penyakit</a></li>
+                    <li><a class="nav-link scrollto" href="<?= site_url() ?>beranda/penyakit">Informasi</a></li>
                     <li class="dropdown"><a href="#"><span>Pemetaan</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a href="<?= site_url() ?>beranda/pemetaan_malaria">Malaria</a></li>

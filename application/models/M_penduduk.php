@@ -72,14 +72,19 @@ class M_penduduk extends CI_model
 
     public function ambilIdPenduduk($idPenduduk)
     {
-        return $this->db->get_where('jumlah_penduduk', ['id' => $idPenduduk])->row_array();
+
+        $query = $this->db->select('jumlah, tahun, nama, jumlah_penduduk.id, idKecamatan')
+            ->from('jumlah_penduduk')
+            ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')
+            ->where('jumlah_penduduk.id', $idPenduduk)
+            ->order_by('tahun, kecamatan.nama')
+            ->get()->row_array();
+        return $query;
     }
 
     public function ubahPenduduk()
     {
         $data = [
-            "tahun" => $this->input->post('tahun', true),
-            "idKecamatan" => $this->input->post('kecamatan', true),
             "jumlah" => $this->input->post('jumlah', true)
         ];
 

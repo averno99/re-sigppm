@@ -32,11 +32,7 @@
                                         <div class="col-sm-3">
                                             <select class="custom-select" name="filterTahun" id="filterTahun">
                                                 <option selected disabled>--Pilih Tahun--</option>
-                                                <?php
-
-                                                use phpDocumentor\Reflection\Types\Null_;
-
-                                                for ($y = date('Y'); $y >= 2000; $y--) : ?>
+                                                <?php for ($y = date('Y'); $y >= 2000; $y--) : ?>
                                                     <?php if ($y == $this->input->post('filterTahun')) : ?>
                                                         <option value="<?= $y; ?>" selected><?= $y; ?></option>
                                                     <?php else : ?>
@@ -58,7 +54,7 @@
                                 <?php if ($this->input->post('filterTahun')) : ?>
                                     <?php if (empty($penduduk)) : ?>
                                         <div class="alert alert-warning col-sm-12" role="alert">
-                                            <strong>Data Jumlah Penduduk</strong> tidak ditemukan pada tahun ini!
+                                            <strong>Data Jumlah Penduduk</strong> tidak ditemukan pada tahun ini! Silahkan menginputkan <strong>Data Jumlah Penduduk</strong> terlebih dahulu.
                                         </div>
                                     <?php else : ?>
                                         <div class="form-group">

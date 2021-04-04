@@ -9,10 +9,21 @@
                     <p>Menampilkan Informasi Penyakit Malaria dalam Bentuk Grafik di Kabupaten Kayong Utara Tahun <?= $rasioM['tahun'] ?></p>
                 </header>
 
-                <div class="row">
-                    <div class="mx-auto mb-3">
+                <div class="row mb-3">
+                    <div class="offset-1 col-sm-3 mt-2">
+                        <button type="button" class="btn btn-primary dropdown-toggle" id="dropTahun" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-file-excel"></i> Cetak
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropTahun">
+                            <?php foreach ($tahun as $thn) : ?>
+                                <a class=" dropdown-item" href="<?= site_url(''); ?>beranda/excel_malaria/<?= $thn['tahun'] ?>"><?= $thn['tahun'] ?></a>
+                            <?php endforeach; ?>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-8 mx-auto">
                         <form action="" method="GET">
-                            <div class="col-md-4 ml-auto">
+                            <div class="col-sm-4 ml-auto">
                                 <div class="input-group mt-2">
                                     <select class="form-select" name="cari" id="cari">
                                         <option selected disabled>--Pilih Tahun--</option>

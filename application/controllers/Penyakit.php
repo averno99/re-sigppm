@@ -53,4 +53,17 @@ class Penyakit extends CI_Controller
             redirect('penyakit');
         }
     }
+
+    public function lihat($idPenyakit)
+    {
+        $data['judul'] = 'Lihat Data Penyakit';
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['penyakit'] = $this->M_penyakit->ambilIdPenyakit($idPenyakit);
+
+        $this->load->view('backend/template/head', $data);
+        $this->load->view('backend/template/sidebar');
+        $this->load->view('backend/template/topbar', $data);
+        $this->load->view('backend/admin/penyakit/v_lihatpenyakit', $data);
+        $this->load->view('backend/template/footer');
+    }
 }

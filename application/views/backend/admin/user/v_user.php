@@ -71,7 +71,7 @@
                                                                 <a href="<?= site_url(); ?>user/hapus/<?= $usr['id'] ?>" class="btn btn-danger btn-sm tombol-hapus" data-toggle="tooltip" data-placement="top" title="Hapus Data">
                                                                     <i class="fa fa-trash"></i>
                                                                 </a>
-                                                                <a href="#" class="btn btn-info btn-sm ml-1" data-toggle="tooltip" data-placement="top" title="Reset Password">
+                                                                <a href="<?= site_url(); ?>user/reset_password/<?= $usr['id'] ?>" class="btn btn-info btn-sm ml-1" data-toggle="tooltip" data-placement="top" title="Reset Password">
                                                                     <i class="fa fa-key"></i>
                                                                 </a>
                                                             </div>

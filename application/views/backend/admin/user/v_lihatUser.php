@@ -21,7 +21,7 @@
                             <div class="col-lg-12 col-sm-12">
                                 <div class="card m-b-30">
                                     <div class="card-body">
-                                        <h4 class="mt-0 header-title">Form <?= $judul ?></h4>
+                                        <h4 class="mt-0 header-title"><?= $judul ?></h4>
                                         <div class="dropdown-divider mb-3"></div>
 
 
@@ -46,15 +46,7 @@
                                                 <label for="gambar">Gambar</label>
                                                 <img src="<?= base_url('assets/gambar/user/') . $users['gambar']; ?>" class="img-thumbnail">
                                             </div>
-                                        </div>
-                                        <div class="ml-4">
-                                            <a href="<?= site_url('user'); ?>" type="button" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-reply"></i> Kembali</a>
-                                        </div>
-                                        <!-- /.card-body -->
-
-
-
-
+                                        </div> <!-- /.card-body -->
 
                                     </div>
                                 </div>

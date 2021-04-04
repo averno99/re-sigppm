@@ -126,7 +126,9 @@ class M_kasusdbd extends CI_model
 
     public function ambilIdKasus($idKasus)
     {
-        $query = $this->db->select('bulan, jumlah_kasus, penyakit, tahun, nama, kasus_dbd.id as idDbd, jumlah_penduduk.jumlah as jumlahPenduduk')
+        $query = $this->db->select('bulan, penyakit, tahun, nama, kasus_dbd.id as idDbd, jumlah_penduduk.jumlah as jumlahPenduduk,
+        dbd1L, dbd1P, dbd14L, dbd14P, dbd59L, dbd59P, dbd1014L, dbd1014P, 
+        dbd1519L, dbd1519P, dbd2044L, dbd2044P, dbd45L, dbd45P, dbd_meninggal')
             ->from('kasus_dbd')
             ->join('jumlah_penduduk', 'kasus_dbd.idPenduduk = jumlah_penduduk.id')
             ->join('kecamatan', 'jumlah_penduduk.idKecamatan = kecamatan.id')
@@ -292,7 +294,21 @@ class M_kasusdbd extends CI_model
             "idPenduduk" => $this->input->post('penduduk', true),
             "idPenyakit" => 1,
             "bulan" => $this->input->post('bulan', true),
-            "jumlah_kasus" => $this->input->post('jumlah', true)
+            "dbd1L" => $this->input->post('dbd1L', true),
+            "dbd1P" => $this->input->post('dbd1P', true),
+            "dbd14L" => $this->input->post('dbd14L', true),
+            "dbd14P" => $this->input->post('dbd14P', true),
+            "dbd59L" => $this->input->post('dbd59L', true),
+            "dbd59P" => $this->input->post('dbd59P', true),
+            "dbd1014L" => $this->input->post('dbd1014L', true),
+            "dbd1014P" => $this->input->post('dbd1014P', true),
+            "dbd1519L" => $this->input->post('dbd1519L', true),
+            "dbd1519P" => $this->input->post('dbd1519P', true),
+            "dbd2044L" => $this->input->post('dbd2044L', true),
+            "dbd2044P" => $this->input->post('dbd2044P', true),
+            "dbd45L" => $this->input->post('dbd45L', true),
+            "dbd45P" => $this->input->post('dbd45P', true),
+            "dbd_meninggal" => $this->input->post('meninggal', true)
         ];
 
         $this->db->insert('kasus_dbd', $data);
@@ -301,7 +317,21 @@ class M_kasusdbd extends CI_model
     public function ubahKasus()
     {
         $data = [
-            "jumlah_kasus" => $this->input->post('jumlah', true)
+            "dbd1L" => $this->input->post('dbd1L', true),
+            "dbd1P" => $this->input->post('dbd1P', true),
+            "dbd14L" => $this->input->post('dbd14L', true),
+            "dbd14P" => $this->input->post('dbd14P', true),
+            "dbd59L" => $this->input->post('dbd59L', true),
+            "dbd59P" => $this->input->post('dbd59P', true),
+            "dbd1014L" => $this->input->post('dbd1014L', true),
+            "dbd1014P" => $this->input->post('dbd1014P', true),
+            "dbd1519L" => $this->input->post('dbd1519L', true),
+            "dbd1519P" => $this->input->post('dbd1519P', true),
+            "dbd2044L" => $this->input->post('dbd2044L', true),
+            "dbd2044P" => $this->input->post('dbd2044P', true),
+            "dbd45L" => $this->input->post('dbd45L', true),
+            "dbd45P" => $this->input->post('dbd45P', true),
+            "dbd_meninggal" => $this->input->post('meninggal', true)
         ];
 
         $this->db->where('id', $this->input->post('id'));

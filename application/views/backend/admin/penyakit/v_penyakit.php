@@ -46,6 +46,9 @@
                                                         <td><?= $pyk['keterangan']; ?></td>
                                                         <td>
                                                             <div class="btn-group">
+                                                                <a href="<?= site_url(); ?>penyakit/lihat/<?= $pyk['id'] ?>" class="btn btn-success btn-sm mr-1" data-toggle="tooltip" data-placement="top" title="Lihat Data">
+                                                                    <i class="fa fa-eye"></i>
+                                                                </a>
                                                                 <a href="<?= site_url(); ?>penyakit/ubah/<?= $pyk['id'] ?>" class="btn btn-warning btn-sm mr-1" data-toggle="tooltip" data-placement="top" title="Ubah Data">
                                                                     <i class="fa fa-edit"></i>
                                                                 </a>

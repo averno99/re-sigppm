@@ -45,9 +45,113 @@
                                                     <input type="text" class="form-control" name="penyakit" id="penyakit" value="<?= $kasus['penyakit'] ?>" disabled>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="jumlah">Jumlah Kasus</label>
-                                                    <input type="text" class="form-control" name="jumlah" id="jumlah" value="<?= $kasus['jumlah_kasus'] ?>">
-                                                    <?= form_error('jumlah', ' <small class="text-danger">', '</small>'); ?>
+                                                    <label for="meninggal">Meninggal</label>
+                                                    <input type="text" class="form-control" name="meninggal" id="meninggal" placeholder="Penderita DBD yang Meninggal" value="<?= $kasus['dbd_meninggal']; ?>">
+                                                    <?= form_error('meninggal', ' <small class="text-danger">', '</small>'); ?>
+                                                </div>
+
+                                                <h4 class="mt-5 header-title">Penderita Positif</h4>
+                                                <div class="dropdown-divider mb-3"></div>
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="card-body">
+                                                            <label>Usia < 1 tahun</label>
+                                                                    <div class="form-group row">
+                                                                        <label for="example-text-input" class="col-form-label">L</label>
+                                                                        <div class="col-sm-5">
+                                                                            <input type="text" class="form-control" name="dbd1L" id="dbd1L" placeholder="Laki - Laki" value="<?= $kasus['dbd1L']; ?>">
+                                                                            <?= form_error('dbd1L', ' <small class="text-danger">', '</small>'); ?>
+                                                                        </div>
+                                                                        <label for="example-text-input" class="offset-sm-1 col-form-label">P</label>
+                                                                        <div class="col-sm-5">
+                                                                            <input type="text" class="form-control" name="dbd1P" id="dbd1P" placeholder="Perempuan" value="<?= $kasus['dbd1P']; ?>">
+                                                                            <?= form_error('dbd1P', ' <small class="text-danger">', '</small>'); ?>
+                                                                        </div>
+                                                                    </div>
+                                                                    <label>Usia 1 - 4 tahun</label>
+                                                                    <div class="form-group row">
+                                                                        <label for="example-text-input" class="col-form-label">L</label>
+                                                                        <div class="col-sm-5">
+                                                                            <input type="text" class="form-control" name="dbd14L" id="dbd14L" placeholder="Laki - Laki" value="<?= $kasus['dbd14L']; ?>">
+                                                                            <?= form_error('dbd14L', ' <small class="text-danger">', '</small>'); ?>
+                                                                        </div>
+                                                                        <label for="example-text-input" class="offset-sm-1 col-form-label">P</label>
+                                                                        <div class="col-sm-5">
+                                                                            <input type="text" class="form-control" name="dbd14P" id="dbd14P" placeholder="Perempuan" value="<?= $kasus['dbd14P']; ?>">
+                                                                            <?= form_error('dbd14P', ' <small class="text-danger">', '</small>'); ?>
+                                                                        </div>
+                                                                    </div>
+                                                                    <label>Usia 5 - 9 tahun</label>
+                                                                    <div class="form-group row">
+                                                                        <label for="example-text-input" class="col-form-label">L</label>
+                                                                        <div class="col-sm-5">
+                                                                            <input type="text" class="form-control" name="dbd59L" id="dbd59L" placeholder="Laki - Laki" value="<?= $kasus['dbd59L']; ?>">
+                                                                            <?= form_error('dbd59L', ' <small class="text-danger">', '</small>'); ?>
+                                                                        </div>
+                                                                        <label for="example-text-input" class="offset-sm-1 col-form-label">P</label>
+                                                                        <div class="col-sm-5">
+                                                                            <input type="text" class="form-control" name="dbd59P" id="dbd59P" placeholder="Perempuan" value="<?= $kasus['dbd59P']; ?>">
+                                                                            <?= form_error('dbd59P', ' <small class="text-danger">', '</small>'); ?>
+                                                                        </div>
+                                                                    </div>
+                                                                    <label>Usia 10 - 14 tahun</label>
+                                                                    <div class="form-group row">
+                                                                        <label for="example-text-input" class="col-form-label">L</label>
+                                                                        <div class="col-sm-5">
+                                                                            <input type="text" class="form-control" name="dbd1014L" id="dbd1014L" placeholder="Laki - Laki" value="<?= $kasus['dbd1014L']; ?>">
+                                                                            <?= form_error('dbd1014L', ' <small class="text-danger">', '</small>'); ?>
+                                                                        </div>
+                                                                        <label for="example-text-input" class="offset-sm-1 col-form-label">P</label>
+                                                                        <div class="col-sm-5">
+                                                                            <input type="text" class="form-control" name="dbd1014P" id="dbd1014P" placeholder="Perempuan" value="<?= $kasus['dbd1014P']; ?>">
+                                                                            <?= form_error('dbd1014P', ' <small class="text-danger">', '</small>'); ?>
+                                                                        </div>
+                                                                    </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="card-body">
+                                                            <label>Usia 15 - 19 tahun</label>
+                                                            <div class="form-group row">
+                                                                <label for="example-text-input" class="col-form-label">L</label>
+                                                                <div class="col-sm-5">
+                                                                    <input type="text" class="form-control" name="dbd1519L" id="dbd1519L" placeholder="Laki - Laki" value="<?= $kasus['dbd1519L']; ?>">
+                                                                    <?= form_error('dbd1519L', ' <small class="text-danger">', '</small>'); ?>
+                                                                </div>
+                                                                <label for="example-text-input" class="offset-sm-1 col-form-label">P</label>
+                                                                <div class="col-sm-5">
+                                                                    <input type="text" class="form-control" name="dbd1519P" id="dbd1519P" placeholder="Perempuan" value="<?= $kasus['dbd1519P']; ?>">
+                                                                    <?= form_error('dbd1519P', ' <small class="text-danger">', '</small>'); ?>
+                                                                </div>
+                                                            </div>
+                                                            <label>Usia 20 - 44 tahun</label>
+                                                            <div class="form-group row">
+                                                                <label for="example-text-input" class="col-form-label">L</label>
+                                                                <div class="col-sm-5">
+                                                                    <input type="text" class="form-control" name="dbd2044L" id="dbd2044L" placeholder="Laki - Laki" value="<?= $kasus['dbd2044L']; ?>">
+                                                                    <?= form_error('dbd2044L', ' <small class="text-danger">', '</small>'); ?>
+                                                                </div>
+                                                                <label for="example-text-input" class="offset-sm-1 col-form-label">P</label>
+                                                                <div class="col-sm-5">
+                                                                    <input type="text" class="form-control" name="dbd2044P" id="dbd2044P" placeholder="Perempuan" value="<?= $kasus['dbd2044P']; ?>">
+                                                                    <?= form_error('dbd2044P', ' <small class="text-danger">', '</small>'); ?>
+                                                                </div>
+                                                            </div>
+                                                            <label>Usia > 45 tahun</label>
+                                                            <div class="form-group row">
+                                                                <label for="example-text-input" class="col-form-label">L</label>
+                                                                <div class="col-sm-5">
+                                                                    <input type="text" class="form-control" name="dbd45L" id="dbd45L" placeholder="Laki - Laki" value="<?= $kasus['dbd45L']; ?>">
+                                                                    <?= form_error('dbd45L', ' <small class="text-danger">', '</small>'); ?>
+                                                                </div>
+                                                                <label for="example-text-input" class="offset-sm-1 col-form-label">P</label>
+                                                                <div class="col-sm-5">
+                                                                    <input type="text" class="form-control" name="dbd45P" id="dbd45P" placeholder="Perempuan" value="<?= $kasus['dbd45P']; ?>">
+                                                                    <?= form_error('dbd45P', ' <small class="text-danger">', '</small>'); ?>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
 
                                             </div>

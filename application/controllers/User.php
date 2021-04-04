@@ -96,7 +96,7 @@ class User extends CI_Controller
             $upload_gambar = $_FILES['gambar']['name'];
 
             if ($upload_gambar) {
-                $config['allowed_types']    = 'gif|jpg|png';
+                $config['allowed_types']    = 'gif|jpg|png|jpeg';
                 $config['max_size']         = 2048;
                 $config['upload_path']      = './assets/gambar/user/';
 
@@ -152,7 +152,7 @@ class User extends CI_Controller
             $upload_gambar = $_FILES['gambar']['name'];
 
             if ($upload_gambar) {
-                $config['allowed_types']    = 'gif|jpg|png';
+                $config['allowed_types']    = 'gif|jpg|png|jpeg';
                 $config['max_size']         = 2048;
                 $config['upload_path']      = './assets/gambar/user/';
 
@@ -189,5 +189,42 @@ class User extends CI_Controller
         $this->M_user->hapusUser($idUser);
         $this->session->set_flashdata('flash', 'Dihapus');
         redirect('user');
+    }
+
+    public function reset_password($idUser)
+    {
+        $data['judul'] = 'Reset Password User';
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['users'] = $this->M_user->ambilIdUser($idUser);
+
+        $this->form_validation->set_rules(
+            'password1',
+            'Password',
+            'required|trim|min_length[4]|max_length[16]',
+            array(
+                'min_length' => 'Mohon masukkan password dengan 4 - 16 karakter',
+                'max_length' => 'Mohon masukkan password dengan 4 - 16 karakter',
+                'required' => 'Password tidak boleh kosong'
+            )
+        );
+        $this->form_validation->set_rules(
+            'password2',
+            'Ulangi password',
+            'trim|matches[password1]',
+            array('matches' => 'Password tidak sesuai.')
+        );
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('backend/template/head', $data);
+            $this->load->view('backend/template/sidebar');
+            $this->load->view('backend/template/topbar', $data);
+            $this->load->view('backend/admin/user/v_resetpassword', $data);
+            $this->load->view('backend/template/footer');
+        } else {
+
+            $this->M_user->resetPassword();
+            $this->session->set_flashdata('flash', 'Diubah');
+            redirect('user');
+        }
     }
 }
