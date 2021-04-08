@@ -24,9 +24,9 @@
                      <?php else : ?>
                          <div class="dropdown-divider"></div>
                          <li>
-                             <a href="<?= site_url('profil') ?>" class="waves-effect">
-                                 <i class="mdi mdi-account"></i>
-                                 <span> Profil </span>
+                             <a href="<?= site_url('dashboard') ?>" class="waves-effect">
+                                 <i class="mdi mdi-airplay"></i>
+                                 <span> Dashboard </span>
                              </a>
                          </li>
 

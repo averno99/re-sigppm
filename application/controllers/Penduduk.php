@@ -96,7 +96,6 @@ class Penduduk extends CI_Controller
         $data['judul'] = 'Ubah Data Jumlah Penduduk';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['penduduk'] = $this->M_penduduk->ambilIdPenduduk($idPenduduk);
-        $data['kecamatan'] = $this->db->get('kecamatan')->result_array();
 
         $this->form_validation->set_rules(
             'jumlah',

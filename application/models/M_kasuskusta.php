@@ -176,8 +176,6 @@ class M_kasuskusta extends CI_model
         return $query;
     }
 
-
-
     public function rasioKusta()
     {
         $tahun = date('Y', strtotime('-1 year', strtotime(date('Y'))));

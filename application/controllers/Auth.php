@@ -51,7 +51,7 @@ class Auth extends CI_Controller
                         redirect('dashboard');
                     } else {
                         $this->session->set_flashdata('login', 'Anda berhasil masuk kedalam sistem');
-                        redirect('profil');
+                        redirect('dashboard');
                     }
                 } else {
                     $this->session->set_flashdata('pesan', "Password Salah");

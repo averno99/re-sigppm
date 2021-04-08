@@ -8,8 +8,6 @@ class Dashboard extends CI_Controller
         parent::__construct();
         if (!$this->session->userdata('username')) {
             redirect('auth');
-        } elseif ($this->session->userdata('levelUser') !== 'Admin') {
-            redirect('auth/blokir');
         }
     }
 
