@@ -37,7 +37,6 @@ class Kasus_malaria extends CI_Controller
 
         $data['judul'] = 'Tambah Data Kasus Malaria';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['penyakit'] = $this->db->get('penyakit')->result_array();
         $data['penduduk'] = $this->M_penduduk->filterTahun($keyword);
 
         $this->form_validation->set_rules(

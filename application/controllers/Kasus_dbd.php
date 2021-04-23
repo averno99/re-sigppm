@@ -45,17 +45,16 @@ class Kasus_dbd extends CI_Controller
             'Bulan',
             'required|trim|callback_kecamatan_check',
             array(
-                'required' => "<small class='text-muted'><span class='text-danger'>*</span> Bulan harus diisi</small>",
-                'is_unique' => "<small class='text-danger'>Data sudah ada</small>"
+                'required' => "<small class='text-muted'><span class='text-danger'>*</span> Bulan harus diisi</small>"
             )
         );
 
         $this->form_validation->set_rules(
             'penduduk',
             'Kecamatan',
-            'required|trim',
+            'required|trim|callback_kecamatan_check',
             array(
-                'required' => "<small class='text-muted'><span class='text-danger'>*</span> Kecamatan harus diisi</small>"
+                'required' => "<small class='text-muted'><span class='text-danger'>*</span> Kecamatan harus diisi</small>",
             )
         );
 

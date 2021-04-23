@@ -24,18 +24,21 @@
                                         <h4 class="mt-0 header-title"><?= $judul ?></h4>
                                         <div class="dropdown-divider mb-3"></div>
 
+                                        <?php if (empty($penyakit)) : ?>
+                                            <?php redirect('penyakit') ?>
+                                        <?php else : ?>
+                                            <div class="card-body">
+                                                <div class="form-group">
+                                                    <label for="nama">Nama Penyakit</label>
+                                                    <h6><?= $penyakit['penyakit']; ?></h6>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="keterangan">Keterangan</label>
+                                                    <h6><?= $penyakit['keterangan']; ?></h6>
+                                                </div>
 
-                                        <div class="card-body">
-                                            <div class="form-group">
-                                                <label for="nama">Nama Penyakit</label>
-                                                <h6><?= $penyakit['penyakit']; ?></h6>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="keterangan">Keterangan</label>
-                                                <h6><?= $penyakit['keterangan']; ?></h6>
-                                            </div>
-
-                                        </div> <!-- /.card-body -->
+                                            </div> <!-- /.card-body -->
+                                        <?php endif; ?>
 
                                     </div>
                                 </div>
