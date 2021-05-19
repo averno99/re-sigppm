@@ -46,7 +46,9 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="gambar">Gambar</label>
-                                    <img src="<?= base_url('assets/gambar/user/') . $users['gambar']; ?>" class="img-thumbnail">
+                                    <div class="row">
+                                        <img src="<?= base_url('assets/gambar/user/') . $users['gambar']; ?>" class="img-thumbnail" width="200">
+                                    </div>
                                 </div>
                             </div> <!-- /.card-body -->
                         <?php endif; ?>

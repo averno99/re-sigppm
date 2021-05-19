@@ -38,11 +38,11 @@
                         <div id="mapMalaria"></div>
                         <div class="mt-5">
                             <p><b> Annnual Parasite Incidence (API) </b> ~ Annual Parasite Incidence merupakan jumlah penderita malaria dengan konfirmasi laboratorium positif terhadap populasi di wilayah tertentu dan waktu tertentu per 1000 penduduk.</p>
-                            <p>Legend :</p>
+                            <p>Legenda :</p>
                             <ul>
-                                <li>Hijau</li>
-                                <li>Kuning</li>
-                                <li>Merah</li>
+                                <li>LCI (Low Case Incidence) API < 1 : Hijau</li>
+                                <li>MCI (Moderate Case Incidence) API 1 - < 5 : Kuning</li>
+                                <li>HCI (High Case Incidence) API > 5 : Merah</li>
                             </ul>
                         </div>
                     <?php endif; ?>
